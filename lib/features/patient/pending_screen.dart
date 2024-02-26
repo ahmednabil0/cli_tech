@@ -25,13 +25,28 @@ class PendingPage extends StatelessWidget {
             HSizedBox(
               he: 20.h,
             ),
-            appText(
-                txt: Jiffy.now().yMMMMEEEEdjm,
-                size: AppConstants.largeText,
-                fw: FontWeight.w600,
-                color: AppColors.primaryColor),
+            Container(
+              padding: EdgeInsets.all(10.w),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.r),
+                  border: Border.all(
+                    color: AppColors.primaryColor,
+                  )),
+              child: appText(
+                  txt: Jiffy.now().yMMMMEEEEdjm,
+                  size: AppConstants.largeText,
+                  fw: FontWeight.w600,
+                  color: AppColors.primaryColor),
+            ),
+            HSizedBox(
+              he: 15.h,
+            ),
             SvgPicture.asset(
               AppConstants.pending,
+              height: 300.h,
+            ),
+            HSizedBox(
+              he: 15.h,
             ),
             appText(
               txt:
@@ -41,7 +56,7 @@ class PendingPage extends StatelessWidget {
               color: AppColors.fontColor,
             ),
             HSizedBox(
-              he: 15.h,
+              he: 25.h,
             ),
             AppButton(
               txt: 'Try Again',
