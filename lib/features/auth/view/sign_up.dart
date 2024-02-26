@@ -273,7 +273,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 .key
                                 .currentState!
                                 .validate()) {
-                              if (widget.role == 'patient') {
+                              if (widget.role == 'patient' ||
+                                  widget.role == 'receptionist') {
                                 Navigator.of(context).pushReplacementNamed(
                                   Routes.pendingPage,
                                   arguments: widget.role,
