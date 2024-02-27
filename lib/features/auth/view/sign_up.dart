@@ -5,8 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/static_data/all_doctor_spcialist/all_doctor_specialiest.dart';
-import 'package:gradution_project/core/static_data/specicty_model.dart';
+import 'package:gradution_project/core/static_data/all_doctor_spcialist/specicty_model.dart';
 import 'package:gradution_project/core/widgets/build_qr_scanner.dart';
 import 'package:gradution_project/features/auth/view_model/sign_up_cubit/sign_up_cubit.dart';
 import 'package:gradution_project/features/auth/view_model/sign_up_cubit/sign_up_state.dart';
@@ -46,14 +47,14 @@ class _SignUpPageState extends State<SignUpPage> {
           child: Column(
             children: [
               Container(
-                constraints: BoxConstraints(maxHeight: 280.w, minHeight: 220.w),
+                constraints: BoxConstraints(maxHeight: 280.w, minHeight: 200.w),
                 width: double.infinity,
-                height: 220.h,
+                height: 200.h,
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.55),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(35.r),
-                    bottomRight: Radius.circular(35.r),
+                    bottomLeft: Radius.circular(45.r),
+                    bottomRight: Radius.circular(45.r),
                   ),
                 ),
                 child: Stack(
@@ -263,7 +264,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               )),
                         ),
                         HSizedBox(
-                          he: 20.h,
+                          he: 35.h,
                         ),
                         AppButton(
                           w: 220.w,
@@ -275,9 +276,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                 .validate()) {
                               if (widget.role == 'patient' ||
                                   widget.role == 'receptionist') {
-                                Navigator.of(context).pushReplacementNamed(
-                                  Routes.pendingPage,
-                                  arguments: widget.role,
+                                navigateReplace(
+                                  context: context,
+                                  route: Routes.pendingPage,
+                                  args: widget.role,
                                 );
                               }
                             }
@@ -294,9 +296,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 size: AppConstants.smallText,
                 fw: FontWeight.w500,
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    Routes.loginPage,
+                  navigateReplace(
+                    context: context,
+                    route: Routes.loginPage,
                   );
                 },
                 color: AppColors.scColor,

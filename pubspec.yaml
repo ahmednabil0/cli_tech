@@ -12,6 +12,7 @@ dependencies:
   cached_network_image: ^3.3.1
   dartz: ^0.10.1
   dio: ^5.4.1
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.4
@@ -25,7 +26,9 @@ dependencies:
   fluttertoast: ^8.2.4
   form_builder_validators: ^9.1.0
   get_it: ^7.6.7
+  google_nav_bar: ^5.0.6
   jiffy: 6.2.1
+  line_icons: ^2.0.3
   qr_code_scanner: ^1.0.1
   shared_preferences: ^2.2.2
 

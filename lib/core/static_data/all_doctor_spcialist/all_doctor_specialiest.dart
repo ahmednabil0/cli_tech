@@ -1,4 +1,4 @@
-import 'package:gradution_project/core/static_data/specicty_model.dart';
+import 'package:gradution_project/core/static_data/all_doctor_spcialist/specicty_model.dart';
 
 List<SpecialtyModel> doctorSpecialties = [
   SpecialtyModel(
