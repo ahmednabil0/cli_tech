@@ -162,3 +162,21 @@ class _MyRadioButtonWidgetState extends State<MyRadioButtonWidget> {
     );
   }
 }
+
+Map data = {
+  'name': '',
+  'email': '',
+  'phone': '',
+  'password': '',
+  'role': 'doctor',
+  'specialzation': 'dataa',
+  'Duid': null,
+};
+
+Map respone = {
+  'token': '',
+  'status': false,
+};
+
+// post (token)
+Map responsse = {'Status': true};
