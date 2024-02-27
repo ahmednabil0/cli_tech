@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_const.dart';
@@ -85,6 +86,7 @@ class _GetStartedState extends State<GetStarted> {
                         w: 200,
                         color: AppColors.scColor,
                         txt: 'Get Strated',
+                        tfw: FontWeight.w600,
                         onTap: () {
                           setState(() {
                             if (widget.index < 2) {
@@ -97,9 +99,9 @@ class _GetStartedState extends State<GetStarted> {
                               );
                               widget.index++;
                             } else {
-                              Navigator.pushReplacementNamed(
-                                context,
-                                Routes.selectRolePage,
+                              navigateReplace(
+                                context: context,
+                                route: Routes.selectRolePage,
                               );
                             }
                           });
@@ -110,7 +112,7 @@ class _GetStartedState extends State<GetStarted> {
                               ph: 10.w,
                               txt: 'Skip',
                               color: AppColors.hintColor,
-                              size: AppConstants.smallText,
+                              size: AppConstants.mediumText,
                               fw: FontWeight.w600,
                               onTap: () {
                                 setState(() {

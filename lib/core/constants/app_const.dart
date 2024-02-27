@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppConstants {
   // iamges
   static const String appLogo = 'assets/images/app_logo.png';
+  static const String imagePicker = 'assets/images/Image_picker.png';
   static const String login = 'assets/svg/login.svg';
   static const String signUp = 'assets/svg/sign_up.svg';
   static const String qr = 'assets/svg/qr.svg';

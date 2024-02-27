@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/login_cubit_cubit.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/login_cubit_state.dart';
 
@@ -147,9 +148,9 @@ class LoginPage extends StatelessWidget {
                 size: AppConstants.smallText,
                 fw: FontWeight.w500,
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                    context,
-                    Routes.selectRolePage,
+                  navigateReplace(
+                    context: context,
+                    route: Routes.selectRolePage,
                   );
                 },
                 color: AppColors.scColor,

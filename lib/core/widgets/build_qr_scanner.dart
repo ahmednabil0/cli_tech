@@ -50,7 +50,7 @@ buildQrScannerDialog({
     actions: [
       AppButton(
         w: 220.w,
-        txt: 'Continuo',
+        txt: 'Cancel',
         onTap: () {
           Navigator.of(context).pop();
         },

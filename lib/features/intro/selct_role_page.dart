@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_const.dart';
@@ -149,10 +150,10 @@ class _MyRadioButtonWidgetState extends State<MyRadioButtonWidget> {
               loading = false;
 
               // ignore: use_build_context_synchronously
-              Navigator.pushReplacementNamed(
-                context,
-                Routes.signUpPage,
-                arguments: _selectedRole,
+              navigateReplace(
+                context: context,
+                route: Routes.signUpPage,
+                args: _selectedRole,
               );
             },
           ),
