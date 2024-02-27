@@ -22,6 +22,7 @@ class CustomImage extends StatelessWidget {
         ? CircleAvatar(
             radius: 10.r,
             backgroundImage: AssetImage(imgPath),
+            // foregroundImage: const AssetImage('assets/images/image_picker.png'),
             onBackgroundImageError: (exception, stackTrace) {
               print('000000000000000');
               print(exception);
