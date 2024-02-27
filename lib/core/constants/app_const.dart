@@ -3,7 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppConstants {
   // iamges
   static const String appLogo = 'assets/images/app_logo.png';
-  static const String imagePicker = 'assets/images/Image_picker.png';
+  static const String imagePicker = 'assets/images/image_picker.png';
+  // patient
+  static const String bookAppointment =
+      'assets/images/patients/appointment.png';
+  static const String uploadMedia = 'assets/images/patients/upload_media.png';
+  static const String cancelAppointment = 'assets/images/patients/cancel.png';
+  static const String patientInfo = 'assets/images/patients/info.png';
+  static const String medicalRecord = 'assets/images/patients/records.png';
+  static const String preservation = 'assets/images/patients/preserv.png';
+
   static const String login = 'assets/svg/login.svg';
   static const String signUp = 'assets/svg/sign_up.svg';
   static const String qr = 'assets/svg/qr.svg';
