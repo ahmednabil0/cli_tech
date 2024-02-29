@@ -1,19 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 
 List patientData = [
-  {
-    'ar': 'حجز موعد',
-    'en': 'Book Appointment',
-    'image': AppConstants.bookAppointment,
-  },
   {
     'ar': 'رفع الوسائط',
     'en': 'Upload Media',
     'image': AppConstants.uploadMedia,
   },
   {
-    'ar': 'روشتاتي',
-    'en': 'Preservations',
+    'ar': 'معلومات الطبيب',
+    'en': 'Doctor Info',
     'image': AppConstants.preservation,
   },
   {
@@ -21,9 +19,6 @@ List patientData = [
     'en': 'My Info',
     'image': AppConstants.patientInfo,
   },
-];
-
-List otherPatientData = [
   {
     'ar': 'الغاء موعد',
     'en': 'Cancel Appointment',
@@ -35,3 +30,10 @@ List otherPatientData = [
     'image': AppConstants.medicalRecord,
   },
 ];
+
+Map otherPatientData = {
+  'ar': 'حجز موعد',
+  'en': 'Book Appointment',
+  'image': AppConstants.bookAppointment,
+  'page': Routes.bookAppointmentPage
+};

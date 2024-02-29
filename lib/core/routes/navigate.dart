@@ -13,3 +13,7 @@ navigateReplace({required context, required String route, dynamic args}) {
     arguments: args,
   );
 }
+
+navigatePop({required context}) {
+  Navigator.of(context).pop();
+}
