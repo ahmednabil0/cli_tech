@@ -12,6 +12,7 @@ class AppConstants {
   static const String patientInfo = 'assets/images/patients/info.png';
   static const String medicalRecord = 'assets/images/patients/records.png';
   static const String preservation = 'assets/images/patients/preserv.png';
+  static const String map = 'assets/images/map.jpeg';
 
   static const String login = 'assets/svg/login.svg';
   static const String signUp = 'assets/svg/sign_up.svg';

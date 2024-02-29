@@ -41,7 +41,7 @@ class MyCustomTextField extends StatelessWidget {
         controller: controller,
         style: TextStyle(
             color: color ?? Colors.black,
-            fontSize: AppConstants.mediumText,
+            fontSize: AppConstants.mediumText - 1.5,
             fontWeight: FontWeight.w500),
         obscureText: isTextObscured ?? false,
         cursorColor: color ?? Colors.black,
