@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gradution_project/features/auth/view_model/sign_up_cubit/sign_up_state.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit() : super(SignUpInitial());
+part 'signup_state.dart';
+part 'signup_bloc.freezed.dart';
 
+class SignupBloc extends Cubit<SignupState> {
+  SignupBloc() : super(const SignupState.signUpInitial());
   // data
   final key = GlobalKey<FormState>();
 
@@ -23,9 +25,12 @@ class SignUpCubit extends Cubit<SignUpState> {
   // functions
 
   void changeLoginPasswordSuffixIcon() {
+    emit(const SignupState.signUpInitial());
+
     isLoginPasswordShowing = !isLoginPasswordShowing;
     suffixIcon =
         isLoginPasswordShowing ? Icons.lock_rounded : Icons.lock_open_rounded;
-    emit(ChangeSignUpPasswordSuffixIcon());
+
+    emit(const SignupState.changeSignUpPasswordSuffixIcon());
   }
 }

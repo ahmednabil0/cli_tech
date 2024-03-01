@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/features/auth/view/login_page.dart';
 import 'package:gradution_project/features/auth/view/sign_up.dart';
-import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit/logincubit_bloc.dart';
-import 'package:gradution_project/features/auth/view_model/sign_up_cubit/sign_up_cubit.dart';
+import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
+import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/sucess_book_pafe.dart';
@@ -65,7 +65,7 @@ class AppRoutes {
         final role = routeSettings.arguments as String;
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) => sl<SignUpCubit>(),
+                  create: (context) => sl<SignupBloc>(),
                   child: SignUpPage(
                     role: role,
                   ),
