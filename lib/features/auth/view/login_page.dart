@@ -5,8 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
-import 'package:gradution_project/features/auth/view_model/login_cubit/login_cubit_cubit.dart';
-import 'package:gradution_project/features/auth/view_model/login_cubit/login_cubit_state.dart';
+
+import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit/logincubit_bloc.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_const.dart';

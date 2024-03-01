@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
-import 'package:gradution_project/core/routes/navigate.dart';
 
 List patientData = [
   {

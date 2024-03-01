@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/features/auth/view/login_page.dart';
 import 'package:gradution_project/features/auth/view/sign_up.dart';
-import 'package:gradution_project/features/auth/view_model/login_cubit/login_cubit_cubit.dart';
+import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/sign_up_cubit/sign_up_cubit.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
