@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,6 +31,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   String selectedRole = 'Retry';
   String retryValue = 'Retry';
   String examinationvalue = 'Examination';
+  final TextEditingController notesController = TextEditingController();
   void updateRadioButton(String value) {
     emit(const AppointmentState.initial());
     selectedRole = value;

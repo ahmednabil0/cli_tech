@@ -101,10 +101,13 @@ class BookAppointment extends StatelessWidget {
                     fw: FontWeight.w600,
                   ),
                   SizedBox(
-                    height: 60.h,
+                    height: 62.h,
                     child: MyCustomTextField(
+                      max: 4,
+                      onChanged: (value) => print(value),
                       hint: 'Write Your Notes Here!',
-                      controller: TextEditingController(),
+                      controller: BlocProvider.of<AppointmentCubit>(context)
+                          .notesController,
                     ),
                   ),
                   HSizedBox(

@@ -7,20 +7,24 @@ class MyCustomTextField extends StatelessWidget {
   final String? changedValue;
   final String? hint;
   final double? width;
+  final int? max;
   final Color? color;
   final Widget? icon;
   final Color? bcolor;
   final TextEditingController controller;
   final bool? isTextObscured;
   final String? Function(String?)? validator;
+  void Function(String value)? onChanged;
 
-  const MyCustomTextField({
+  MyCustomTextField({
     Key? key,
     this.changedValue,
     required this.controller,
     this.hint,
+    this.max,
     this.isTextObscured,
     this.color,
+    this.onChanged,
     this.icon,
     this.bcolor,
     this.validator,
@@ -39,10 +43,12 @@ class MyCustomTextField extends StatelessWidget {
       height: 45.h,
       child: TextFormField(
         controller: controller,
+        maxLines: max ?? 1,
         style: TextStyle(
-            color: color ?? Colors.black,
-            fontSize: AppConstants.mediumText - 1.5,
-            fontWeight: FontWeight.w500),
+          color: color ?? Colors.black,
+          fontSize: AppConstants.smallText,
+          fontWeight: FontWeight.w500,
+        ),
         obscureText: isTextObscured ?? false,
         cursorColor: color ?? Colors.black,
         obscuringCharacter: '●',
@@ -53,6 +59,7 @@ class MyCustomTextField extends StatelessWidget {
           suffixIcon: icon ?? const Icon(null),
         ),
         validator: validator,
+        onChanged: onChanged ?? (value) {},
       ),
     );
   }
