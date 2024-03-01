@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 
-import '../core/app_bloc/app_bloc_cubit.dart';
 import '../core/routes/app_routes.dart';
 import '../core/locale/app_locales.dart';
 import '../core/theme/app_theme.dart';
@@ -15,7 +15,7 @@ class CliTech extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<AppBlocCubit>()..getCachedLang(),
+      create: (context) => sl<AppCubit>()..getCachedLang(),
       child: ScreenUtilInit(
         builder: (context, child) {
           return MaterialApp(
@@ -29,7 +29,7 @@ class CliTech extends StatelessWidget {
               Locale('ar', "EG"),
               Locale('en', "US"),
             ],
-            locale: Locale(BlocProvider.of<AppBlocCubit>(context).langCode),
+            locale: Locale(BlocProvider.of<AppCubit>(context).langCode),
             debugShowCheckedModeBanner: false,
             initialRoute: Routes.intitlRoute,
             onGenerateRoute: AppRoutes.generateRoute,

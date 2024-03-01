@@ -3,14 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
+import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/space.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/core/widgets/tff.dart';
-import 'package:gradution_project/features/patient/appointments/view_model/cubit/appointment_cubit.dart';
-import 'package:gradution_project/features/patient/appointments/view_model/cubit/appointment_state.dart';
+import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
+
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 
 class BookAppointment extends StatelessWidget {
@@ -29,12 +31,15 @@ class BookAppointment extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   EasyDateTimeLine(
-                    initialDate: DateTime.now(),
+                    initialDate:
+                        BlocProvider.of<AppointmentCubit>(context).currentDate,
                     onDateChange: (selectedDate) {
-                      //`selectedDate` the new date selected.
+                      BlocProvider.of<AppointmentCubit>(context).updateDateTime(
+                        selectedDate,
+                      );
                     },
                     dayProps: EasyDayProps(
-                      borderColor: AppColors.scColor.withOpacity(0.2),
+                      borderColor: AppColors.scColor.withOpacity(0.3),
                     ),
                     activeColor: AppColors.scColor,
                     disabledDates: BlocProvider.of<AppointmentCubit>(context)
@@ -110,9 +115,59 @@ class BookAppointment extends StatelessWidget {
                     size: AppConstants.largeText,
                     fw: FontWeight.w600,
                   ),
-                  SizedBox(
-                    height: 50.h,
-                    child: const MyRadioButtonWidget(),
+                  BlocBuilder<AppointmentCubit, AppointmentState>(
+                    builder: (context, state) {
+                      return SizedBox(
+                        height: 50.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: RadioListTile(
+                                contentPadding: const EdgeInsets.all(0),
+                                title: appText(
+                                    txt: 'Examination',
+                                    align: TextAlign.start,
+                                    size: AppConstants.verySmallText,
+                                    fw: FontWeight.w600),
+                                activeColor: AppColors.scColor,
+                                value:
+                                    BlocProvider.of<AppointmentCubit>(context)
+                                        .examinationvalue,
+                                groupValue:
+                                    BlocProvider.of<AppointmentCubit>(context)
+                                        .selectedRole,
+                                onChanged: (value) {
+                                  BlocProvider.of<AppointmentCubit>(context)
+                                      .updateRadioButton(value.toString());
+                                },
+                              ),
+                            ),
+                            Expanded(
+                              child: RadioListTile(
+                                contentPadding: const EdgeInsets.all(0),
+                                title: appText(
+                                    align: TextAlign.start,
+                                    txt: BlocProvider.of<AppointmentCubit>(
+                                            context)
+                                        .retryValue,
+                                    size: AppConstants.verySmallText,
+                                    fw: FontWeight.w600),
+                                activeColor: AppColors.scColor,
+                                value: 'Retry',
+                                groupValue:
+                                    BlocProvider.of<AppointmentCubit>(context)
+                                        .selectedRole,
+                                onChanged: (value) {
+                                  BlocProvider.of<AppointmentCubit>(context)
+                                      .updateRadioButton(value.toString());
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -127,97 +182,18 @@ class BookAppointment extends StatelessWidget {
             h: 45.h,
             tfw: FontWeight.w700,
             ts: AppConstants.largeText,
-            onTap: () {},
+            onTap: () {
+              navigateReplace(
+                context: context,
+                route: Routes.scussesBookingPage,
+              );
+            },
           ),
           HSizedBox(
             he: 10.h,
           )
         ],
       )),
-    );
-  }
-
-  AppBar buildAppBar(
-    String? title,
-    BuildContext context,
-  ) {
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      centerTitle: true,
-      leading: IconButton(
-        onPressed: () {
-          navigatePop(
-            context: context,
-          );
-        },
-        icon: Icon(
-          Icons.arrow_back_rounded,
-          color: AppColors.scColor,
-          size: 30.w,
-        ),
-      ),
-      title: appText(
-        txt: title ?? '',
-        size: AppConstants.largeText,
-        fw: FontWeight.w600,
-      ),
-    );
-  }
-}
-
-class MyRadioButtonWidget extends StatefulWidget {
-  const MyRadioButtonWidget({super.key});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _MyRadioButtonWidgetState createState() => _MyRadioButtonWidgetState();
-}
-
-class _MyRadioButtonWidgetState extends State<MyRadioButtonWidget> {
-  String _selectedRole = 'Retry';
-  bool loading = false;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: RadioListTile(
-            contentPadding: const EdgeInsets.all(0),
-            title: appText(
-                txt: 'Examination',
-                align: TextAlign.start,
-                size: AppConstants.verySmallText,
-                fw: FontWeight.w600),
-            activeColor: AppColors.scColor,
-            value: 'Examination',
-            groupValue: _selectedRole,
-            onChanged: (value) {
-              setState(() {
-                _selectedRole = value!;
-              });
-            },
-          ),
-        ),
-        Expanded(
-          child: RadioListTile(
-            contentPadding: const EdgeInsets.all(0),
-            title: appText(
-                align: TextAlign.start,
-                txt: 'Retry',
-                size: AppConstants.verySmallText,
-                fw: FontWeight.w600),
-            activeColor: AppColors.scColor,
-            value: 'Retry',
-            groupValue: _selectedRole,
-            onChanged: (value) {
-              setState(() {
-                _selectedRole = value!;
-              });
-            },
-          ),
-        ),
-      ],
     );
   }
 }
