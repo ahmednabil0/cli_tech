@@ -18,6 +18,7 @@ class AppConstants {
   static const String signUp = 'assets/svg/sign_up.svg';
   static const String qr = 'assets/svg/qr.svg';
   static const String pending = 'assets/svg/pending.svg';
+  static const String booked = 'assets/svg/booked.svg';
 
   static double ultraText = 22.sp;
   static double extraText = 20.sp;
