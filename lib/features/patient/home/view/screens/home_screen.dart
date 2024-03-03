@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/patient/patients_home_data.dart';
@@ -133,30 +134,36 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 15.h,
                 ),
                 itemBuilder: (context, index) {
-                  return Card(
-                    surfaceTintColor: AppColors.whiteColor,
-                    color: AppColors.whiteColor,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(4.w),
-                          child: CustomImage(
-                            imgPath: patientData[index]['image'],
-                            // w: 50.w,
-                            h: 50.h,
-                            fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: () => navigate(
+                      context: context,
+                      route: Routes.uploadPatientMedia,
+                    ),
+                    child: Card(
+                      surfaceTintColor: AppColors.whiteColor,
+                      color: AppColors.whiteColor,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(4.w),
+                            child: CustomImage(
+                              imgPath: patientData[index]['image'],
+                              // w: 50.w,
+                              h: 50.h,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        appText(
-                          ph: 5.h,
-                          pw: 5.w,
-                          txt: patientData[index]
-                              [sl<CacheHelper>().getCachedLanguage()],
-                          size: AppConstants.verySmallText,
-                          fw: FontWeight.w500,
-                        )
-                      ],
+                          appText(
+                            ph: 5.h,
+                            pw: 5.w,
+                            txt: patientData[index]
+                                [sl<CacheHelper>().getCachedLanguage()],
+                            size: AppConstants.verySmallText,
+                            fw: FontWeight.w500,
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
