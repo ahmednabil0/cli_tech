@@ -12,6 +12,9 @@ import 'package:gradution_project/features/patient/appointments/view_model/appoi
 import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/pending_screen.dart';
+import 'package:gradution_project/features/upload_media/view/screens/upload_media_page.dart';
+import 'package:gradution_project/features/upload_media/view/screens/view_patient_media.dart';
+import 'package:gradution_project/features/upload_media/view_model/upload_media/upload_media_bloc.dart';
 
 import '../../features/intro/get_started_pages.dart';
 import '../../features/intro/splash_page.dart';
@@ -26,15 +29,17 @@ class Routes {
   static const String homePage = '/homePage';
   static const String bookAppointmentPage = '/bookAppointment';
   static const String scussesBookingPage = '/scussesBooking';
+  static const String uploadPatientMedia = '/uploadPatientMedia';
+  static const String viewPatientMedia = '/viewPatientMedia';
 }
 
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.intitlRoute:
-        return MaterialPageRoute(
-          builder: (_) => const SplasScreen(),
-        );
+      // case Routes.intitlRoute:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const SplasScreen(),
+      //   );
 
       case Routes.getStartedPage:
         return MaterialPageRoute(
@@ -70,7 +75,8 @@ class AppRoutes {
                     role: role,
                   ),
                 ));
-      case Routes.homePage:
+      // case Routes.homePage:
+      case Routes.intitlRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => sl<HomeCubit>(),
@@ -86,6 +92,21 @@ class AppRoutes {
       case Routes.scussesBookingPage:
         return MaterialPageRoute(
           builder: (_) => const SucessBooking(),
+        );
+      case Routes.uploadPatientMedia:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => sl<UploadMediaBloc>(),
+            child: const UploadPatientMediaPage(),
+          ),
+        );
+      case Routes.viewPatientMedia:
+        final context = routeSettings.arguments as BuildContext;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: BlocProvider.of<UploadMediaBloc>(context),
+            child: const ViewPatientMediaPage(),
+          ),
         );
 
       default:

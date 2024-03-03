@@ -7,6 +7,7 @@ import 'package:gradution_project/features/auth/view_model/login_cubit/logincubi
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/upload_media/view_model/upload_media/upload_media_bloc.dart';
 import '../db/cache/cache_helper.dart';
 
 final sl = GetIt.instance;
@@ -19,6 +20,7 @@ void initServiceLoactor() {
   sl.registerFactory(() => SignupBloc());
   sl.registerFactory(() => HomeCubit());
   sl.registerFactory(() => AppointmentCubit());
+  sl.registerFactory(() => UploadMediaBloc());
 
   //! project
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
