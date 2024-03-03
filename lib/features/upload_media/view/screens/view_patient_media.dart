@@ -189,49 +189,145 @@ class ViewPatientMediaPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  uploadedMedia: (int index) => Center(
-                                    child: DottedBorder(
-                                      color: AppColors.scColor,
-                                      strokeWidth: 2,
-                                      dashPattern: const [10, 5],
-                                      radius: Radius.circular(10.r),
-                                      borderType: BorderType.RRect,
-                                      child: Padding(
-                                        padding: EdgeInsets.all(5.w),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Container(
-                                                padding:
-                                                    const EdgeInsets.all(3),
-                                                decoration: BoxDecoration(
-                                                  color: AppColors.scColor
-                                                      .withOpacity(0.2),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                    5,
+                                  uploadedMedia: (int i) => index == i
+                                      ? Center(
+                                          child: DottedBorder(
+                                            color: AppColors.scColor,
+                                            strokeWidth: 2,
+                                            dashPattern: const [10, 5],
+                                            radius: Radius.circular(10.r),
+                                            borderType: BorderType.RRect,
+                                            child: Padding(
+                                              padding: EdgeInsets.all(5.w),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.all(3),
+                                                    decoration: BoxDecoration(
+                                                      color: AppColors.scColor
+                                                          .withOpacity(0.2),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        5,
+                                                      ),
+                                                    ),
+                                                    width: 75.w,
+                                                    height: 60.h,
+                                                    child: Stack(
+                                                      children: [
+                                                        PDFView(
+                                                          filePath: BlocProvider
+                                                                  .of<UploadMediaBloc>(
+                                                                      context)
+                                                              .filePath!,
+                                                        ),
+                                                        Positioned(
+                                                          bottom: 0,
+                                                          left: 0,
+                                                          right: 0,
+                                                          child: AppButton(
+                                                            w: 75.w,
+                                                            h: 20.h,
+                                                            r: 2.r,
+                                                            txt: 'Upload',
+                                                            ts: AppConstants
+                                                                .nanoText,
+                                                            tfw:
+                                                                FontWeight.w700,
+                                                            onTap: () {},
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                width: 40.w,
-                                                height: 50.h,
-                                                child: PDFView(
-                                                  filePath: BlocProvider.of<
-                                                              UploadMediaBloc>(
-                                                          context)
-                                                      .filePath!,
-                                                )),
-                                            AppButton(
-                                              h: 30.h,
-                                              w: 100.w,
-                                              txt: 'Upload',
-                                              onTap: () {},
-                                            )
-                                          ],
+                                                  Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      IconButton(
+                                                        onPressed: () async {
+                                                          await BlocProvider.of<
+                                                                      UploadMediaBloc>(
+                                                                  context)
+                                                              .openFilePicker(
+                                                                  index);
+                                                          print(
+                                                              '***************');
+                                                          print(state);
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .drive_folder_upload_rounded,
+                                                          color:
+                                                              AppColors.scColor,
+                                                          size: 30.w,
+                                                        ),
+                                                      ),
+                                                      appText(
+                                                        txt:
+                                                            'Upload Files From Device',
+                                                        size: AppConstants
+                                                            .smallText,
+                                                        fw: FontWeight.w500,
+                                                        color:
+                                                            AppColors.scColor,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : Expanded(
+                                          child: DottedBorder(
+                                            color: AppColors.scColor,
+                                            strokeWidth: 2,
+                                            dashPattern: const [10, 5],
+                                            radius: Radius.circular(10.r),
+                                            borderType: BorderType.RRect,
+                                            child: SizedBox(
+                                              height: 100.h,
+                                              width: double.infinity,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () async {
+                                                      await BlocProvider.of<
+                                                                  UploadMediaBloc>(
+                                                              context)
+                                                          .openFilePicker(
+                                                              index);
+                                                      print('***************');
+                                                      print(state);
+                                                    },
+                                                    icon: Icon(
+                                                      Icons
+                                                          .drive_folder_upload_rounded,
+                                                      color: AppColors.scColor,
+                                                      size: 30.w,
+                                                    ),
+                                                  ),
+                                                  appText(
+                                                    txt:
+                                                        'Upload Files From Device',
+                                                    size:
+                                                        AppConstants.smallText,
+                                                    fw: FontWeight.w500,
+                                                    color: AppColors.scColor,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
                                 )
                               ],
                             ),
