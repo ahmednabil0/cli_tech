@@ -24,7 +24,7 @@ List<SpecialtyModel> doctorSpecialties = [
   SpecialtyModel(
     id: 5,
     specialtyAr: "جراح عظام",
-    specialtyEn: "Orthopedic Surgeon	",
+    specialtyEn: "Orthopedic Surgeon",
   ),
   SpecialtyModel(
     id: 6,

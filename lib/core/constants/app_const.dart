@@ -13,12 +13,15 @@ class AppConstants {
   static const String medicalRecord = 'assets/images/patients/records.png';
   static const String preservation = 'assets/images/patients/preserv.png';
   static const String map = 'assets/images/map.jpeg';
+  static const String doctorProfile = 'assets/images/doctor.png';
+  static const String patientReview = 'assets/images/review.png';
 
   static const String login = 'assets/svg/login.svg';
   static const String signUp = 'assets/svg/sign_up.svg';
   static const String qr = 'assets/svg/qr.svg';
   static const String pending = 'assets/svg/pending.svg';
   static const String booked = 'assets/svg/booked.svg';
+  static const String messageIcon = 'assets/svg/message_icon.svg';
 
   static double ultraText = 22.sp;
   static double extraText = 20.sp;

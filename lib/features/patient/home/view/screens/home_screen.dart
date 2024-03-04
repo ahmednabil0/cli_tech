@@ -137,7 +137,7 @@ class HomePage extends StatelessWidget {
                   return InkWell(
                     onTap: () => navigate(
                       context: context,
-                      route: Routes.uploadPatientMedia,
+                      route: patientData[index]['page'],
                     ),
                     child: Card(
                       surfaceTintColor: AppColors.whiteColor,

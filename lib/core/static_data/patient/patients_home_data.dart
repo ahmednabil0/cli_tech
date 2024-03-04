@@ -12,7 +12,7 @@ List patientData = [
     'ar': 'معلومات الطبيب',
     'en': 'Doctor Info',
     'image': AppConstants.preservation,
-    'page': Routes.bookAppointmentPage
+    'page': Routes.doctorInfoPage
   },
   {
     'ar': 'معلوماتي',
