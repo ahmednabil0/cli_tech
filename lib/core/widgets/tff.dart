@@ -14,9 +14,9 @@ class MyCustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool? isTextObscured;
   final String? Function(String?)? validator;
-  void Function(String value)? onChanged;
+  final void Function(String value)? onChanged;
 
-  MyCustomTextField({
+  const MyCustomTextField({
     Key? key,
     this.changedValue,
     required this.controller,

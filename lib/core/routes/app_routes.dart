@@ -18,7 +18,7 @@ import 'package:gradution_project/features/upload_media/view/screens/view_patien
 import 'package:gradution_project/features/upload_media/view_model/upload_media/upload_media_bloc.dart';
 
 import '../../features/intro/get_started_pages.dart';
-import '../../features/intro/splash_page.dart';
+// import '../../features/intro/splash_page.dart';
 
 class Routes {
   static const String intitlRoute = '/';
