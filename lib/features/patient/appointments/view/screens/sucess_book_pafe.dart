@@ -14,8 +14,8 @@ class SucessBooking extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(
-        'success',
-        context,
+        title: 'success',
+        context: context,
       ),
       body: Background(
           child: Column(

@@ -7,10 +7,12 @@ class Background extends StatelessWidget {
   const Background({
     required this.child,
     this.pad,
+    this.sa,
     super.key,
   });
   final Widget? child;
   final double? pad;
+  final bool? sa;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,9 +20,7 @@ class Background extends StatelessWidget {
       color: AppColors.background,
       width: double.infinity,
       height: double.infinity,
-      child: SafeArea(
-        child: child!,
-      ),
+      child: sa == null ? SafeArea(child: child!) : child!,
     );
   }
 }

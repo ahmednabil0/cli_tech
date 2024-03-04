@@ -18,13 +18,13 @@ List patientData = [
     'ar': 'معلوماتي',
     'en': 'My Info',
     'image': AppConstants.patientInfo,
-    'page': Routes.bookAppointmentPage
+    'page': Routes.patientInfo
   },
   {
     'ar': 'الغاء موعد',
     'en': 'Cancel Appointment',
     'image': AppConstants.cancelAppointment,
-    'page': Routes.bookAppointmentPage
+    'page': Routes.cancelApoointment
   },
   {
     'ar': 'سجلي الطبي',

@@ -5,12 +5,15 @@ import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 
-AppBar buildAppBar(
+AppBar buildAppBar({
   String? title,
-  BuildContext context,
-) {
+  BuildContext? context,
+  Color? color,
+  Color? icolor,
+  Color? tcolor,
+}) {
   return AppBar(
-    backgroundColor: Colors.transparent,
+    backgroundColor: color ?? Colors.transparent,
     centerTitle: true,
     leading: IconButton(
       onPressed: () {
@@ -20,14 +23,14 @@ AppBar buildAppBar(
       },
       icon: Icon(
         Icons.arrow_back_rounded,
-        color: AppColors.scColor,
+        color: icolor ?? AppColors.scColor,
         size: 30.w,
       ),
     ),
     title: appText(
-      txt: title ?? '',
-      size: AppConstants.largeText,
-      fw: FontWeight.w600,
-    ),
+        txt: title ?? '',
+        size: AppConstants.largeText,
+        fw: FontWeight.w600,
+        color: tcolor ?? AppColors.fontColor),
   );
 }

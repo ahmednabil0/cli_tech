@@ -49,7 +49,7 @@ class _DoctorInfoPageState extends State<DoctorInfoPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Dr. Marwan Nasar', context),
+      appBar: buildAppBar(title: 'Dr. Marwan Nasar', context: context),
       body: Background(
         child: Column(
           children: [

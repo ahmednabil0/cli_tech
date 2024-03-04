@@ -21,7 +21,7 @@ class BookAppointment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: buildAppBar('New Appointment', context),
+      appBar: buildAppBar(title: 'New Appointment', context: context),
       body: Background(
           child: Column(
         children: [
