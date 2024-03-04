@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
-import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/patient/patients_home_data.dart';
