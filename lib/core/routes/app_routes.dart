@@ -9,6 +9,7 @@ import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/sucess_book_pafe.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
+import 'package:gradution_project/features/patient/doctor_info/view/screens/doctor_info_page.dart';
 import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/pending_screen.dart';
@@ -31,6 +32,7 @@ class Routes {
   static const String scussesBookingPage = '/scussesBooking';
   static const String uploadPatientMedia = '/uploadPatientMedia';
   static const String viewPatientMedia = '/viewPatientMedia';
+  static const String doctorInfoPage = '/doctorInfoPage';
 }
 
 class AppRoutes {
@@ -107,6 +109,10 @@ class AppRoutes {
             value: BlocProvider.of<UploadMediaBloc>(context),
             child: const ViewPatientMediaPage(),
           ),
+        );
+      case Routes.doctorInfoPage:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorInfoPage(),
         );
 
       default:

@@ -168,8 +168,6 @@ class ViewPatientMediaPage extends StatelessWidget {
                                                             UploadMediaBloc>(
                                                         context)
                                                     .openFilePicker(index);
-                                                print('***************');
-                                                print(state);
                                               },
                                               icon: Icon(
                                                 Icons
@@ -256,9 +254,6 @@ class ViewPatientMediaPage extends StatelessWidget {
                                                                   context)
                                                               .openFilePicker(
                                                                   index);
-                                                          print(
-                                                              '***************');
-                                                          print(state);
                                                         },
                                                         icon: Icon(
                                                           Icons
@@ -305,8 +300,6 @@ class ViewPatientMediaPage extends StatelessWidget {
                                                               context)
                                                           .openFilePicker(
                                                               index);
-                                                      print('***************');
-                                                      print(state);
                                                     },
                                                     icon: Icon(
                                                       Icons
