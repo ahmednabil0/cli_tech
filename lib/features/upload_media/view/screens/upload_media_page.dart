@@ -18,7 +18,7 @@ class UploadPatientMediaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('Upload Media', context),
+      appBar: buildAppBar(title: 'Upload Media', context: context),
       body: Background(child: BlocBuilder<UploadMediaBloc, UploadMediaState>(
         builder: (context, state) {
           return Column(

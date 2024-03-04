@@ -18,7 +18,7 @@ class ViewPatientMediaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar('2024/03/3', context),
+      appBar: buildAppBar(title: '2024/03/3', context: context),
       body: Background(
         child: Column(
           children: [

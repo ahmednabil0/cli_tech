@@ -39,6 +39,7 @@ class _GetStartedState extends State<GetStarted> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Background(
+          sa: true,
           pad: 0,
           child: Stack(
             alignment: Alignment.center,
