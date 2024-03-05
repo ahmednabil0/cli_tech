@@ -30,7 +30,7 @@ List patientData = [
     'ar': 'سجلي الطبي',
     'en': 'Medical Record',
     'image': AppConstants.medicalRecord,
-    'page': Routes.bookAppointmentPage
+    'page': Routes.patientMediacalRecords
   },
 ];
 

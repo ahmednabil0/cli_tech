@@ -9,6 +9,7 @@ Padding appText(
     required double size,
     double? pw,
     double? ph,
+    int? ml,
     FontWeight? fw,
     TextOverflow? of,
     bool? under,
@@ -21,6 +22,7 @@ Padding appText(
     child: Text(
       txt,
       overflow: of ?? TextOverflow.visible,
+      maxLines: ml ?? 1,
       textAlign: align ?? TextAlign.center,
       style: TextStyle(
         color: color ?? AppColors.fontColor,

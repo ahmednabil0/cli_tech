@@ -37,8 +37,13 @@ dependencies:
   google_nav_bar: ^5.0.6
   jiffy: 6.2.1
   line_icons: ^2.0.3
+  path_provider: ^2.1.2
+  pdf: ^3.10.8
+  permission_handler: ^11.3.0
+  printing: ^5.12.0
   qr_code_scanner: ^1.0.1
   qr_flutter: ^4.1.0
+  screenshot: ^2.1.0
   shared_preferences: ^2.2.2
 
 dev_dependencies:
