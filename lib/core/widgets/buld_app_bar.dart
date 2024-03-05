@@ -7,7 +7,7 @@ import 'package:gradution_project/core/widgets/text.dart';
 
 AppBar buildAppBar({
   String? title,
-  BuildContext? context,
+  required BuildContext? context,
   Color? color,
   Color? icolor,
   Color? tcolor,

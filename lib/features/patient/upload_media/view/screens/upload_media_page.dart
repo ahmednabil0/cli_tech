@@ -10,7 +10,7 @@ import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/core/widgets/tff.dart';
-import 'package:gradution_project/features/upload_media/view_model/upload_media/upload_media_bloc.dart';
+import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';
 
 class UploadPatientMediaPage extends StatelessWidget {
   const UploadPatientMediaPage({super.key});

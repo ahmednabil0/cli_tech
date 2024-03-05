@@ -17,6 +17,7 @@ class UploadMediaBloc extends Cubit<UploadMediaState> {
 
     if (result != null) {
       filePath = result.files.single.path;
+      // ignore: avoid_print
       print(filePath);
       emit(UploadMediaState.uploadedMedia(index));
     } else {

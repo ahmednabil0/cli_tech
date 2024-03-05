@@ -84,7 +84,7 @@ class BookAppointment extends StatelessWidget {
                                       ? true
                                       : false,
                               onSelected: (selected) {
-                                print(selected);
+                                // print(selected);
 
                                 BlocProvider.of<AppointmentCubit>(context)
                                     .selectHour(hour);
@@ -104,7 +104,7 @@ class BookAppointment extends StatelessWidget {
                     height: 62.h,
                     child: MyCustomTextField(
                       max: 4,
-                      onChanged: (value) => print(value),
+                      onChanged: (value) {},
                       hint: 'Write Your Notes Here!',
                       controller: BlocProvider.of<AppointmentCubit>(context)
                           .notesController,
