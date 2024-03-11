@@ -7,6 +7,7 @@ import 'package:gradution_project/core/widgets/text.dart';
 
 AppBar buildAppBar({
   String? title,
+  bool? wi,
   required BuildContext? context,
   Color? color,
   Color? icolor,
@@ -15,18 +16,21 @@ AppBar buildAppBar({
   return AppBar(
     backgroundColor: color ?? Colors.transparent,
     centerTitle: true,
-    leading: IconButton(
-      onPressed: () {
-        navigatePop(
-          context: context,
-        );
-      },
-      icon: Icon(
-        Icons.arrow_back_rounded,
-        color: icolor ?? AppColors.scColor,
-        size: 30.w,
-      ),
-    ),
+    elevation: 0,
+    leading: wi == null
+        ? IconButton(
+            onPressed: () {
+              navigatePop(
+                context: context,
+              );
+            },
+            icon: Icon(
+              Icons.arrow_back_rounded,
+              color: icolor ?? AppColors.scColor,
+              size: 30.w,
+            ),
+          )
+        : const SizedBox.shrink(),
     title: appText(
         txt: title ?? '',
         size: AppConstants.largeText,

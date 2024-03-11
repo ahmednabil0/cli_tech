@@ -1,7 +1,3 @@
-// ignore_for_file: avoid_print
-
-import 'dart:io';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -12,10 +8,7 @@ import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
-import 'package:gradution_project/main.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:printing/printing.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:screenshot/screenshot.dart';
@@ -34,14 +27,6 @@ class _ViewPatientMedicalRrcordPageState
   final ScreenshotController screenshotController = ScreenshotController();
 
   pw.Document? file;
-
-  String _getRandomString(int length) {
-    const chars =
-        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    Random rnd = Random();
-    return String.fromCharCodes(Iterable.generate(
-        length, (_) => chars.codeUnitAt(rnd.nextInt(chars.length))));
-  }
 
   Future<void> convertToPdf() async {
     screenshotController.capture().then((capturedImage) async {
