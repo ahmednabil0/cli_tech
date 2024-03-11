@@ -6,6 +6,7 @@ import 'package:gradution_project/features/auth/view/sign_up.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
+import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/patient_recods_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/cancel_appointment.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
@@ -15,6 +16,7 @@ import 'package:gradution_project/features/patient/doctor_info/view/screens/doct
 import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/view_mediacal_record_page.dart';
+import 'package:gradution_project/features/patient/notification/view/screens/notification_page.dart';
 import 'package:gradution_project/features/patient/pending_screen.dart';
 import 'package:gradution_project/features/patient/patient_info/view/screens/patient_info.dart';
 import 'package:gradution_project/features/patient/upload_media/view/screens/upload_media_page.dart';
@@ -41,6 +43,8 @@ class Routes {
   static const String cancelApoointment = '/cancelApoointment';
   static const String patientMediacalRecords = '/patientMediacalRecords';
   static const String viewPatientMedicalRrcord = '/viewPatientMedicalRrcord';
+  static const String chatBotPatient = '/chatBotPatient';
+  static const String notificationPatient = '/notificationPatient';
 }
 
 class AppRoutes {
@@ -137,7 +141,15 @@ class AppRoutes {
         );
       case Routes.viewPatientMedicalRrcord:
         return MaterialPageRoute(
-          builder: (_) => ViewPatientMedicalRrcordPage(),
+          builder: (_) => const ViewPatientMedicalRrcordPage(),
+        );
+      case Routes.chatBotPatient:
+        return MaterialPageRoute(
+          builder: (_) => const ChatBotPage(),
+        );
+      case Routes.notificationPatient:
+        return MaterialPageRoute(
+          builder: (_) => const NotificationPatientPage(),
         );
 
       default:

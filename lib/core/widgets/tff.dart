@@ -9,6 +9,7 @@ class MyCustomTextField extends StatelessWidget {
   final String? hint;
   final String? lapel;
   final double? width;
+  final double? height;
   final int? max;
   final Color? color;
   final Widget? icon;
@@ -34,6 +35,7 @@ class MyCustomTextField extends StatelessWidget {
     this.bcolor,
     this.validator,
     this.width,
+    this.height,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,7 @@ class MyCustomTextField extends StatelessWidget {
           color: Colors.white,
           border: Border.all(color: bcolor ?? Colors.transparent)),
       width: width ?? 280.w,
-      height: 45.h,
+      height: height ?? 45.h,
       child: TextFormField(
         controller: controller,
         maxLines: max ?? 1,
