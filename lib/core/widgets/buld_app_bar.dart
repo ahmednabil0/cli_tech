@@ -17,7 +17,7 @@ AppBar buildAppBar({
     backgroundColor: color ?? Colors.transparent,
     centerTitle: true,
     elevation: 0,
-    leading: wi == null
+    leading: wi == false || wi == null
         ? IconButton(
             onPressed: () {
               navigatePop(
