@@ -18,23 +18,27 @@ class CliTech extends StatelessWidget {
       create: (context) => sl<AppCubit>()..getCachedLang(),
       child: ScreenUtilInit(
         builder: (context, child) {
-          return MaterialApp(
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              AppLocalizations.delegate
-            ],
-            supportedLocales: const [
-              Locale('ar', "EG"),
-              Locale('en', "US"),
-            ],
-            locale: Locale(BlocProvider.of<AppCubit>(context).langCode),
-            debugShowCheckedModeBanner: false,
-            initialRoute: Routes.intitlRoute,
-            onGenerateRoute: AppRoutes.generateRoute,
-            title: 'Cli Tech App',
-            theme: getThemeDate(),
+          return BlocBuilder<AppCubit, AppState>(
+            builder: (context, state) {
+              return MaterialApp(
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  AppLocalizations.delegate
+                ],
+                supportedLocales: const [
+                  Locale('ar', "EG"),
+                  Locale('en', "US"),
+                ],
+                locale: Locale(BlocProvider.of<AppCubit>(context).langCode),
+                debugShowCheckedModeBanner: false,
+                initialRoute: Routes.intitlRoute,
+                onGenerateRoute: AppRoutes.generateRoute,
+                title: 'Cli Tech App',
+                theme: getThemeDate(),
+              );
+            },
           );
         },
       ),

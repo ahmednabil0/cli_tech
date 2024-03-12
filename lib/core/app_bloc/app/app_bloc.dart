@@ -10,7 +10,7 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState.appBlocInitial());
 
   late String langCode;
-  void changeLang(String codeLang) async {
+  Future<void> changeLang(String codeLang) async {
     emit(const AppState.changeLangLoading());
     // isArabic=!isArabic;
     langCode = codeLang;

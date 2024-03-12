@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/patient/patients_home_data.dart';
@@ -19,13 +20,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: _buildAppBar(context),
       body: Background(
         child: Column(
           children: [
-            HSizedBox(
-              he: 20.h,
-            ),
             InkWell(
               onTap: () {
                 navigate(
@@ -174,21 +172,30 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar() {
+  AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      leading: Icon(
-        Icons.menu_rounded,
-        color: AppColors.scColor,
-        size: 35.w,
+      leadingWidth: 90.w,
+      toolbarHeight: 80.h,
+      leading: CustomImage(
+        h: 100.h,
+        imgPath: AppConstants.appLogo,
       ),
       actions: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
-          child: const SizedBox(
+          child: SizedBox(
             width: 50,
             height: 50,
-            child: CustomAvatarImage(),
+            child: InkWell(
+                onTap: () {
+                  navigate(
+                    context: context,
+                    route: Routes.profilePatient,
+                    args: false,
+                  );
+                },
+                child: const CustomAvatarImage()),
           ),
         ),
       ],
