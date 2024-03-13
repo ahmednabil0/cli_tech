@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gradution_project/features/auth/model/repository/auth_repo.dart';
 
 part 'logincubit_state.dart';
 part 'logincubit_bloc.freezed.dart';
 
 class LoginCubit extends Cubit<LoginCubitState> {
-  LoginCubit() : super(const LoginCubitState.loginCubitInitial());
+  LoginCubit({required this.authRepo})
+      : super(const LoginCubitState.loginCubitInitial());
+  final AuthRepository authRepo;
 
   //? Login Vars
   // keys
@@ -28,5 +31,19 @@ class LoginCubit extends Cubit<LoginCubitState> {
     suffixIcon =
         isLoginPasswordShowing ? Icons.lock_rounded : Icons.lock_open_rounded;
     emit(const LoginCubitState.changeLoginPasswordSuffixIcon());
+  }
+
+  void login() async {
+    emit(const LoginCubitState.loginLoadingState());
+    final result = await authRepo.login(
+      email: email.text,
+      password: pass.text,
+    );
+    result.fold(
+      (error) => emit(LoginCubitState.loginErrorState(errorMessage: error)),
+      (loginData) async {
+        emit(const LoginCubitState.loginSuccessState());
+      },
+    );
   }
 }
