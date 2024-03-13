@@ -20,18 +20,27 @@ mixin _$LoginCubitState {
   TResult when<TResult extends Object?>({
     required TResult Function() loginCubitInitial,
     required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loginCubitInitial,
     TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loginCubitInitial,
     TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +49,9 @@ mixin _$LoginCubitState {
     required TResult Function(_LoginCubitInitial value) loginCubitInitial,
     required TResult Function(_ChangeLoginPasswordSuffixIcon value)
         changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +59,9 @@ mixin _$LoginCubitState {
     TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +69,9 @@ mixin _$LoginCubitState {
     TResult Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +135,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() loginCubitInitial,
     required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
   }) {
     return loginCubitInitial();
   }
@@ -126,6 +147,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loginCubitInitial,
     TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
   }) {
     return loginCubitInitial?.call();
   }
@@ -135,6 +159,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loginCubitInitial,
     TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
     required TResult orElse(),
   }) {
     if (loginCubitInitial != null) {
@@ -149,6 +176,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
     required TResult Function(_LoginCubitInitial value) loginCubitInitial,
     required TResult Function(_ChangeLoginPasswordSuffixIcon value)
         changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
   }) {
     return loginCubitInitial(this);
   }
@@ -159,6 +189,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
     TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
   }) {
     return loginCubitInitial?.call(this);
   }
@@ -169,6 +202,9 @@ class _$LoginCubitInitialImpl implements _LoginCubitInitial {
     TResult Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
     required TResult orElse(),
   }) {
     if (loginCubitInitial != null) {
@@ -227,6 +263,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
   TResult when<TResult extends Object?>({
     required TResult Function() loginCubitInitial,
     required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
   }) {
     return changeLoginPasswordSuffixIcon();
   }
@@ -236,6 +275,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loginCubitInitial,
     TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
   }) {
     return changeLoginPasswordSuffixIcon?.call();
   }
@@ -245,6 +287,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loginCubitInitial,
     TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
     required TResult orElse(),
   }) {
     if (changeLoginPasswordSuffixIcon != null) {
@@ -259,6 +304,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
     required TResult Function(_LoginCubitInitial value) loginCubitInitial,
     required TResult Function(_ChangeLoginPasswordSuffixIcon value)
         changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
   }) {
     return changeLoginPasswordSuffixIcon(this);
   }
@@ -269,6 +317,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
     TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
   }) {
     return changeLoginPasswordSuffixIcon?.call(this);
   }
@@ -279,6 +330,9 @@ class _$ChangeLoginPasswordSuffixIconImpl
     TResult Function(_LoginCubitInitial value)? loginCubitInitial,
     TResult Function(_ChangeLoginPasswordSuffixIcon value)?
         changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
     required TResult orElse(),
   }) {
     if (changeLoginPasswordSuffixIcon != null) {
@@ -291,4 +345,407 @@ class _$ChangeLoginPasswordSuffixIconImpl
 abstract class _ChangeLoginPasswordSuffixIcon implements LoginCubitState {
   const factory _ChangeLoginPasswordSuffixIcon() =
       _$ChangeLoginPasswordSuffixIconImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginLoadingStateImplCopyWith<$Res> {
+  factory _$$LoginLoadingStateImplCopyWith(_$LoginLoadingStateImpl value,
+          $Res Function(_$LoginLoadingStateImpl) then) =
+      __$$LoginLoadingStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginLoadingStateImplCopyWithImpl<$Res>
+    extends _$LoginCubitStateCopyWithImpl<$Res, _$LoginLoadingStateImpl>
+    implements _$$LoginLoadingStateImplCopyWith<$Res> {
+  __$$LoginLoadingStateImplCopyWithImpl(_$LoginLoadingStateImpl _value,
+      $Res Function(_$LoginLoadingStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginLoadingStateImpl implements _LoginLoadingState {
+  const _$LoginLoadingStateImpl();
+
+  @override
+  String toString() {
+    return 'LoginCubitState.loginLoadingState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginLoadingStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loginCubitInitial,
+    required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
+  }) {
+    return loginLoadingState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loginCubitInitial,
+    TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
+  }) {
+    return loginLoadingState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loginCubitInitial,
+    TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginLoadingState != null) {
+      return loginLoadingState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginCubitInitial value) loginCubitInitial,
+    required TResult Function(_ChangeLoginPasswordSuffixIcon value)
+        changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
+  }) {
+    return loginLoadingState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
+  }) {
+    return loginLoadingState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginLoadingState != null) {
+      return loginLoadingState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginLoadingState implements LoginCubitState {
+  const factory _LoginLoadingState() = _$LoginLoadingStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginErrorStateImplCopyWith<$Res> {
+  factory _$$LoginErrorStateImplCopyWith(_$LoginErrorStateImpl value,
+          $Res Function(_$LoginErrorStateImpl) then) =
+      __$$LoginErrorStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$$LoginErrorStateImplCopyWithImpl<$Res>
+    extends _$LoginCubitStateCopyWithImpl<$Res, _$LoginErrorStateImpl>
+    implements _$$LoginErrorStateImplCopyWith<$Res> {
+  __$$LoginErrorStateImplCopyWithImpl(
+      _$LoginErrorStateImpl _value, $Res Function(_$LoginErrorStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+  }) {
+    return _then(_$LoginErrorStateImpl(
+      errorMessage: null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginErrorStateImpl implements _LoginErrorState {
+  const _$LoginErrorStateImpl({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'LoginCubitState.loginErrorState(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginErrorStateImpl &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginErrorStateImplCopyWith<_$LoginErrorStateImpl> get copyWith =>
+      __$$LoginErrorStateImplCopyWithImpl<_$LoginErrorStateImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loginCubitInitial,
+    required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
+  }) {
+    return loginErrorState(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loginCubitInitial,
+    TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
+  }) {
+    return loginErrorState?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loginCubitInitial,
+    TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginErrorState != null) {
+      return loginErrorState(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginCubitInitial value) loginCubitInitial,
+    required TResult Function(_ChangeLoginPasswordSuffixIcon value)
+        changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
+  }) {
+    return loginErrorState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
+  }) {
+    return loginErrorState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginErrorState != null) {
+      return loginErrorState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginErrorState implements LoginCubitState {
+  const factory _LoginErrorState({required final String errorMessage}) =
+      _$LoginErrorStateImpl;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$$LoginErrorStateImplCopyWith<_$LoginErrorStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginSuccessStateImplCopyWith<$Res> {
+  factory _$$LoginSuccessStateImplCopyWith(_$LoginSuccessStateImpl value,
+          $Res Function(_$LoginSuccessStateImpl) then) =
+      __$$LoginSuccessStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginSuccessStateImplCopyWithImpl<$Res>
+    extends _$LoginCubitStateCopyWithImpl<$Res, _$LoginSuccessStateImpl>
+    implements _$$LoginSuccessStateImplCopyWith<$Res> {
+  __$$LoginSuccessStateImplCopyWithImpl(_$LoginSuccessStateImpl _value,
+      $Res Function(_$LoginSuccessStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginSuccessStateImpl implements _LoginSuccessState {
+  const _$LoginSuccessStateImpl();
+
+  @override
+  String toString() {
+    return 'LoginCubitState.loginSuccessState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginSuccessStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loginCubitInitial,
+    required TResult Function() changeLoginPasswordSuffixIcon,
+    required TResult Function() loginLoadingState,
+    required TResult Function(String errorMessage) loginErrorState,
+    required TResult Function() loginSuccessState,
+  }) {
+    return loginSuccessState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loginCubitInitial,
+    TResult? Function()? changeLoginPasswordSuffixIcon,
+    TResult? Function()? loginLoadingState,
+    TResult? Function(String errorMessage)? loginErrorState,
+    TResult? Function()? loginSuccessState,
+  }) {
+    return loginSuccessState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loginCubitInitial,
+    TResult Function()? changeLoginPasswordSuffixIcon,
+    TResult Function()? loginLoadingState,
+    TResult Function(String errorMessage)? loginErrorState,
+    TResult Function()? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginSuccessState != null) {
+      return loginSuccessState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoginCubitInitial value) loginCubitInitial,
+    required TResult Function(_ChangeLoginPasswordSuffixIcon value)
+        changeLoginPasswordSuffixIcon,
+    required TResult Function(_LoginLoadingState value) loginLoadingState,
+    required TResult Function(_LoginErrorState value) loginErrorState,
+    required TResult Function(_LoginSuccessState value) loginSuccessState,
+  }) {
+    return loginSuccessState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult? Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult? Function(_LoginLoadingState value)? loginLoadingState,
+    TResult? Function(_LoginErrorState value)? loginErrorState,
+    TResult? Function(_LoginSuccessState value)? loginSuccessState,
+  }) {
+    return loginSuccessState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoginCubitInitial value)? loginCubitInitial,
+    TResult Function(_ChangeLoginPasswordSuffixIcon value)?
+        changeLoginPasswordSuffixIcon,
+    TResult Function(_LoginLoadingState value)? loginLoadingState,
+    TResult Function(_LoginErrorState value)? loginErrorState,
+    TResult Function(_LoginSuccessState value)? loginSuccessState,
+    required TResult orElse(),
+  }) {
+    if (loginSuccessState != null) {
+      return loginSuccessState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginSuccessState implements LoginCubitState {
+  const factory _LoginSuccessState() = _$LoginSuccessStateImpl;
 }
