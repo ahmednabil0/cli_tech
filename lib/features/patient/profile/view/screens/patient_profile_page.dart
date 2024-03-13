@@ -6,6 +6,7 @@ import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
+import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/images/profile_image.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
@@ -112,9 +113,51 @@ class ProfilePatientPage extends StatelessWidget {
                         const Spacer(),
                         IconButton(
                           onPressed: () {
-                            navigate(
+                            if (profileData[index]['Color'] !=
+                                AppColors.redColor) {
+                              navigate(
+                                  context: context,
+                                  route: profileData[index]['Routes']);
+                            } else {
+                              showAdaptiveDialog(
+                                barrierDismissible: false,
                                 context: context,
-                                route: profileData[index]['Routes']);
+                                builder: (context) {
+                                  return AlertDialog(
+                                    backgroundColor: AppColors.whiteColor,
+                                    elevation: 0,
+                                    content: appText(
+                                      txt:
+                                          'Are you sure to Logout?  Don\'t be shy!',
+                                      size: AppConstants.largeText,
+                                      fw: FontWeight.w500,
+                                      color: AppColors.hintColor,
+                                    ),
+                                    title: Icon(
+                                      Icons.login_outlined,
+                                      color: AppColors.redColor,
+                                      size: AppConstants.ultraText + 30.w,
+                                    ),
+                                    actions: [
+                                      AppButton(
+                                        color: AppColors.scColor,
+                                        txt: 'Logout',
+                                        onTap: () {},
+                                      ),
+                                      AppButton(
+                                        color: AppColors.scColor,
+                                        border: true,
+                                        txt: 'Close',
+                                        onTap: () {
+                                          navigatePop(context: context);
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              print('Logout');
+                            }
                           },
                           icon: Icon(
                             Icons.arrow_forward_rounded,
@@ -158,7 +201,7 @@ List<Map> profileData = [
     'subtitle': 'Id, Medical Records',
     'icon': Icons.assignment_ind_rounded,
     'Color': AppColors.scColor,
-    'Routes': Routes.patientInfo,
+    'Routes': Routes.idInfoPage,
   },
   {
     'title': 'Logout',

@@ -8,7 +8,7 @@ import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.da
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/profile/view_model/PersonalInformation/personal_information_bloc.dart';
-import 'package:gradution_project/features/patient/profile/view_model/settings_patient/settings_patient_bloc.dart';
+import 'package:gradution_project/features/patient/profile/view_model/setting_patient/setting_patient_bloc.dart';
 import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';
 import '../db/cache/cache_helper.dart';
 
@@ -24,7 +24,7 @@ void initServiceLoactor() {
   sl.registerFactory(() => AppointmentCubit());
   sl.registerFactory(() => UploadMediaBloc());
   sl.registerFactory(() => PersonalInformationBloc());
-  sl.registerFactory(() => SettingsPatientBloc());
+  sl.registerFactory(() => SettingPatientBloc());
 
   //! project
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
