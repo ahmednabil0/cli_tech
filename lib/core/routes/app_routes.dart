@@ -19,11 +19,12 @@ import 'package:gradution_project/features/patient/medical_records/view/screens/
 import 'package:gradution_project/features/patient/notification/view/screens/notification_page.dart';
 import 'package:gradution_project/features/patient/pending_screen.dart';
 import 'package:gradution_project/features/patient/patient_info/view/screens/patient_info.dart';
+import 'package:gradution_project/features/patient/profile/view/screens/id_info_patient_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/patient_profile_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/personal_info_patient.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/setting_patient_page.dart';
 import 'package:gradution_project/features/patient/profile/view_model/PersonalInformation/personal_information_bloc.dart';
-import 'package:gradution_project/features/patient/profile/view_model/settings_patient/settings_patient_bloc.dart';
+import 'package:gradution_project/features/patient/profile/view_model/setting_patient/setting_patient_bloc.dart';
 import 'package:gradution_project/features/patient/upload_media/view/screens/upload_media_page.dart';
 import 'package:gradution_project/features/patient/upload_media/view/screens/view_patient_media.dart';
 import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';
@@ -53,6 +54,7 @@ class Routes {
   static const String profilePatient = '/profilePatient';
   static const String personalInfoPatient = '/personalInfoPatient';
   static const String settingsPatient = '/settingsPatient';
+  static const String idInfoPage = '/idInfoPage';
 }
 
 class AppRoutes {
@@ -177,9 +179,14 @@ class AppRoutes {
       case Routes.settingsPatient:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<SettingsPatientBloc>()..initLangSetings(),
+            create: (context) => sl<SettingPatientBloc>()..initLangSetings(),
             child: const SettingsPatientPage(),
           ),
+        );
+
+      case Routes.idInfoPage:
+        return MaterialPageRoute(
+          builder: (_) => const IdInformationAndMedicalRecordsPatientPage(),
         );
 
       default:
