@@ -300,6 +300,11 @@ class _SignUpPageState extends State<SignUpPage> {
                       route: Routes.pendingPage,
                       args: widget.role,
                     );
+                  } else {
+                    navigateReplace(
+                      context: context,
+                      route: Routes.doctorHomePage,
+                    );
                   }
                 }
               },
