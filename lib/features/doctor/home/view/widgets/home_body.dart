@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 
+import 'package:gradution_project/features/doctor/home_page/view/screens/home_page.dart';
+
 class HomeDoctorBody extends StatelessWidget {
   HomeDoctorBody({
     super.key,
@@ -8,9 +10,7 @@ class HomeDoctorBody extends StatelessWidget {
   });
   final int index;
   final List<Widget> pages = [
-    Container(
-      color: AppColors.hintColor,
-    ),
+    const DoctorHomePage(),
     Container(
       color: AppColors.scColor,
     ),

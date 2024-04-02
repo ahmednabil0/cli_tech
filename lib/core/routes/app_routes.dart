@@ -7,6 +7,7 @@ import 'package:gradution_project/features/auth/view_model/login_cubit/logincubi
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/doctor/home_page/view/screens/home_page.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
 import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
@@ -60,6 +61,7 @@ class Routes {
   static const String idInfoPage = '/idInfoPage';
   //! Doctor
   static const String doctorHomePage = '/doctorHomePage';
+  static const String doctorWelcomePage = '/doctorWelcomePage';
 }
 
 class AppRoutes {
@@ -200,7 +202,10 @@ class AppRoutes {
                   create: (context) => sl<HomeDoctorCubit>(),
                   child: const DoctorBottomNav(),
                 ));
-
+      case Routes.doctorWelcomePage:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorHomePage(),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(
