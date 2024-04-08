@@ -32,4 +32,16 @@ class AppConstants {
   static double nanoText = 10.sp;
 // font
   static const String fontFamily = 'Tajawal';
+  //Doctor
+  static const String doctorPImage = 'assets/images/doctor.png';
+  static const String person = 'assets/images/person.jpg';
+  static const String personDH = 'assets/images/doctor/person.png';
+  static const String calender = 'assets/images/doctor/calender.png';
+  static const String addData = 'assets/images/doctor/Add_Data.png';
+  static const String pendingDH = 'assets/images/doctor/pending.png';
+  static const String prescription = 'assets/images/doctor/Prescription.png';
+  static const String receptionist = 'assets/images/doctor/receptionist.png';
+
+
+
 }

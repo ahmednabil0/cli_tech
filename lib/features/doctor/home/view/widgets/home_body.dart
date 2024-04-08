@@ -3,6 +3,8 @@ import 'package:gradution_project/core/constants/app_colors.dart';
 
 import 'package:gradution_project/features/doctor/home_page/view/screens/home_page.dart';
 
+import '../screens/home_screen.dart';
+
 class HomeDoctorBody extends StatelessWidget {
   HomeDoctorBody({
     super.key,
@@ -10,7 +12,7 @@ class HomeDoctorBody extends StatelessWidget {
   });
   final int index;
   final List<Widget> pages = [
-    const DoctorHomePage(),
+    const DoctorHomeScreen(),
     Container(
       color: AppColors.scColor,
     ),

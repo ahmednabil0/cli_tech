@@ -23,6 +23,7 @@ import 'package:gradution_project/features/patient/medical_records/view/screens/
 import 'package:gradution_project/features/patient/notification/view/screens/notification_page.dart';
 import 'package:gradution_project/features/patient/pending_screen.dart';
 import 'package:gradution_project/features/patient/patient_info/view/screens/patient_info.dart';
+import 'package:gradution_project/features/patient/profile/view/screens/doctor_profile_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/id_info_patient_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/patient_profile_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/personal_info_patient.dart';
@@ -61,6 +62,8 @@ class Routes {
   static const String idInfoPage = '/idInfoPage';
   //! Doctor
   static const String doctorHomePage = '/doctorHomePage';
+  static const String doctorPrifilePage = '/doctorProfilePage';
+
   static const String doctorWelcomePage = '/doctorWelcomePage';
 }
 
@@ -202,6 +205,14 @@ class AppRoutes {
                   create: (context) => sl<HomeDoctorCubit>(),
                   child: const DoctorBottomNav(),
                 ));
+      case Routes.doctorPrifilePage:
+        final wi = routeSettings.arguments as bool;
+
+        return MaterialPageRoute(
+          builder: (_) => DoctorProfilePage(
+            wi: wi,
+          ),
+        );
       case Routes.doctorWelcomePage:
         return MaterialPageRoute(
           builder: (_) => const DoctorHomePage(),
