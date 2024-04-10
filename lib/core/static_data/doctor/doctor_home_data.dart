@@ -18,7 +18,7 @@ List doctorData = [
     'ar': 'الوصفة الطبية',
     'en': 'Prescription',
     'image': AppConstants.prescription,
-    'page': null
+    'page': Routes.prescriptionPage
   },
   {
     'ar': 'الاستقبال',

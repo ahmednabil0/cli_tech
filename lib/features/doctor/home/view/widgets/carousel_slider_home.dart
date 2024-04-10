@@ -66,7 +66,7 @@ class CarouselSliderHome extends StatelessWidget {
                                     fw: FontWeight.bold)),
                           ),
                           HSizedBox(
-                            he: 10.h,
+                            he: 12.h,
                           ),
                         ]),
                   ),
@@ -77,7 +77,7 @@ class CarouselSliderHome extends StatelessWidget {
                               bottomLeft: Radius.circular(16.r),
                               bottomRight: Radius.circular(16.r))),
                       width: 250.w,
-                      height: 30.h,
+                      height: 29.h,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

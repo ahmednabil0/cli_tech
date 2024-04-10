@@ -34,6 +34,7 @@ import 'package:gradution_project/features/patient/upload_media/view/screens/upl
 import 'package:gradution_project/features/patient/upload_media/view/screens/view_patient_media.dart';
 import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';
 
+import '../../features/doctor/prescription/view/screens/prescription_page.dart';
 import '../../features/intro/get_started_pages.dart';
 // import '../../features/intro/splash_page.dart';
 
@@ -63,6 +64,7 @@ class Routes {
   //! Doctor
   static const String doctorHomePage = '/doctorHomePage';
   static const String doctorPrifilePage = '/doctorProfilePage';
+  static const String prescriptionPage = '/prescriptionPage';
 
   static const String doctorWelcomePage = '/doctorWelcomePage';
 }
@@ -207,7 +209,6 @@ class AppRoutes {
                 ));
       case Routes.doctorPrifilePage:
         final wi = routeSettings.arguments as bool;
-
         return MaterialPageRoute(
           builder: (_) => DoctorProfilePage(
             wi: wi,
@@ -216,6 +217,10 @@ class AppRoutes {
       case Routes.doctorWelcomePage:
         return MaterialPageRoute(
           builder: (_) => const DoctorHomePage(),
+        );
+      case Routes.prescriptionPage:
+        return MaterialPageRoute(
+          builder: (_) => const PrescriptionPage(),
         );
       default:
         return MaterialPageRoute(
