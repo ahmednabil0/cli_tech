@@ -13,9 +13,9 @@ import '../../../../../core/widgets/space.dart';
 import '../../../../../core/widgets/text.dart';
 
 class CarouselSliderRequest extends StatelessWidget {
-  CarouselSliderRequest({required this.count, super.key});
+  const CarouselSliderRequest({required this.count, super.key});
 
-  int? count;
+  final int? count;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                       ),
                                     ),
                                     title: Padding(
-                                      padding: EdgeInsets.only(top: 5),
+                                      padding: const EdgeInsets.only(top: 5),
                                       child: appText(
                                           txt: 'ALi Ramadan, Male ,26yr',
                                           size: 16,
@@ -101,7 +101,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                           color: AppColors.blackColor
                                               .withOpacity(0.5)),
                                     )),
-                                HSizedBox(),
+                                const HSizedBox(),
                                 SizedBox(
                                     width: 210.w,
                                     height: 15.h,
@@ -122,7 +122,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                           color: AppColors.blackColor
                                               .withOpacity(0.5)),
                                     )),
-                                HSizedBox(),
+                                const HSizedBox(),
                                 SizedBox(
                                     width: 60.w,
                                     height: 15.h,
@@ -143,7 +143,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                           color: AppColors.blackColor
                                               .withOpacity(0.5)),
                                     )),
-                                HSizedBox(),
+                                const HSizedBox(),
                                 SizedBox(
                                     width: 180.w,
                                     height: 15.h,
@@ -176,7 +176,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                         of: TextOverflow.ellipsis,
                                         color: AppColors.blackColor
                                             .withOpacity(0.5)),
-                                    WSizedBox(),
+                                    const WSizedBox(),
                                     Container(
                                       decoration: BoxDecoration(
                                           color: Colors.green,
@@ -200,7 +200,7 @@ class CarouselSliderRequest extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: AppColors.blackColor,
                       endIndent: 5,
                       indent: 5,
@@ -222,7 +222,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                   overlayColor: MaterialStateColor.resolveWith(
                                       (states) => Colors.red.withOpacity(0.5))),
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.close_rounded,
                                 size: 25,
                                 color: AppColors.redColor,
@@ -235,7 +235,7 @@ class CarouselSliderRequest extends StatelessWidget {
                               ),
                             ),
                           ),
-                          VerticalDivider(
+                          const VerticalDivider(
                             color: AppColors.blackColor,
                             endIndent: 5,
                           ),
@@ -252,7 +252,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                       (states) =>
                                           Colors.green.withOpacity(0.5))),
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.check,
                                 size: 25,
                                 color: Colors.green,

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
-import 'package:gradution_project/features/doctor/home/view/widgets/carousel_slider_home.dart';
 import 'package:gradution_project/features/doctor/request/view/widgets/carousel_slider_request.dart';
 
 import '../../../../../core/constants/app_colors.dart';
