@@ -8,6 +8,7 @@ import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.da
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/doctor/home_page/view/screens/home_page.dart';
+import 'package:gradution_project/features/doctor/request/view/screens/request_page.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
 import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
@@ -61,10 +62,12 @@ class Routes {
   static const String personalInfoPatient = '/personalInfoPatient';
   static const String settingsPatient = '/settingsPatient';
   static const String idInfoPage = '/idInfoPage';
+
   //! Doctor
   static const String doctorHomePage = '/doctorHomePage';
   static const String doctorPrifilePage = '/doctorProfilePage';
   static const String prescriptionPage = '/prescriptionPage';
+  static const String requestPage = '/requestPage';
 
   static const String doctorWelcomePage = '/doctorWelcomePage';
 }
@@ -221,6 +224,10 @@ class AppRoutes {
       case Routes.prescriptionPage:
         return MaterialPageRoute(
           builder: (_) => const PrescriptionPage(),
+        );
+      case Routes.requestPage:
+        return MaterialPageRoute(
+          builder: (_) => RequestPage(),
         );
       default:
         return MaterialPageRoute(

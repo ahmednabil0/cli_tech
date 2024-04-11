@@ -30,7 +30,7 @@ List doctorData = [
     'ar': 'الانتظار',
     'en': 'Pending',
     'image': AppConstants.pendingDH,
-    'page': null
+    'page': Routes.requestPage
   },
   {
     'ar': 'اضافة معلومات',

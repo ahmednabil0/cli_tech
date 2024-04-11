@@ -103,6 +103,7 @@ class CarouselSliderHome extends StatelessWidget {
           initialPage: 0,
           viewportFraction: 0.85,
           enableInfiniteScroll: false,
+          //enlargeCenterPage: true
           //reverse: true
         ));
   }
