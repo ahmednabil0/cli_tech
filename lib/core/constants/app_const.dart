@@ -14,6 +14,7 @@ class AppConstants {
   static const String preservation = 'assets/images/patients/preserv.png';
   static const String map = 'assets/images/map.jpeg';
   static const String doctorProfile = 'assets/images/doctor.png';
+  static const String bkImage = 'assets/images/doctor/bk.jpeg';
   static const String patientReview = 'assets/images/review.png';
 
   static const String login = 'assets/svg/login.svg';
@@ -41,7 +42,4 @@ class AppConstants {
   static const String pendingDH = 'assets/images/doctor/pending.png';
   static const String prescription = 'assets/images/doctor/Prescription.png';
   static const String receptionist = 'assets/images/doctor/receptionist.png';
-
-
-
 }

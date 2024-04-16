@@ -32,9 +32,10 @@ AppBar buildAppBar({
           )
         : const SizedBox.shrink(),
     title: appText(
-        txt: title ?? '',
-        size: AppConstants.largeText,
-        fw: FontWeight.w600,
-        color: tcolor ?? AppColors.fontColor),
+      txt: title ?? '',
+      size: AppConstants.extraText,
+      fw: FontWeight.w700,
+      color: tcolor ?? AppColors.fontColor,
+    ),
   );
 }

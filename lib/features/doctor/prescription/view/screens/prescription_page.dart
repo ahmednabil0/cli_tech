@@ -1,386 +1,354 @@
-import 'package:custom_radio_grouped_button/custom_radio_grouped_button.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
+import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/extensions/gaps.dart';
+import 'package:gradution_project/core/static_data/drugs/data_json.dart';
+import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
-import 'package:gradution_project/core/widgets/space.dart';
-import 'package:gradution_project/core/widgets/text.dart';
 
-import '../../../../../core/constants/app_const.dart';
-import '../../../../../core/routes/app_routes.dart';
-import '../../../../../core/routes/navigate.dart';
+import 'package:gradution_project/core/widgets/text.dart';
+import 'package:gradution_project/core/widgets/tff.dart';
+
 import '../../../../../core/widgets/buld_app_bar.dart';
-import '../../../../../core/widgets/images/custom_image.dart';
-import '../../../../../core/widgets/images/profile_image.dart';
 
 class PrescriptionPage extends StatefulWidget {
-  const PrescriptionPage({super.key});
+  const PrescriptionPage({super.key, required this.data});
+  final Map data;
 
   @override
   State<PrescriptionPage> createState() => _PrescriptionPageState();
 }
 
 class _PrescriptionPageState extends State<PrescriptionPage> {
-  int count = 0;
-  int count2 = 0;
+  static GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController drugQtController = TextEditingController();
+
+  String? drugName;
+
+  String? drugQt;
+
+  String? drugDu;
+
+  List<Map> treatmantPlan = [];
 
   @override
   Widget build(BuildContext context) {
+    // print(drugModels);
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        splashColor: AppColors.scColor.withOpacity(0.5),
-        onPressed: () {},
-        label: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: appText(
-                txt: "Add",
-                size: AppConstants.largeText,
-                fw: FontWeight.bold,
-                color: AppColors.whiteColor)),
-        backgroundColor: AppColors.scColor,
-      ),
-      appBar: buildAppBar(context: context, title: 'Add Prescription'),
+      appBar: buildAppBar(title: 'Prescription', context: context),
       body: Background(
-        pad: 13,
-        child: SingleChildScrollView(
-          child: Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            15.he(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                HSizedBox(
-                  he: 15.h,
+                appText(
+                  txt: 'Name:${widget.data['name']}',
+                  size: AppConstants.largeText,
+                  fw: FontWeight.w700,
                 ),
                 appText(
-                    txt: 'Name',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(),
-                TextFormField(
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: AppColors.blackColor),
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                  ),
-                  keyboardType: TextInputType.name,
-                ),
-                HSizedBox(
-                  he: 15.h,
-                ),
-                appText(
-                    txt: 'Doctor\'s Report',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(),
-                SizedBox(
-                  height: 70.h,
-                  child: TextFormField(
-                    maxLines: null,
-                    expands: true,
-                    decoration: InputDecoration(
-                      hintText: 'Write a note..',
-                      enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: AppColors.blackColor),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.r))),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.r))),
-                    ),
-                    keyboardType: TextInputType.multiline,
-                  ),
-                ),
-                HSizedBox(
-                  he: 15.h,
-                ),
-                appText(
-                    txt: 'Drugs Name',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(),
-                TextFormField(
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: AppColors.blackColor),
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey),
-                        borderRadius: BorderRadius.all(Radius.circular(10.r))),
-                  ),
-                  keyboardType: TextInputType.name,
-                ),
-                const HSizedBox(),
-                Divider(color: AppColors.blackColor.withOpacity(0.3)),
-                const HSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      appText(
-                          txt: 'Dosage',
-                          size: AppConstants.largeText,
-                          fw: FontWeight.bold,
-                          color: AppColors.blackColor.withOpacity(0.6)),
-                      RichText(
-                        text: TextSpan(
-                          text: 'Duration ',
-                          style: TextStyle(
-                              fontSize: AppConstants.largeText,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.blackColor.withOpacity(0.6)),
-                          children: [
-                            TextSpan(
-                              text: 'Week',
-                              style: TextStyle(
-                                fontSize: AppConstants.largeText,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.scColor,
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const HSizedBox(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => setState(() {
-                              count == 0 ? print('count at 0 !') : count--;
-                            }),
-                            child: Container(
-                              padding: const EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.3),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.remove,
-                                //color: AppColors.whiteColor,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                          const WSizedBox(),
-                          appText(
-                              txt: "$count Tablet",
-                              size: AppConstants.largeText),
-                          const WSizedBox(),
-                          InkWell(
-                            onTap: () => setState(() {
-                              count++;
-                            }),
-                            child: Container(
-                              padding: const EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.3),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                //color: AppColors.whiteColor,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () => setState(() {
-                              count2 == 0 ? print('count2 at 0 !') : count2--;
-                            }),
-                            child: Container(
-                              padding: const EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.3),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.remove,
-                                //color: AppColors.whiteColor,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                          const WSizedBox(),
-                          appText(
-                              txt: "$count2 Week",
-                              size: AppConstants.largeText),
-                          const WSizedBox(),
-                          InkWell(
-                            onTap: () => setState(() {
-                              count2++;
-                            }),
-                            child: Container(
-                              padding: const EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(0.3),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Icon(
-                                Icons.add,
-                                //color: AppColors.whiteColor,
-                                size: 15,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                const HSizedBox(),
-                appText(
-                    txt: 'Repeat',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(
-                  he: 2,
-                ),
-                Row(
-                  children: [
-                    CustomRadioButton(
-                      elevation: 1,
-                      defaultSelected: 'Everyday',
-                      autoWidth: true,
-                      enableShape: true,
-                      selectedBorderColor: AppColors.scColor,
-                      unSelectedBorderColor: AppColors.scColor,
-                      unSelectedColor: AppColors.whiteColor,
-                      selectedColor: AppColors.scColor,
-                      buttonLables: const [
-                        'Everyday',
-                        'Alternate Days',
-                        'Specific Days',
-                      ],
-                      buttonValues: const [
-                        'Everyday',
-                        'Alternate Days',
-                        'Specific Days',
-                      ],
-                      buttonTextStyle: const ButtonTextStyle(
-                          selectedColor: Colors.white,
-                          unSelectedColor: Colors.black,
-                          textStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                      radioButtonValue: (value) {
-                        print(value);
-                      },
-                    ),
-                  ],
-                ),
-                const HSizedBox(
-                  he: 2,
-                ),
-                appText(
-                    txt: 'Time of the day',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(
-                  he: 2,
-                ),
-                Row(
-                  children: [
-                    CustomCheckBoxGroup(
-                      buttonTextStyle: const ButtonTextStyle(
-                          selectedColor: Colors.white,
-                          unSelectedColor: Colors.black,
-                          textStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                      selectedBorderColor: AppColors.scColor,
-                      unSelectedBorderColor: AppColors.scColor,
-                      unSelectedColor: AppColors.whiteColor,
-                      selectedColor: AppColors.scColor,
-                      autoWidth: true,
-                      enableShape: true,
-                      defaultSelected: const ['Morning', 'Noon'],
-                      buttonLables: const [
-                        "Morning",
-                        "Noon",
-                        "Night",
-                        "Evening",
-                      ],
-                      buttonValuesList: const [
-                        "Morning",
-                        "Noon",
-                        "Night",
-                        "Evening",
-                      ],
-                      checkBoxButtonValues: (values) {
-                        print(values);
-                      },
-                      spacing: 0,
-                      width: 40,
-                      absoluteZeroSpacing: false,
-                    ),
-                  ],
-                ),
-                const HSizedBox(
-                  he: 2,
-                ),
-                appText(
-                    txt: 'To be Taken',
-                    size: AppConstants.largeText,
-                    fw: FontWeight.bold,
-                    color: AppColors.blackColor.withOpacity(0.6)),
-                const HSizedBox(he: 2),
-                Row(
-                  children: [
-                    CustomRadioButton(
-                      elevation: 1,
-                      defaultSelected: 'After Food',
-                      autoWidth: true,
-                      enableShape: true,
-                      selectedBorderColor: AppColors.scColor,
-                      unSelectedBorderColor: AppColors.scColor,
-                      unSelectedColor: AppColors.whiteColor,
-                      selectedColor: AppColors.scColor,
-                      buttonLables: const [
-                        'After Food',
-                        'Before Food',
-                      ],
-                      buttonValues: const [
-                        'After Food',
-                        'Before Food',
-                      ],
-                      buttonTextStyle: const ButtonTextStyle(
-                          selectedColor: Colors.white,
-                          unSelectedColor: Colors.black,
-                          textStyle: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.bold)),
-                      radioButtonValue: (value) {
-                        print(value);
-                      },
-                    ),
-                  ],
-                )
+                    txt: 'Date:2024/4/4',
+                    size: AppConstants.mediumText,
+                    fw: FontWeight.w500,
+                    color: AppColors.scColor),
               ],
             ),
-          ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                appText(
+                  txt: 'Age: 22 Years',
+                  size: AppConstants.mediumText,
+                  fw: FontWeight.w500,
+                ),
+                Container(
+                  height: 30.h,
+                  padding: EdgeInsets.symmetric(horizontal: 7.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      10.r,
+                    ),
+                    color: AppColors.primaryColor.withOpacity(0.2),
+                  ),
+                  child: Center(
+                    child: appText(
+                      txt: 'Examination',
+                      size: AppConstants.mediumText,
+                      color: AppColors.fontColor,
+                      fw: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Divider(
+              color: AppColors.hintColor,
+            ),
+            10.he(),
+            appText(
+              txt: 'Patient Report:',
+              size: AppConstants.largeText,
+              fw: FontWeight.w700,
+            ),
+            MyCustomTextField(
+              height: 80.h,
+              width: double.infinity,
+              max: 4,
+              controller: TextEditingController(),
+              hint:
+                  'Examble:The patient complains of severe pain in the lower right abdomen, accompanied by high fever and nausea. ',
+            ),
+            10.he(),
+            appText(
+              txt: 'Temperature:',
+              size: AppConstants.largeText,
+              fw: FontWeight.w700,
+            ),
+            MyCustomTextField(
+              width: double.infinity,
+              controller: TextEditingController(),
+              hint: 'Example: 39.2 degrees Celsius.',
+            ),
+            10.he(),
+            appText(
+              txt: 'Blood Pressure:',
+              size: AppConstants.largeText,
+              fw: FontWeight.w700,
+            ),
+            MyCustomTextField(
+              width: double.infinity,
+              controller: TextEditingController(),
+              hint: 'Example: 120/80 mmHg.',
+            ),
+            10.he(),
+            appText(
+              txt: 'Abdomen:',
+              size: AppConstants.largeText,
+              fw: FontWeight.w700,
+            ),
+            MyCustomTextField(
+              height: 70.h,
+              width: double.infinity,
+              max: 3,
+              controller: TextEditingController(),
+              hint:
+                  'Examble:The patient feels pain when pressure is applied to the lower right side of the abdomen.',
+            ),
+            10.he(),
+            Form(
+              key: formKey,
+              child: Container(
+                padding: EdgeInsets.all(10.w),
+                decoration: BoxDecoration(
+                  color: AppColors.scColor.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(15.r),
+                ),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional.centerStart,
+                      child: appText(
+                        txt: 'Treatment Plan:',
+                        size: AppConstants.largeText,
+                        fw: FontWeight.w700,
+                      ),
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: CustomDropdown<DrugModel>.search(
+                        validator: FormBuilderValidators.required(),
+                        hintText: 'Select Drug Name',
+                        canCloseOutsideBounds: true,
+                        noResultFoundBuilder: (context, text) => Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(14.0.h),
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.error_outline_rounded,
+                                  color: Colors.red,
+                                  size: 15.h,
+                                ),
+                                appText(
+                                  align: TextAlign.start,
+                                  ph: 0,
+                                  txt: '*$text*',
+                                  color: Colors.red,
+                                  size: AppConstants.smallText,
+                                  fw: FontWeight.w500,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        hintBuilder: (context, hint) {
+                          return appText(
+                              align: TextAlign.start,
+                              txt: hint,
+                              color: AppColors.hintColor,
+                              size: AppConstants.smallText,
+                              fw: FontWeight.w500);
+                        },
+                        items: drugList,
+                        excludeSelected: false,
+                        maxlines: 3,
+                        onChanged: (value) {
+                          drugName = '${value.name}/${value.type}';
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                    10.he(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            appText(
+                              txt: 'Dosage',
+                              size: AppConstants.largeText,
+                              fw: FontWeight.w700,
+                            ),
+                            MyCustomTextField(
+                              width: 120.w,
+                              controller: drugQtController,
+                              validator: FormBuilderValidators.required(),
+                              hint: 'Times To take',
+                              onChanged: (value) {
+                                drugQt = value;
+                                setState(() {});
+                              },
+                            ),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            appText(
+                              txt: 'Duration',
+                              size: AppConstants.largeText,
+                              fw: FontWeight.w700,
+                            ),
+                            SizedBox(
+                              width: 150.w,
+                              child: CustomDropdown<String>.search(
+                                validator: FormBuilderValidators.required(),
+                                hintText: 'Select Duration',
+                                canCloseOutsideBounds: true,
+                                noResultFoundBuilder: (context, text) => Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.0.h),
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.error_outline_rounded,
+                                          color: Colors.red,
+                                          size: 15.h,
+                                        ),
+                                        appText(
+                                          align: TextAlign.start,
+                                          ph: 0,
+                                          txt: '*$text*',
+                                          color: Colors.red,
+                                          size: AppConstants.smallText,
+                                          fw: FontWeight.w500,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                hintBuilder: (context, hint) {
+                                  return appText(
+                                      align: TextAlign.start,
+                                      txt: hint,
+                                      color: AppColors.hintColor,
+                                      size: AppConstants.smallText,
+                                      fw: FontWeight.w500);
+                                },
+                                items: const ['Day', 'Week', 'Month', 'Year'],
+                                excludeSelected: false,
+                                maxlines: 3,
+                                onChanged: (value) {
+                                  drugDu = value;
+                                  setState(() {});
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    10.he(),
+                    AppButton(
+                      txt: 'Add Drug',
+                      onTap: () {
+                        if (formKey.currentState!.validate()) {
+                          treatmantPlan.add(
+                            {
+                              'drug': drugName,
+                              'duration': drugDu,
+                              'times': drugQt,
+                            },
+                          );
+                          setState(() {});
+                        }
+                      },
+                      w: double.infinity,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            10.he(),
+            Container(
+              // height: 150.h,
+              width: double.infinity,
+              padding: EdgeInsets.all(10.w),
+              decoration: BoxDecoration(
+                color: AppColors.scColor.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(15.r),
+              ),
+              child: Wrap(
+                  alignment: WrapAlignment.start,
+                  spacing: 20.w,
+                  children: treatmantPlan.map((hour) {
+                    return InkWell(
+                      onLongPress: () {
+                        treatmantPlan.remove(hour);
+                        setState(() {});
+                      },
+                      child: FilterChip(
+                        backgroundColor: AppColors.scColor,
+                        shape: const StadiumBorder(),
+                        // checkmarkColor: AppColors.whiteColor,
+                        labelStyle: TextStyle(
+                          color: AppColors.whiteColor,
+                          fontFamily: AppConstants.fontFamily,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        label: appText(
+                            txt:
+                                '${hour['drug']} - ${hour['times']} every ${hour['duration']}',
+                            size: AppConstants.smallText,
+                            color: AppColors.whiteColor),
+                        onSelected: (selected) {},
+                      ),
+                    );
+                  }).toList()),
+            ),
+            50.he(),
+          ],
         ),
-      ),
+      )),
     );
   }
 }

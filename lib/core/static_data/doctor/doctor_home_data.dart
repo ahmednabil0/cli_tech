@@ -6,7 +6,7 @@ List doctorData = [
     'ar': 'المواعيد',
     'en': 'Appointments',
     'image': AppConstants.calender,
-    'page': null
+    'page': Routes.apointmentsDoctor
   },
   {
     'ar': 'المرضى',
