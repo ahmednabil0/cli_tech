@@ -7,7 +7,7 @@ import 'package:gradution_project/features/auth/view_model/login_cubit/logincubi
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
-import 'package:gradution_project/features/doctor/home_page/view/screens/home_page.dart';
+import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
 import 'package:gradution_project/features/doctor/request/view/screens/request_page.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
@@ -68,17 +68,17 @@ class Routes {
   static const String doctorPrifilePage = '/doctorProfilePage';
   static const String prescriptionPage = '/prescriptionPage';
   static const String requestPage = '/requestPage';
-
-  static const String doctorWelcomePage = '/doctorWelcomePage';
+  static const String apointmentsDoctor = '/apointmentsDoctor';
 }
 
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.intitlRoute:
-        return MaterialPageRoute(
-          builder: (_) => const SplasScreen(),
-        );
+      // case Routes.intitlRoute:
+      //   return MaterialPageRoute(
+
+      //     builder: (_) => const SplasScreen(),
+      //   );
 
       case Routes.getStartedPage:
         return MaterialPageRoute(
@@ -204,7 +204,8 @@ class AppRoutes {
         );
 
       //! Doctor Module
-      case Routes.doctorHomePage:
+      // case Routes.doctorHomePage:
+      case Routes.intitlRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => sl<HomeDoctorCubit>(),
@@ -217,18 +218,25 @@ class AppRoutes {
             wi: wi,
           ),
         );
-      case Routes.doctorWelcomePage:
-        return MaterialPageRoute(
-          builder: (_) => const DoctorHomePage(),
-        );
+
       case Routes.prescriptionPage:
+        final parms = routeSettings.arguments as Map;
+
         return MaterialPageRoute(
-          builder: (_) => const PrescriptionPage(),
+          builder: (_) => PrescriptionPage(
+            data: parms,
+          ),
         );
       case Routes.requestPage:
         return MaterialPageRoute(
-          builder: (_) => RequestPage(),
+          builder: (_) => const RequestPage(),
         );
+
+      case Routes.apointmentsDoctor:
+        return MaterialPageRoute(
+          builder: (_) => DoctorAppointmentPage(),
+        );
+
       default:
         return MaterialPageRoute(
             builder: (_) => const Scaffold(

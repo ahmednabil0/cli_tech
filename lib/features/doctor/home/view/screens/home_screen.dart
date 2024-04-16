@@ -1,9 +1,7 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
+import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/static_data/doctor/doctor_home_data.dart';
 import 'package:gradution_project/features/doctor/home/view/widgets/carousel_slider_home.dart';
 import 'package:jiffy/jiffy.dart';
@@ -19,68 +17,44 @@ import '../../../../../core/widgets/sized_box.dart';
 import '../../../../../core/widgets/space.dart';
 import '../../../../../core/widgets/text.dart';
 
-class DoctorHomeScreen extends StatefulWidget {
+class DoctorHomeScreen extends StatelessWidget {
   const DoctorHomeScreen({super.key});
 
   @override
-  State<DoctorHomeScreen> createState() => _DoctorHomeScreenState();
-}
-
-class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
-  @override
   Widget build(BuildContext context) {
-    int count = 10;
-    Jiffy.setLocale('en_us');
-
     return Scaffold(
       appBar: _buildAppBar(context),
       body: Background(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: appText(
-                  txt: 'Hi, Dr.Marwan',
-                  size: AppConstants.extraText,
-                  fw: FontWeight.bold),
-            ),
-            HSizedBox(
-              he: 25.h,
-            ),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
                 appText(
-                    txt: "Upcoming Schedule",
-                    size: AppConstants.mediumText,
-                    fw: FontWeight.w600),
-                const WSizedBox(),
+                  txt: "Upcoming Schedule",
+                  size: AppConstants.largeText,
+                  fw: FontWeight.w600,
+                ),
+                8.wd(),
                 CircleAvatar(
                   backgroundColor: AppColors.scColor,
-                  radius: 13.r,
+                  radius: 14.r,
                   child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: appText(
-                          txt: '$count',
-                          size: AppConstants.mediumText,
-                          color: AppColors.whiteColor,
-                          fw: FontWeight.bold)),
-                ),
-                WSizedBox(
-                  w: 60.w,
-                ),
-                TextButton(
-                    onPressed: null,
+                    alignment: Alignment.bottomCenter,
                     child: appText(
-                        txt: 'view All',
-                        size: AppConstants.mediumText,
-                        color: AppColors.scColor.withOpacity(0.8))),
+                      txt: '10',
+                      size: AppConstants.mediumText,
+                      color: AppColors.whiteColor,
+                      fw: FontWeight.bold,
+                    ),
+                  ),
+                ),
               ],
             ),
             HSizedBox(
               he: 20.h,
             ),
-            CarouselSliderHome(count: count),
+            const CarouselSliderHome(count: 10),
             const HSizedBox(),
             Divider(
               color: AppColors.blackColor.withOpacity(0.2),
@@ -92,10 +66,10 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                 physics: const ClampingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 1.3,
-                  crossAxisSpacing: 12.w,
-                  mainAxisSpacing: 12.h,
+                  crossAxisCount: 2,
+                  childAspectRatio: 4 / 3,
+                  crossAxisSpacing: 5.w,
+                  mainAxisSpacing: 5.h,
                 ),
                 itemBuilder: (context, index) {
                   return InkWell(
@@ -104,8 +78,13 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                       route: doctorData[index]['page'],
                     ),
                     child: Card(
-                      surfaceTintColor: AppColors.whiteColor,
                       color: AppColors.whiteColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30.r),
+                        ),
+                      ),
+                      elevation: 0,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -114,7 +93,7 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                             child: CustomImage(
                               imgPath: doctorData[index]['image'],
                               // w: 50.w,
-                              h: 25.h,
+                              h: 35.h,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -123,8 +102,8 @@ class _DoctorHomeScreenState extends State<DoctorHomeScreen> {
                             pw: 5.w,
                             txt: doctorData[index]
                                 [sl<CacheHelper>().getCachedLanguage()],
-                            size: AppConstants.verySmallText,
-                            fw: FontWeight.bold,
+                            size: AppConstants.mediumText,
+                            fw: FontWeight.w700,
                           )
                         ],
                       ),
