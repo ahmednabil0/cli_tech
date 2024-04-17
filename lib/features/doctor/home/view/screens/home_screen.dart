@@ -4,7 +4,6 @@ import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/static_data/doctor/doctor_home_data.dart';
 import 'package:gradution_project/features/doctor/home/view/widgets/carousel_slider_home.dart';
-import 'package:jiffy/jiffy.dart';
 
 import '../../../../../core/constants/app_const.dart';
 import '../../../../../core/db/cache/cache_helper.dart';
@@ -52,7 +51,7 @@ class DoctorHomeScreen extends StatelessWidget {
               ],
             ),
             HSizedBox(
-              he: 20.h,
+              he: 8.h,
             ),
             InkWell(
                 onTap: () => navigate(
@@ -60,11 +59,17 @@ class DoctorHomeScreen extends StatelessWidget {
                       route: Routes.apointmentsDoctor,
                     ),
                 child: const CarouselSliderHome(count: 10)),
-            const HSizedBox(),
-            Divider(
-              color: AppColors.blackColor.withOpacity(0.2),
+            10.he(),
+            Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: appText(
+                txt: 'Services:',
+                size: AppConstants.largeText,
+                color: AppColors.fontColor,
+                fw: FontWeight.w900,
+              ),
             ),
-            const HSizedBox(),
+            2.he(),
             Expanded(
               child: GridView.builder(
                 itemCount: doctorData.length,
@@ -72,7 +77,7 @@ class DoctorHomeScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 4 / 3,
+                  childAspectRatio: 4 / 2.82,
                   crossAxisSpacing: 5.w,
                   mainAxisSpacing: 5.h,
                 ),
@@ -85,8 +90,12 @@ class DoctorHomeScreen extends StatelessWidget {
                     child: Card(
                       color: AppColors.whiteColor,
                       shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: AppColors.scColor.withOpacity(0.035),
+                          width: 10,
+                        ),
                         borderRadius: BorderRadius.all(
-                          Radius.circular(30.r),
+                          Radius.circular(25.r),
                         ),
                       ),
                       elevation: 0,
@@ -126,8 +135,8 @@ class DoctorHomeScreen extends StatelessWidget {
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      leadingWidth: 90.w,
-      toolbarHeight: 80.h,
+      leadingWidth: 80.w,
+      toolbarHeight: 60.h,
       leading: CustomImage(
         h: 100.h,
         imgPath: AppConstants.appLogo,
