@@ -156,6 +156,7 @@ class UpcomingApoointments extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(5.w),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -179,8 +180,9 @@ class UpcomingApoointments extends StatelessWidget {
                             size: AppConstants.largeText,
                             fw: FontWeight.bold,
                           ),
+                          5.he(),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
                                 height: 30.h,
@@ -193,13 +195,14 @@ class UpcomingApoointments extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: appText(
-                                    txt: '2024/4/5',
+                                    txt: '21 Age',
                                     size: AppConstants.mediumText,
                                     color: AppColors.fontColor,
                                     fw: FontWeight.w700,
                                   ),
                                 ),
                               ),
+                              10.wd(),
                               Container(
                                 height: 30.h,
                                 padding: EdgeInsets.symmetric(horizontal: 7.w),
@@ -207,13 +210,17 @@ class UpcomingApoointments extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(
                                     10.r,
                                   ),
-                                  color: AppColors.scColor.withOpacity(0.2),
+                                  color: index.isEven
+                                      ? AppColors.redColor.withOpacity(0.2)
+                                      : AppColors.primaryColor.withOpacity(0.2),
                                 ),
                                 child: Center(
                                   child: appText(
-                                    txt: 'Examination',
+                                    txt: index.isEven ? 'Retry' : 'Examination',
                                     size: AppConstants.mediumText,
-                                    color: AppColors.fontColor,
+                                    color: index.isEven
+                                        ? AppColors.redColor
+                                        : AppColors.primaryColor,
                                     fw: FontWeight.w700,
                                   ),
                                 ),
@@ -225,22 +232,68 @@ class UpcomingApoointments extends StatelessWidget {
                     ),
                   ],
                 ),
-                15.he(),
-                AppButton(
-                  w: 300.w,
-                  h: 30.h,
-                  color: AppColors.scColor.withOpacity(0.9),
-                  txt: 'Start Examination',
-                  onTap: () {
-                    navigateReplace(
-                      context: context,
-                      route: Routes.prescriptionPage,
-                      args: {
-                        'id': 100000000021,
-                        'name': "Ahmed Ali",
-                      },
-                    );
-                  },
+                5.he(),
+                appText(
+                  ml: 5,
+                  align: TextAlign.start,
+                  txt:
+                      'Note: I am experiencing persistent headaches, fatigue, and difficulty concentrating for the past two weeks.',
+                  size: AppConstants.smallText,
+                  color: AppColors.hintColor,
+                  fw: FontWeight.w500,
+                ),
+                5.he(),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 30.h,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          border: Border.all(
+                            color: AppColors.scColor,
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.access_time,
+                              color: AppColors.scColor,
+                            ),
+                            appText(
+                              txt: '5.00 PM',
+                              ph: 5.h,
+                              pw: 2.w,
+                              size: AppConstants.mediumText,
+                              color: AppColors.fontColor,
+                              fw: FontWeight.w800,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    15.wd(),
+                    Expanded(
+                      child: AppButton(
+                        h: 30.h,
+                        color: AppColors.scColor.withOpacity(0.9),
+                        txt: 'Start',
+                        onTap: () {
+                          navigateReplace(
+                            context: context,
+                            route: Routes.prescriptionPage,
+                            args: {
+                              'id': 100000000021,
+                              'name': "Ahmed Ali",
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),
