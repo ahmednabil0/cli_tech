@@ -54,7 +54,12 @@ class DoctorHomeScreen extends StatelessWidget {
             HSizedBox(
               he: 20.h,
             ),
-            const CarouselSliderHome(count: 10),
+            InkWell(
+                onTap: () => navigate(
+                      context: context,
+                      route: Routes.apointmentsDoctor,
+                    ),
+                child: const CarouselSliderHome(count: 10)),
             const HSizedBox(),
             Divider(
               color: AppColors.blackColor.withOpacity(0.2),
