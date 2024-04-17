@@ -12,7 +12,7 @@ List doctorData = [
     'ar': 'المرضى',
     'en': 'Patients',
     'image': AppConstants.personDH,
-    'page': null
+    'page': Routes.doctorPatientsPage
   },
   {
     'ar': 'الاستقبال',

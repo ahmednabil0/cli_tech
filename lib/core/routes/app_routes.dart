@@ -5,6 +5,8 @@ import 'package:gradution_project/features/auth/view/login_page.dart';
 import 'package:gradution_project/features/auth/view/sign_up.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
+import 'package:gradution_project/features/doctor/doctor_patients/view/screens/doctor_patients_page.dart';
+import 'package:gradution_project/features/doctor/doctor_patients/view/screens/pateint_records_page.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
@@ -69,15 +71,17 @@ class Routes {
   static const String prescriptionPage = '/prescriptionPage';
   static const String requestPage = '/requestPage';
   static const String apointmentsDoctor = '/apointmentsDoctor';
+  static const String doctorPatientsPage = '/doctorPatientsPage';
+  static const String patientRecordsPage = '/patientRecordsPage';
 }
 
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.intitlRoute:
-        return MaterialPageRoute(
-          builder: (_) => const SplasScreen(),
-        );
+      // case Routes.intitlRoute:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const SplasScreen(),
+      //   );
 
       case Routes.getStartedPage:
         return MaterialPageRoute(
@@ -203,7 +207,8 @@ class AppRoutes {
         );
 
       //! Doctor Module
-      case Routes.doctorHomePage:
+      // case Routes.doctorHomePage:
+      case Routes.intitlRoute:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => sl<HomeDoctorCubit>(),
@@ -233,6 +238,15 @@ class AppRoutes {
       case Routes.apointmentsDoctor:
         return MaterialPageRoute(
           builder: (_) => DoctorAppointmentPage(),
+        );
+      case Routes.doctorPatientsPage:
+        return MaterialPageRoute(
+          builder: (_) => const DoctorPatientsPage(),
+        );
+
+      case Routes.patientRecordsPage:
+        return MaterialPageRoute(
+          builder: (_) => const PatientRecordsPage(),
         );
 
       default:
