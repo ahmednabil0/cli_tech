@@ -12,6 +12,7 @@ import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:jiffy/jiffy.dart';
 
+// ignore: must_be_immutable
 class DoctorAppointmentPage extends StatefulWidget {
   DoctorAppointmentPage({super.key});
 

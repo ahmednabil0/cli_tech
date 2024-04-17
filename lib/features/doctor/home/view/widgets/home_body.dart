@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 
-import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
-
 import '../screens/home_screen.dart';
 
 class HomeDoctorBody extends StatelessWidget {
