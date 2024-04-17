@@ -74,11 +74,10 @@ class Routes {
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      // case Routes.intitlRoute:
-      //   return MaterialPageRoute(
-
-      //     builder: (_) => const SplasScreen(),
-      //   );
+      case Routes.intitlRoute:
+        return MaterialPageRoute(
+          builder: (_) => const SplasScreen(),
+        );
 
       case Routes.getStartedPage:
         return MaterialPageRoute(
@@ -204,8 +203,7 @@ class AppRoutes {
         );
 
       //! Doctor Module
-      // case Routes.doctorHomePage:
-      case Routes.intitlRoute:
+      case Routes.doctorHomePage:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                   create: (context) => sl<HomeDoctorCubit>(),
