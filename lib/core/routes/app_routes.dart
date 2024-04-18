@@ -5,6 +5,7 @@ import 'package:gradution_project/features/auth/view/login_page.dart';
 import 'package:gradution_project/features/auth/view/sign_up.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
+import 'package:gradution_project/features/doctor/complete_data/view/screens/complete_clinic_data.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/doctor_patients_page.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/pateint_records_page.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
@@ -73,6 +74,7 @@ class Routes {
   static const String apointmentsDoctor = '/apointmentsDoctor';
   static const String doctorPatientsPage = '/doctorPatientsPage';
   static const String patientRecordsPage = '/patientRecordsPage';
+  static const String addClinicData = '/addClinicData';
 }
 
 class AppRoutes {
@@ -247,6 +249,11 @@ class AppRoutes {
       case Routes.patientRecordsPage:
         return MaterialPageRoute(
           builder: (_) => const PatientRecordsPage(),
+        );
+
+      case Routes.addClinicData:
+        return MaterialPageRoute(
+          builder: (_) => CompleteClinicData(),
         );
 
       default:

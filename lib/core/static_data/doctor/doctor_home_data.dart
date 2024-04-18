@@ -30,6 +30,6 @@ List doctorData = [
     'ar': 'اضافة معلومات',
     'en': 'Add Data',
     'image': AppConstants.addData,
-    'page': null
+    'page': Routes.addClinicData
   },
 ];
