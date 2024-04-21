@@ -46,10 +46,12 @@ class _PrescriptionPageState extends State<PrescriptionPage> {
       appBar: buildAppBar(title: 'Prescription', context: context),
       body: Background(
           child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: SingleChildScrollView(
                 child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 15.he(),
                 Row(
