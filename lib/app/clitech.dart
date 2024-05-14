@@ -1,9 +1,10 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
+import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 
 import '../core/routes/app_routes.dart';
 import '../core/locale/app_locales.dart';
@@ -14,8 +15,15 @@ class CliTech extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<AppCubit>()..getCachedLang(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AppCubit>(
+          create: (BuildContext context) => sl<AppCubit>()..getCachedLang(),
+        ),
+        BlocProvider<HomeDoctorCubit>(
+          create: (BuildContext context) => sl<HomeDoctorCubit>(),
+        ),
+      ],
       child: ScreenUtilInit(
         builder: (context, child) {
           return BlocBuilder<AppCubit, AppState>(

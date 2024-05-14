@@ -38,3 +38,34 @@ Padding appText(
     ),
   );
 }
+
+Text appTextWP(
+    {required String txt,
+    String? ff,
+    Color? color,
+    required double size,
+    double? pw,
+    double? ph,
+    int? ml,
+    FontWeight? fw,
+    TextOverflow? of,
+    bool? under,
+    TextAlign? align}) {
+  return Text(
+    txt,
+    overflow: of ?? TextOverflow.visible,
+    maxLines: ml ?? 1,
+    textAlign: align ?? TextAlign.center,
+    style: TextStyle(
+      color: color ?? AppColors.fontColor,
+      fontSize: size,
+      fontFamily: ff ?? AppConstants.fontFamily,
+      fontWeight: fw ?? FontWeight.normal,
+      decoration:
+          under == true ? TextDecoration.underline : TextDecoration.none,
+      decorationColor: color,
+      decorationThickness: size,
+      decorationStyle: TextDecorationStyle.solid,
+    ),
+  );
+}

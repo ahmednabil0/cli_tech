@@ -187,7 +187,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                         },
                                         items: doctorSpecialties,
                                         excludeSelected: false,
-                                        onChanged: (value) {},
+                                        onChanged: (value) {
+                                          BlocProvider.of<SignupBloc>(context)
+                                                  .doctorSpecialist =
+                                              value.specialtyEn;
+                                        },
                                       ),
                                     )
                                   : MyCustomTextField(
@@ -276,6 +280,16 @@ class _SignUpPageState extends State<SignUpPage> {
                               HSizedBox(
                                 he: 35.h,
                               ),
+                              AppButton(
+                                w: 220.w,
+                                loading:
+                                    state == const SignupState.signUpLoading(),
+                                txt: 'Sign Up',
+                                onTap: () async {
+                                  await BlocProvider.of<SignupBloc>(context)
+                                      .signUp(context);
+                                },
+                              ),
                             ],
                           ),
                         );
@@ -284,30 +298,6 @@ class _SignUpPageState extends State<SignUpPage> {
                   ],
                 ),
               ),
-            ),
-            AppButton(
-              w: 220.w,
-              txt: 'Sign Up',
-              onTap: () {
-                if (BlocProvider.of<SignupBloc>(context)
-                    .key
-                    .currentState!
-                    .validate()) {
-                  if (widget.role == 'patient' ||
-                      widget.role == 'receptionist') {
-                    navigateReplace(
-                      context: context,
-                      route: Routes.pendingPage,
-                      args: widget.role,
-                    );
-                  } else {
-                    navigateReplace(
-                      context: context,
-                      route: Routes.doctorHomePage,
-                    );
-                  }
-                }
-              },
             ),
             textButton(
               ph: 5.h,

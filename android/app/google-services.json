@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "223980964385",
+    "project_id": "clitech",
+    "storage_bucket": "clitech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223980964385:android:f87f980b278c9b2a1cb160",
+        "android_client_info": {
+          "package_name": "com.example.gradution_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD054182URZ544uobGJ7pVuJlaOqXVJyRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
