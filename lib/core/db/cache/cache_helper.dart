@@ -35,7 +35,7 @@ class CacheHelper {
     return await sharedPreferences.remove(key);
   }
 
-  Future<bool> containsKey({required String key}) async {
+  bool containsKey({required String key}) {
     return sharedPreferences.containsKey(key);
   }
 

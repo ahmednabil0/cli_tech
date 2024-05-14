@@ -1,5 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
+import 'package:gradution_project/core/services/services_locator.dart';
+import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_const.dart';
@@ -14,7 +17,10 @@ class SplasScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
       splash: Image.asset(AppConstants.appLogo),
       splashIconSize: 1000,
-      nextScreen: GetStarted(),
+      nextScreen: sl<CacheHelper>().containsKey(key: 'uid') &&
+              sl<CacheHelper>().getData(key: 'role') == 'doctor'
+          ? const DoctorBottomNav()
+          : GetStarted(),
     );
   }
 }

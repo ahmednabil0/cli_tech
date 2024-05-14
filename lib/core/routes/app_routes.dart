@@ -6,6 +6,7 @@ import 'package:gradution_project/features/auth/view/sign_up.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
 import 'package:gradution_project/features/doctor/complete_data/view/screens/complete_clinic_data.dart';
+import 'package:gradution_project/features/doctor/complete_data/view_model/add_clinic_data/add_clinic_data_bloc.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/doctor_patients_page.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/pateint_records_page.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
@@ -252,7 +253,10 @@ class AppRoutes {
 
       case Routes.addClinicData:
         return MaterialPageRoute(
-          builder: (_) => const CompleteClinicData(),
+          builder: (_) => BlocProvider(
+            create: (context) => sl<AddClinicDataBloc>(),
+            child: const CompleteClinicData(),
+          ),
         );
 
       default:
