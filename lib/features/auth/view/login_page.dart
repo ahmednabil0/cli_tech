@@ -119,11 +119,11 @@ class LoginPage extends StatelessWidget {
                         AppButton(
                           w: 220.w,
                           txt: 'Login',
-                          onTap: () {
-                            if (BlocProvider.of<LoginCubit>(context)
-                                .key
-                                .currentState!
-                                .validate()) {}
+                          loading: state ==
+                              const LoginCubitState.loginLoadingState(),
+                          onTap: () async {
+                            await BlocProvider.of<LoginCubit>(context)
+                                .login(context);
                           },
                         ),
                       ],

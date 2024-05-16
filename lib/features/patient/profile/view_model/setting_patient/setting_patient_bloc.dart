@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 
 part 'setting_patient_state.dart';
@@ -71,5 +73,10 @@ class SettingPatientBloc extends Cubit<SettingPatientState> {
           isNewPasswordShowing ? Icons.lock_rounded : Icons.lock_open_rounded;
       emit(const SettingPatientState.changeNewPasswordVisabilty());
     }
+  }
+
+  void logout(BuildContext context) {
+    sl<CacheHelper>().clearData();
+    navigateReplaceAll(context: context, route: Routes.getStartedPage);
   }
 }

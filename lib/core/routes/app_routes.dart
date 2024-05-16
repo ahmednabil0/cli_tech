@@ -26,11 +26,13 @@ import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/view_mediacal_record_page.dart';
 import 'package:gradution_project/features/patient/notification/view/screens/notification_page.dart';
-import 'package:gradution_project/features/patient/pending_screen.dart';
+import 'package:gradution_project/features/patient/pending/view/pending_screen.dart';
 import 'package:gradution_project/features/patient/patient_info/view/screens/patient_info.dart';
+import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/doctor_profile_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/id_info_patient_page.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/patient_profile_page.dart';
+import 'package:gradution_project/features/patient/profile/view/screens/personal_info_doctor.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/personal_info_patient.dart';
 import 'package:gradution_project/features/patient/profile/view/screens/setting_patient_page.dart';
 import 'package:gradution_project/features/patient/profile/view_model/PersonalInformation/personal_information_bloc.dart';
@@ -76,6 +78,7 @@ class Routes {
   static const String doctorPatientsPage = '/doctorPatientsPage';
   static const String patientRecordsPage = '/patientRecordsPage';
   static const String addClinicData = '/addClinicData';
+  static const String personalInfoDoctor = '/personalInfoDoctor';
 }
 
 class AppRoutes {
@@ -98,8 +101,11 @@ class AppRoutes {
       case Routes.pendingPage:
         final role = routeSettings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => PendingPage(
-            role: role,
+          builder: (_) => BlocProvider(
+            create: (context) => PendingBloc(),
+            child: PendingPage(
+              role: role,
+            ),
           ),
         );
 
@@ -193,7 +199,7 @@ class AppRoutes {
       case Routes.personalInfoPatient:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) => sl<PersonalInformationBloc>(),
+                  create: (context) => sl<PersonalInformationBloc>()..getData(),
                   child: const PersonalInfoPatientPage(),
                 ));
       case Routes.settingsPatient:
@@ -254,10 +260,16 @@ class AppRoutes {
       case Routes.addClinicData:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<AddClinicDataBloc>(),
+            create: (context) => sl<AddClinicDataBloc>()..getCLinicData(),
             child: const CompleteClinicData(),
           ),
         );
+      case Routes.personalInfoDoctor:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => sl<PersonalInformationBloc>()..getData(),
+                  child: const PersonalInfoDoctorPage(),
+                ));
 
       default:
         return MaterialPageRoute(

@@ -7,4 +7,7 @@ class PersonalInformationState with _$PersonalInformationState {
       _ChangeGenderLoading;
   const factory PersonalInformationState.changeGenderLoaded() =
       _ChangeGenderLoaded;
+  const factory PersonalInformationState.dataLoading() = _DataLoading;
+  const factory PersonalInformationState.dataLoaded() = _DataLoaded;
+  const factory PersonalInformationState.dataError(String error) = _DataError;
 }

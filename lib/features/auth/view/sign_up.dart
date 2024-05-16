@@ -190,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                         onChanged: (value) {
                                           BlocProvider.of<SignupBloc>(context)
                                                   .doctorSpecialist =
-                                              value.specialtyEn;
+                                              '${value.specialtyEn} - ${value.specialtyAr}';
                                         },
                                       ),
                                     )

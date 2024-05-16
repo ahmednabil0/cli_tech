@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/toast.dart';
+import 'package:gradution_project/features/doctor/complete_data/model/clinic_data_model.dart';
 
 part 'add_clinic_data_state.dart';
 part 'add_clinic_data_bloc.freezed.dart';
@@ -23,6 +24,9 @@ class AddClinicDataBloc extends Cubit<AddClinicDataState> {
   Time time = Time(hour: 11, minute: 30, second: 20);
   Time? fromTime;
   Time? toTime;
+  // clinic data
+  ClinicDataModel? clinicData;
+
   void addOffDays(bool selected, String hour) {
     emit(const AddClinicDataState.initial());
     if (selected) {
@@ -55,7 +59,7 @@ class AddClinicDataBloc extends Cubit<AddClinicDataState> {
       firestore
           .collection('doctors')
           .doc(sl<CacheHelper>().getData(key: 'uid'))
-          .set({
+          .update({
         'aboutMe': aboutMeController.text,
         'address': addressController.text,
         'numOfYears': numOfYearsController.text,
@@ -76,6 +80,47 @@ class AddClinicDataBloc extends Cubit<AddClinicDataState> {
           context: context,
         );
       });
+    } catch (e) {
+      emit(AddClinicDataState.error(e.toString()));
+    }
+  }
+
+  Future<void> getCLinicData() async {
+    emit(const AddClinicDataState.loading());
+    try {
+      await firestore
+          .collection('doctors')
+          .doc(sl<CacheHelper>().getData(key: 'uid'))
+          .get()
+          .then((value) {
+        // ignore: unnecessary_null_comparison
+        if (value.data != null) {
+          clinicData = ClinicDataModel.fromMap(value.data()!);
+
+          aboutMeController.text = clinicData!.aboutMe;
+          addressController.text = clinicData!.address;
+          numOfYearsController.text = clinicData!.numOfYears;
+          offDays = clinicData!.offDays;
+          address = clinicData!.addressDetails;
+
+          // addressController.text = clinicData!['address'];
+          // numOfYearsController.text = clinicData!['numOfYears'].toString();
+          // offDays = clinicData!['offDays'];
+          fromTime = Time(
+            hour: int.parse(
+                clinicData!.fromTime.toString().split(' ')[0].split(':')[0]),
+            minute: int.parse(
+                clinicData!.fromTime.toString().split(' ')[0].split(':')[1]),
+          );
+          toTime = Time(
+            hour: int.parse(
+                clinicData!.toTime.toString().split(' ')[0].split(':')[0]),
+            minute: int.parse(
+                clinicData!.toTime.toString().split(' ')[0].split(':')[1]),
+          );
+        }
+      });
+      emit(const AddClinicDataState.scucess('msg'));
     } catch (e) {
       emit(AddClinicDataState.error(e.toString()));
     }

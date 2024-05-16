@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
@@ -9,6 +10,7 @@ import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/space.dart';
 import 'package:gradution_project/core/widgets/text.dart';
+import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
 import 'package:jiffy/jiffy.dart';
 
 class PendingPage extends StatelessWidget {
@@ -60,12 +62,14 @@ class PendingPage extends StatelessWidget {
             HSizedBox(
               he: 25.h,
             ),
-            AppButton(
-              txt: 'Try Again',
-              onTap: () {
-                navigateReplace(
-                  context: context,
-                  route: Routes.homePage,
+            BlocBuilder<PendingBloc, PendingState>(
+              builder: (context, state) {
+                return AppButton(
+                  txt: 'Try Again',
+                  loading: state == const PendingState.loadInProgress(),
+                  onTap: () {
+                    BlocProvider.of<PendingBloc>(context).checkPending(context);
+                  },
                 );
               },
             )
