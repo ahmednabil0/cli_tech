@@ -5,6 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/patient/home/view/widgets/home_body.dart';
+import 'package:gradution_project/features/patient/home/view/widgets/home_bottom_nav.dart';
+import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
 
 import '../core/routes/app_routes.dart';
 import '../core/locale/app_locales.dart';
@@ -22,6 +26,12 @@ class CliTech extends StatelessWidget {
         ),
         BlocProvider<HomeDoctorCubit>(
           create: (BuildContext context) => sl<HomeDoctorCubit>(),
+        ),
+        BlocProvider<PendingBloc>(
+          create: (BuildContext context) => sl<PendingBloc>(),
+        ),
+        BlocProvider<HomeCubit>(
+          create: (BuildContext context) => sl<HomeCubit>(),
         ),
       ],
       child: ScreenUtilInit(

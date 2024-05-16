@@ -65,6 +65,7 @@ class SignupBloc extends Cubit<SignupState> {
               'name': name.text,
               'email': email.text,
               'phone': phone.text,
+              'role': role,
               'specialty': doctorSpecialist,
             });
             saveData(key: 'name', value: name.text);
@@ -77,12 +78,73 @@ class SignupBloc extends Cubit<SignupState> {
           // ignore: use_build_context_synchronously
           showToastSucess(
             msg: 'Sucess Sign in,',
+            dismissibles: false,
             des:
                 'Hello doctor ${name.text}, now you can mange your clinic totaly online ',
             context: context,
           );
           // ignore: use_build_context_synchronously
           navigateReplace(context: context, route: Routes.doctorHomePage);
+          // ignore: unnecessary_null_comparison
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found') {
+            // Get.snackbar('erreo', 'user not found');
+          } else if (e.code == 'wrong-password') {
+            // Get.snackbar('error', 'wrong password');
+          } else {
+            // ignore: use_build_context_synchronously
+            showToastError(
+              msg: 'Error Occured',
+              des: e.message.toString(),
+              context: context,
+            );
+            emit(SignupState.signUpError(e.message.toString()));
+          }
+        }
+      }
+    }
+    if (role == 'patient') {
+      if (key.currentState!.validate()) {
+        emit(const SignupState.signUpLoading());
+        try {
+          // ignore: unused_local_variable
+          var result = await auth.createUserWithEmailAndPassword(
+            email: email.text,
+            password: pass.text,
+          );
+          // ignore: unnecessary_null_comparison
+          if (result != null) {
+            // ignore: use_build_context_synchronously
+
+            await firestore.collection('doctors').doc(result.user!.uid).set({
+              'uid': result.user!.uid,
+              'name': name.text,
+              'duid': doctorUid.text,
+              'email': email.text,
+              'phone': phone.text,
+              'role': role,
+              'pending': true,
+            });
+            saveData(key: 'name', value: name.text);
+            saveData(key: 'email', value: email.text);
+            saveData(key: 'phone', value: phone.text);
+            saveData(key: 'uid', value: result.user!.uid);
+            saveData(key: 'duid', value: doctorUid.text);
+            saveData(key: 'pending', value: true);
+          }
+          emit(const SignupState.signUpScucess('done'));
+          // ignore: use_build_context_synchronously
+
+          // ignore: use_build_context_synchronously
+          navigateReplace(
+              context: context, route: Routes.pendingPage, args: 'patient');
+          // ignore: use_build_context_synchronously
+          showToastSucess(
+            msg: 'Sucess Sign in,',
+            dismissibles: false,
+            des: 'Hello Mr ${name.text}, Wait Until Doctor Accept you. ',
+            context: context,
+          );
           // ignore: unnecessary_null_comparison
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {

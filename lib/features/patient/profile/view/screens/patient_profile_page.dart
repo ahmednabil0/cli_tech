@@ -1,10 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
+import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/images/profile_image.dart';
@@ -142,7 +146,14 @@ class ProfilePatientPage extends StatelessWidget {
                                       AppButton(
                                         color: AppColors.scColor,
                                         txt: 'Logout',
-                                        onTap: () {},
+                                        onTap: () async {
+                                          await sl<CacheHelper>().clearData();
+
+                                          navigatePop(context: context);
+                                          navigateReplaceAll(
+                                              context: context,
+                                              route: Routes.getStartedPage);
+                                        },
                                       ),
                                       AppButton(
                                         color: AppColors.scColor,

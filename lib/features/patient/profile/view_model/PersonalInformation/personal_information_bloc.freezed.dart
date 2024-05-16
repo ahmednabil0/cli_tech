@@ -21,6 +21,9 @@ mixin _$PersonalInformationState {
     required TResult Function() initial,
     required TResult Function() changeGenderLoading,
     required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +31,9 @@ mixin _$PersonalInformationState {
     TResult? Function()? initial,
     TResult? Function()? changeGenderLoading,
     TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +41,9 @@ mixin _$PersonalInformationState {
     TResult Function()? initial,
     TResult Function()? changeGenderLoading,
     TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +52,9 @@ mixin _$PersonalInformationState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
     required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +62,9 @@ mixin _$PersonalInformationState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +72,9 @@ mixin _$PersonalInformationState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -122,6 +140,9 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function() initial,
     required TResult Function() changeGenderLoading,
     required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
   }) {
     return initial();
   }
@@ -132,6 +153,9 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function()? initial,
     TResult? Function()? changeGenderLoading,
     TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
   }) {
     return initial?.call();
   }
@@ -142,6 +166,9 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function()? initial,
     TResult Function()? changeGenderLoading,
     TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -156,6 +183,9 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
     required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
   }) {
     return initial(this);
   }
@@ -166,6 +196,9 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
   }) {
     return initial?.call(this);
   }
@@ -176,6 +209,9 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function(_InitialState value)? initial,
     TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -232,6 +268,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     required TResult Function() initial,
     required TResult Function() changeGenderLoading,
     required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
   }) {
     return changeGenderLoading();
   }
@@ -242,6 +281,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     TResult? Function()? initial,
     TResult? Function()? changeGenderLoading,
     TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
   }) {
     return changeGenderLoading?.call();
   }
@@ -252,6 +294,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     TResult Function()? initial,
     TResult Function()? changeGenderLoading,
     TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
     required TResult orElse(),
   }) {
     if (changeGenderLoading != null) {
@@ -266,6 +311,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
     required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
   }) {
     return changeGenderLoading(this);
   }
@@ -276,6 +324,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
   }) {
     return changeGenderLoading?.call(this);
   }
@@ -286,6 +337,9 @@ class _$ChangeGenderLoadingImpl implements _ChangeGenderLoading {
     TResult Function(_InitialState value)? initial,
     TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
     required TResult orElse(),
   }) {
     if (changeGenderLoading != null) {
@@ -341,6 +395,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     required TResult Function() initial,
     required TResult Function() changeGenderLoading,
     required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
   }) {
     return changeGenderLoaded();
   }
@@ -351,6 +408,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     TResult? Function()? initial,
     TResult? Function()? changeGenderLoading,
     TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
   }) {
     return changeGenderLoaded?.call();
   }
@@ -361,6 +421,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     TResult Function()? initial,
     TResult Function()? changeGenderLoading,
     TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
     required TResult orElse(),
   }) {
     if (changeGenderLoaded != null) {
@@ -375,6 +438,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     required TResult Function(_InitialState value) initial,
     required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
     required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
   }) {
     return changeGenderLoaded(this);
   }
@@ -385,6 +451,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     TResult? Function(_InitialState value)? initial,
     TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
   }) {
     return changeGenderLoaded?.call(this);
   }
@@ -395,6 +464,9 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
     TResult Function(_InitialState value)? initial,
     TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
     TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
     required TResult orElse(),
   }) {
     if (changeGenderLoaded != null) {
@@ -406,4 +478,413 @@ class _$ChangeGenderLoadedImpl implements _ChangeGenderLoaded {
 
 abstract class _ChangeGenderLoaded implements PersonalInformationState {
   const factory _ChangeGenderLoaded() = _$ChangeGenderLoadedImpl;
+}
+
+/// @nodoc
+abstract class _$$DataLoadingImplCopyWith<$Res> {
+  factory _$$DataLoadingImplCopyWith(
+          _$DataLoadingImpl value, $Res Function(_$DataLoadingImpl) then) =
+      __$$DataLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DataLoadingImplCopyWithImpl<$Res>
+    extends _$PersonalInformationStateCopyWithImpl<$Res, _$DataLoadingImpl>
+    implements _$$DataLoadingImplCopyWith<$Res> {
+  __$$DataLoadingImplCopyWithImpl(
+      _$DataLoadingImpl _value, $Res Function(_$DataLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DataLoadingImpl implements _DataLoading {
+  const _$DataLoadingImpl();
+
+  @override
+  String toString() {
+    return 'PersonalInformationState.dataLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DataLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() changeGenderLoading,
+    required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
+  }) {
+    return dataLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? changeGenderLoading,
+    TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
+  }) {
+    return dataLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? changeGenderLoading,
+    TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataLoading != null) {
+      return dataLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
+    required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
+  }) {
+    return dataLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
+  }) {
+    return dataLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataLoading != null) {
+      return dataLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DataLoading implements PersonalInformationState {
+  const factory _DataLoading() = _$DataLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$DataLoadedImplCopyWith<$Res> {
+  factory _$$DataLoadedImplCopyWith(
+          _$DataLoadedImpl value, $Res Function(_$DataLoadedImpl) then) =
+      __$$DataLoadedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DataLoadedImplCopyWithImpl<$Res>
+    extends _$PersonalInformationStateCopyWithImpl<$Res, _$DataLoadedImpl>
+    implements _$$DataLoadedImplCopyWith<$Res> {
+  __$$DataLoadedImplCopyWithImpl(
+      _$DataLoadedImpl _value, $Res Function(_$DataLoadedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DataLoadedImpl implements _DataLoaded {
+  const _$DataLoadedImpl();
+
+  @override
+  String toString() {
+    return 'PersonalInformationState.dataLoaded()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DataLoadedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() changeGenderLoading,
+    required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
+  }) {
+    return dataLoaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? changeGenderLoading,
+    TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
+  }) {
+    return dataLoaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? changeGenderLoading,
+    TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataLoaded != null) {
+      return dataLoaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
+    required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
+  }) {
+    return dataLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
+  }) {
+    return dataLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataLoaded != null) {
+      return dataLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DataLoaded implements PersonalInformationState {
+  const factory _DataLoaded() = _$DataLoadedImpl;
+}
+
+/// @nodoc
+abstract class _$$DataErrorImplCopyWith<$Res> {
+  factory _$$DataErrorImplCopyWith(
+          _$DataErrorImpl value, $Res Function(_$DataErrorImpl) then) =
+      __$$DataErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$DataErrorImplCopyWithImpl<$Res>
+    extends _$PersonalInformationStateCopyWithImpl<$Res, _$DataErrorImpl>
+    implements _$$DataErrorImplCopyWith<$Res> {
+  __$$DataErrorImplCopyWithImpl(
+      _$DataErrorImpl _value, $Res Function(_$DataErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$DataErrorImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DataErrorImpl implements _DataError {
+  const _$DataErrorImpl(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'PersonalInformationState.dataError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataErrorImplCopyWith<_$DataErrorImpl> get copyWith =>
+      __$$DataErrorImplCopyWithImpl<_$DataErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() changeGenderLoading,
+    required TResult Function() changeGenderLoaded,
+    required TResult Function() dataLoading,
+    required TResult Function() dataLoaded,
+    required TResult Function(String error) dataError,
+  }) {
+    return dataError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? changeGenderLoading,
+    TResult? Function()? changeGenderLoaded,
+    TResult? Function()? dataLoading,
+    TResult? Function()? dataLoaded,
+    TResult? Function(String error)? dataError,
+  }) {
+    return dataError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? changeGenderLoading,
+    TResult Function()? changeGenderLoaded,
+    TResult Function()? dataLoading,
+    TResult Function()? dataLoaded,
+    TResult Function(String error)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataError != null) {
+      return dataError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_ChangeGenderLoading value) changeGenderLoading,
+    required TResult Function(_ChangeGenderLoaded value) changeGenderLoaded,
+    required TResult Function(_DataLoading value) dataLoading,
+    required TResult Function(_DataLoaded value) dataLoaded,
+    required TResult Function(_DataError value) dataError,
+  }) {
+    return dataError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult? Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult? Function(_DataLoading value)? dataLoading,
+    TResult? Function(_DataLoaded value)? dataLoaded,
+    TResult? Function(_DataError value)? dataError,
+  }) {
+    return dataError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_ChangeGenderLoading value)? changeGenderLoading,
+    TResult Function(_ChangeGenderLoaded value)? changeGenderLoaded,
+    TResult Function(_DataLoading value)? dataLoading,
+    TResult Function(_DataLoaded value)? dataLoaded,
+    TResult Function(_DataError value)? dataError,
+    required TResult orElse(),
+  }) {
+    if (dataError != null) {
+      return dataError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DataError implements PersonalInformationState {
+  const factory _DataError(final String error) = _$DataErrorImpl;
+
+  String get error;
+  @JsonKey(ignore: true)
+  _$$DataErrorImplCopyWith<_$DataErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

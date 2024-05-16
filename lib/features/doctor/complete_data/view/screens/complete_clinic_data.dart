@@ -277,11 +277,17 @@ class _CompleteClinicDataState extends State<CompleteClinicData> {
                                         Navigator.of(context).push(
                                           showPicker(
                                             showSecondSelector: false,
+                                            is24HrFormat: true,
+
                                             context: context,
-                                            value: instance.time,
+                                            value: instance.fromTime ??
+                                                instance.time,
 
                                             onChange: (Time newTime) {
                                               instance.changeFromHour(newTime);
+                                            },
+                                            onChangeDateTime: (p0) {
+                                              print(p0);
                                             },
                                             minuteInterval:
                                                 TimePickerInterval.FIVE,
@@ -303,7 +309,9 @@ class _CompleteClinicDataState extends State<CompleteClinicData> {
                                           showPicker(
                                             showSecondSelector: false,
                                             context: context,
-                                            value: instance.time,
+                                            is24HrFormat: true,
+                                            value: instance.toTime ??
+                                                instance.time,
                                             onChange: (Time newTime) {
                                               instance.changeToHour(newTime);
                                             },

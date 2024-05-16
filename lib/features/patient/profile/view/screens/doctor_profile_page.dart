@@ -1,10 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/routes/app_routes.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
+import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/images/profile_image.dart';
@@ -44,7 +48,9 @@ class DoctorProfilePage extends StatelessWidget {
                   SizedBox(
                     height: 150.h,
                     width: 150.w,
-                    child: const CustomAvatarImage(image:AppConstants.doctorPImage,),
+                    child: const CustomAvatarImage(
+                      image: AppConstants.doctorPImage,
+                    ),
                   ),
                   appText(
                     txt: 'Noha Ali',
@@ -63,7 +69,7 @@ class DoctorProfilePage extends StatelessWidget {
                   return Container(
                     padding: EdgeInsets.all(12.w),
                     margin:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     decoration: BoxDecoration(
                       color: AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(20.r),
@@ -72,9 +78,9 @@ class DoctorProfilePage extends StatelessWidget {
                       children: [
                         CircleAvatar(
                           backgroundColor:
-                          profileData[index]['Color'] != AppColors.redColor
-                              ? AppColors.scColor
-                              : AppColors.redColor,
+                              profileData[index]['Color'] != AppColors.redColor
+                                  ? AppColors.scColor
+                                  : AppColors.redColor,
                           radius: 20.r,
                           child: Icon(
                             profileData[index]['icon'],
@@ -91,7 +97,7 @@ class DoctorProfilePage extends StatelessWidget {
                                 size: AppConstants.mediumText,
                                 fw: FontWeight.w600,
                                 color: profileData[index]['Color'] !=
-                                    AppColors.redColor
+                                        AppColors.redColor
                                     ? AppColors.fontColor
                                     : AppColors.redColor),
                             SizedBox(
@@ -103,7 +109,7 @@ class DoctorProfilePage extends StatelessWidget {
                                 of: TextOverflow.ellipsis,
                                 fw: FontWeight.w500,
                                 color: profileData[index]['Color'] !=
-                                    AppColors.redColor
+                                        AppColors.redColor
                                     ? AppColors.hintColor
                                     : AppColors.redColor,
                               ),
@@ -128,7 +134,7 @@ class DoctorProfilePage extends StatelessWidget {
                                     elevation: 0,
                                     content: appText(
                                       txt:
-                                      'Are you sure to Logout?  Don\'t be shy!',
+                                          'Are you sure to Logout?  Don\'t be shy!',
                                       size: AppConstants.largeText,
                                       fw: FontWeight.w500,
                                       color: AppColors.hintColor,
@@ -142,7 +148,14 @@ class DoctorProfilePage extends StatelessWidget {
                                       AppButton(
                                         color: AppColors.scColor,
                                         txt: 'Logout',
-                                        onTap: () {},
+                                        onTap: () async {
+                                          await sl<CacheHelper>().clearData();
+
+                                          navigatePop(context: context);
+                                          navigateReplaceAll(
+                                              context: context,
+                                              route: Routes.getStartedPage);
+                                        },
                                       ),
                                       AppButton(
                                         color: AppColors.scColor,
@@ -163,7 +176,7 @@ class DoctorProfilePage extends StatelessWidget {
                             Icons.arrow_forward_rounded,
                             size: AppConstants.ultraText + 5,
                             color: profileData[index]['Color'] !=
-                                AppColors.redColor
+                                    AppColors.redColor
                                 ? AppColors.scColor
                                 : AppColors.redColor,
                           ),
@@ -186,7 +199,7 @@ List<Map> profileData = [
     'title': 'Personal Information',
     'subtitle': 'email, phone number, address, birth date, gender',
     'icon': Icons.mark_email_read_rounded,
-    'Routes': Routes.personalInfoPatient,
+    'Routes': Routes.personalInfoDoctor,
     'Color': AppColors.scColor,
   },
   {
@@ -198,7 +211,7 @@ List<Map> profileData = [
   },
   {
     'title': 'ID Information',
-    'subtitle': 'Id, Medical Records',
+    'subtitle': 'Identity information',
     'icon': Icons.assignment_ind_rounded,
     'Color': AppColors.scColor,
     'Routes': Routes.idInfoPage,

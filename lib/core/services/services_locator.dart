@@ -11,6 +11,7 @@ import 'package:gradution_project/features/doctor/complete_data/view_model/add_c
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
 import 'package:gradution_project/features/patient/profile/view_model/PersonalInformation/personal_information_bloc.dart';
 import 'package:gradution_project/features/patient/profile/view_model/setting_patient/setting_patient_bloc.dart';
 import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';
@@ -35,6 +36,7 @@ void initServiceLoactor() {
 
   sl.registerFactory(() => HomeDoctorCubit());
   sl.registerFactory(() => AddClinicDataBloc());
+  sl.registerFactory(() => PendingBloc());
 
   //! project
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
