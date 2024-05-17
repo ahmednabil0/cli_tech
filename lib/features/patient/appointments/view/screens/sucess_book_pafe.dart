@@ -8,7 +8,8 @@ import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 
 class SucessBooking extends StatelessWidget {
-  const SucessBooking({super.key});
+  SucessBooking({super.key, required this.data});
+  Map data;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,8 @@ class SucessBooking extends StatelessWidget {
               TableRow(children: [
                 appText(
                   ph: 5.h,
-                  txt: "Details: 2024/3/3 , 3.00 AM ,Retry",
+                  txt:
+                      "Details: ${data['date']} , ${data['time']} ,  ${data['type']}",
                   size: AppConstants.mediumText,
                   color: AppColors.hintColor,
                   fw: FontWeight.w500,

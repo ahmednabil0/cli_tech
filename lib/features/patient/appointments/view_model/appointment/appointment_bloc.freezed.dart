@@ -23,6 +23,9 @@ mixin _$AppointmentState {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +35,9 @@ mixin _$AppointmentState {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +47,9 @@ mixin _$AppointmentState {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +61,9 @@ mixin _$AppointmentState {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +73,9 @@ mixin _$AppointmentState {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +85,9 @@ mixin _$AppointmentState {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +154,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) {
     return initial();
   }
@@ -148,6 +169,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) {
     return initial?.call();
   }
@@ -160,6 +184,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -177,6 +204,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) {
     return initial(this);
   }
@@ -189,6 +219,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) {
     return initial?.call(this);
   }
@@ -201,6 +234,9 @@ class _$AppointmentInitialImpl implements _AppointmentInitial {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -257,6 +293,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) {
     return updateHourState();
   }
@@ -269,6 +308,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) {
     return updateHourState?.call();
   }
@@ -281,6 +323,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) {
     if (updateHourState != null) {
@@ -298,6 +343,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) {
     return updateHourState(this);
   }
@@ -310,6 +358,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) {
     return updateHourState?.call(this);
   }
@@ -322,6 +373,9 @@ class _$UpdateHourStateImpl implements _UpdateHourState {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) {
     if (updateHourState != null) {
@@ -378,6 +432,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) {
     return removeHourState();
   }
@@ -390,6 +447,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) {
     return removeHourState?.call();
   }
@@ -402,6 +462,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) {
     if (removeHourState != null) {
@@ -419,6 +482,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) {
     return removeHourState(this);
   }
@@ -431,6 +497,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) {
     return removeHourState?.call(this);
   }
@@ -443,6 +512,9 @@ class _$RemoveHourStateImpl implements _RemoveHourState {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) {
     if (removeHourState != null) {
@@ -502,6 +574,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) {
     return updateRadioButtonState();
   }
@@ -514,6 +589,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) {
     return updateRadioButtonState?.call();
   }
@@ -526,6 +604,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) {
     if (updateRadioButtonState != null) {
@@ -543,6 +624,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) {
     return updateRadioButtonState(this);
   }
@@ -555,6 +639,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) {
     return updateRadioButtonState?.call(this);
   }
@@ -567,6 +654,9 @@ class _$UpdateRadioButtonStateImpl implements _UpdateRadioButtonState {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) {
     if (updateRadioButtonState != null) {
@@ -624,6 +714,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     required TResult Function() removeHourState,
     required TResult Function() updateRadioButtonState,
     required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
   }) {
     return updateDateTimeState();
   }
@@ -636,6 +729,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     TResult? Function()? removeHourState,
     TResult? Function()? updateRadioButtonState,
     TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
   }) {
     return updateDateTimeState?.call();
   }
@@ -648,6 +744,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     TResult Function()? removeHourState,
     TResult Function()? updateRadioButtonState,
     TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
     required TResult orElse(),
   }) {
     if (updateDateTimeState != null) {
@@ -665,6 +764,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     required TResult Function(_UpdateRadioButtonState value)
         updateRadioButtonState,
     required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
   }) {
     return updateDateTimeState(this);
   }
@@ -677,6 +779,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     TResult? Function(_RemoveHourState value)? removeHourState,
     TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
   }) {
     return updateDateTimeState?.call(this);
   }
@@ -689,6 +794,9 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
     TResult Function(_RemoveHourState value)? removeHourState,
     TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
     TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
     required TResult orElse(),
   }) {
     if (updateDateTimeState != null) {
@@ -700,4 +808,452 @@ class _$UpdateDateTimeStateImpl implements _UpdateDateTimeState {
 
 abstract class _UpdateDateTimeState implements AppointmentState {
   const factory _UpdateDateTimeState() = _$UpdateDateTimeStateImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadingStateImplCopyWith<$Res> {
+  factory _$$LoadingStateImplCopyWith(
+          _$LoadingStateImpl value, $Res Function(_$LoadingStateImpl) then) =
+      __$$LoadingStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingStateImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$LoadingStateImpl>
+    implements _$$LoadingStateImplCopyWith<$Res> {
+  __$$LoadingStateImplCopyWithImpl(
+      _$LoadingStateImpl _value, $Res Function(_$LoadingStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingStateImpl implements _LoadingState {
+  const _$LoadingStateImpl();
+
+  @override
+  String toString() {
+    return 'AppointmentState.loadingState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updateHourState,
+    required TResult Function() removeHourState,
+    required TResult Function() updateRadioButtonState,
+    required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
+  }) {
+    return loadingState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updateHourState,
+    TResult? Function()? removeHourState,
+    TResult? Function()? updateRadioButtonState,
+    TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
+  }) {
+    return loadingState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updateHourState,
+    TResult Function()? removeHourState,
+    TResult Function()? updateRadioButtonState,
+    TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AppointmentInitial value) initial,
+    required TResult Function(_UpdateHourState value) updateHourState,
+    required TResult Function(_RemoveHourState value) removeHourState,
+    required TResult Function(_UpdateRadioButtonState value)
+        updateRadioButtonState,
+    required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
+  }) {
+    return loadingState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AppointmentInitial value)? initial,
+    TResult? Function(_UpdateHourState value)? updateHourState,
+    TResult? Function(_RemoveHourState value)? removeHourState,
+    TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
+  }) {
+    return loadingState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AppointmentInitial value)? initial,
+    TResult Function(_UpdateHourState value)? updateHourState,
+    TResult Function(_RemoveHourState value)? removeHourState,
+    TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
+    required TResult orElse(),
+  }) {
+    if (loadingState != null) {
+      return loadingState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadingState implements AppointmentState {
+  const factory _LoadingState() = _$LoadingStateImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ErrorStateImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppointmentState.errorState(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ErrorStateImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updateHourState,
+    required TResult Function() removeHourState,
+    required TResult Function() updateRadioButtonState,
+    required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
+  }) {
+    return errorState(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updateHourState,
+    TResult? Function()? removeHourState,
+    TResult? Function()? updateRadioButtonState,
+    TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
+  }) {
+    return errorState?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updateHourState,
+    TResult Function()? removeHourState,
+    TResult Function()? updateRadioButtonState,
+    TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
+    required TResult orElse(),
+  }) {
+    if (errorState != null) {
+      return errorState(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AppointmentInitial value) initial,
+    required TResult Function(_UpdateHourState value) updateHourState,
+    required TResult Function(_RemoveHourState value) removeHourState,
+    required TResult Function(_UpdateRadioButtonState value)
+        updateRadioButtonState,
+    required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
+  }) {
+    return errorState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AppointmentInitial value)? initial,
+    TResult? Function(_UpdateHourState value)? updateHourState,
+    TResult? Function(_RemoveHourState value)? removeHourState,
+    TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
+  }) {
+    return errorState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AppointmentInitial value)? initial,
+    TResult Function(_UpdateHourState value)? updateHourState,
+    TResult Function(_RemoveHourState value)? removeHourState,
+    TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
+    required TResult orElse(),
+  }) {
+    if (errorState != null) {
+      return errorState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements AppointmentState {
+  const factory _ErrorState(final String message) = _$ErrorStateImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessStateImplCopyWith<$Res> {
+  factory _$$SuccessStateImplCopyWith(
+          _$SuccessStateImpl value, $Res Function(_$SuccessStateImpl) then) =
+      __$$SuccessStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SuccessStateImplCopyWithImpl<$Res>
+    extends _$AppointmentStateCopyWithImpl<$Res, _$SuccessStateImpl>
+    implements _$$SuccessStateImplCopyWith<$Res> {
+  __$$SuccessStateImplCopyWithImpl(
+      _$SuccessStateImpl _value, $Res Function(_$SuccessStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SuccessStateImpl implements _SuccessState {
+  const _$SuccessStateImpl();
+
+  @override
+  String toString() {
+    return 'AppointmentState.successState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SuccessStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() updateHourState,
+    required TResult Function() removeHourState,
+    required TResult Function() updateRadioButtonState,
+    required TResult Function() updateDateTimeState,
+    required TResult Function() loadingState,
+    required TResult Function(String message) errorState,
+    required TResult Function() successState,
+  }) {
+    return successState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? updateHourState,
+    TResult? Function()? removeHourState,
+    TResult? Function()? updateRadioButtonState,
+    TResult? Function()? updateDateTimeState,
+    TResult? Function()? loadingState,
+    TResult? Function(String message)? errorState,
+    TResult? Function()? successState,
+  }) {
+    return successState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? updateHourState,
+    TResult Function()? removeHourState,
+    TResult Function()? updateRadioButtonState,
+    TResult Function()? updateDateTimeState,
+    TResult Function()? loadingState,
+    TResult Function(String message)? errorState,
+    TResult Function()? successState,
+    required TResult orElse(),
+  }) {
+    if (successState != null) {
+      return successState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AppointmentInitial value) initial,
+    required TResult Function(_UpdateHourState value) updateHourState,
+    required TResult Function(_RemoveHourState value) removeHourState,
+    required TResult Function(_UpdateRadioButtonState value)
+        updateRadioButtonState,
+    required TResult Function(_UpdateDateTimeState value) updateDateTimeState,
+    required TResult Function(_LoadingState value) loadingState,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_SuccessState value) successState,
+  }) {
+    return successState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AppointmentInitial value)? initial,
+    TResult? Function(_UpdateHourState value)? updateHourState,
+    TResult? Function(_RemoveHourState value)? removeHourState,
+    TResult? Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult? Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult? Function(_LoadingState value)? loadingState,
+    TResult? Function(_ErrorState value)? errorState,
+    TResult? Function(_SuccessState value)? successState,
+  }) {
+    return successState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AppointmentInitial value)? initial,
+    TResult Function(_UpdateHourState value)? updateHourState,
+    TResult Function(_RemoveHourState value)? removeHourState,
+    TResult Function(_UpdateRadioButtonState value)? updateRadioButtonState,
+    TResult Function(_UpdateDateTimeState value)? updateDateTimeState,
+    TResult Function(_LoadingState value)? loadingState,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_SuccessState value)? successState,
+    required TResult orElse(),
+  }) {
+    if (successState != null) {
+      return successState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SuccessState implements AppointmentState {
+  const factory _SuccessState() = _$SuccessStateImpl;
 }
