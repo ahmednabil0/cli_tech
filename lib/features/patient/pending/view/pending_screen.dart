@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
-import 'package:gradution_project/core/routes/app_routes.dart';
-import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/space.dart';

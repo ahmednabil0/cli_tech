@@ -11,8 +11,6 @@ import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/toast.dart';
 import 'package:gradution_project/features/auth/model/repository/auth_repo.dart';
-import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.dart';
-import 'package:gradution_project/features/patient/pending/view/pending_screen.dart';
 
 part 'logincubit_state.dart';
 part 'logincubit_bloc.freezed.dart';
@@ -70,7 +68,6 @@ class LoginCubit extends Cubit<LoginCubitState> {
           password: pass.text,
         );
         Map<String, dynamic>? credData; // ignore: unnecessary_null_comparison
-        // ignore: use_build_context_synchronously
 
         await firestore
             .collection('doctors')
@@ -114,7 +111,6 @@ class LoginCubit extends Cubit<LoginCubitState> {
         } else if (e.code == 'wrong-password') {
           // Get.snackbar('error', 'wrong password');
         } else {
-          // ignore: use_build_context_synchronously
           showToastError(
             msg: 'Error Occured',
             des: e.message.toString(),
