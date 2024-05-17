@@ -8,4 +8,9 @@ class AppointmentState with _$AppointmentState {
   const factory AppointmentState.updateRadioButtonState() =
       _UpdateRadioButtonState;
   const factory AppointmentState.updateDateTimeState() = _UpdateDateTimeState;
+  const factory AppointmentState.loadingState() = _LoadingState;
+
+  const factory AppointmentState.errorState(String message) = _ErrorState;
+
+  const factory AppointmentState.successState() = _SuccessState;
 }

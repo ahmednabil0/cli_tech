@@ -135,13 +135,17 @@ class AppRoutes {
       case Routes.bookAppointmentPage:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<AppointmentCubit>()..initDisabledDays(),
+            create: (context) => sl<AppointmentCubit>()..getTodayData(),
             child: const BookAppointment(),
           ),
         );
       case Routes.scussesBookingPage:
+        final data = routeSettings.arguments as Map;
+
         return MaterialPageRoute(
-          builder: (_) => const SucessBooking(),
+          builder: (_) => SucessBooking(
+            data: data,
+          ),
         );
       case Routes.uploadPatientMedia:
         return MaterialPageRoute(
