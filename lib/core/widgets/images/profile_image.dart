@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,7 +17,7 @@ class CustomAvatarImage extends StatelessWidget {
     return image != null
         ? CircleAvatar(
             radius: 75.w,
-            backgroundImage: AssetImage(
+            backgroundImage: CachedNetworkImageProvider(
               image!,
             ),
           )

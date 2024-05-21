@@ -5,6 +5,7 @@ import 'package:gradution_project/features/auth/view/login_page.dart';
 import 'package:gradution_project/features/auth/view/sign_up.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
+import 'package:gradution_project/features/doctor/appointments/view_model/appointments_doctor/appointments_doctor_bloc.dart';
 import 'package:gradution_project/features/doctor/complete_data/view/screens/complete_clinic_data.dart';
 import 'package:gradution_project/features/doctor/complete_data/view_model/add_clinic_data/add_clinic_data_bloc.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/doctor_patients_page.dart';
@@ -249,7 +250,10 @@ class AppRoutes {
 
       case Routes.apointmentsDoctor:
         return MaterialPageRoute(
-          builder: (_) => DoctorAppointmentPage(),
+          builder: (_) => BlocProvider(
+            create: (context) => sl<AppointmentsDoctorBloc>()..getData(),
+            child: DoctorAppointmentPage(),
+          ),
         );
       case Routes.doctorPatientsPage:
         return MaterialPageRoute(

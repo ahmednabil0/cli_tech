@@ -25,9 +25,9 @@ class SplasScreen extends StatelessWidget {
 }
 
 getNextScreen() {
-  print(sl<CacheHelper>().containsKey(key: 'uid'));
-  print(sl<CacheHelper>().getData(key: 'pending'));
-  print(sl<CacheHelper>().getData(key: 'role'));
+  // print(sl<CacheHelper>().containsKey(key: 'uid'));
+  // print(sl<CacheHelper>().getData(key: 'pending'));
+  // print(sl<CacheHelper>().getData(key: 'role'));
 
   if (sl<CacheHelper>().containsKey(key: 'uid') &&
       sl<CacheHelper>().getData(key: 'role') == 'doctor') {

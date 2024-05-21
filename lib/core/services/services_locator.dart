@@ -7,8 +7,10 @@ import 'package:gradution_project/features/auth/model/api_services/auth_sevices.
 import 'package:gradution_project/features/auth/model/repository/auth_repo.dart';
 import 'package:gradution_project/features/auth/view_model/login_cubit/logincubit_bloc.dart';
 import 'package:gradution_project/features/auth/view_model/signup/signup_bloc.dart';
+import 'package:gradution_project/features/doctor/appointments/view_model/appointments_doctor/appointments_doctor_bloc.dart';
 import 'package:gradution_project/features/doctor/complete_data/view_model/add_clinic_data/add_clinic_data_bloc.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/doctor/home/view_model/home_doctor/home_doctor_bloc.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
@@ -37,6 +39,8 @@ void initServiceLoactor() {
   sl.registerFactory(() => HomeDoctorCubit());
   sl.registerFactory(() => AddClinicDataBloc());
   sl.registerFactory(() => PendingBloc());
+  sl.registerFactory(() => HomeDoctorBloc());
+  sl.registerFactory(() => AppointmentsDoctorBloc());
 
   //! project
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));

@@ -48,8 +48,10 @@ class DoctorProfilePage extends StatelessWidget {
                   SizedBox(
                     height: 150.h,
                     width: 150.w,
-                    child: const CustomAvatarImage(
-                      image: AppConstants.doctorPImage,
+                    child: CustomAvatarImage(
+                      image: sl<CacheHelper>().containsKey(key: 'photo')
+                          ? sl<CacheHelper>().getData(key: 'photo')
+                          : null,
                     ),
                   ),
                   appText(

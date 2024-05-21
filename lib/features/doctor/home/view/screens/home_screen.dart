@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/static_data/doctor/doctor_home_data.dart';
 import 'package:gradution_project/features/doctor/home/view/widgets/carousel_slider_home.dart';
+import 'package:gradution_project/features/doctor/home/view_model/home_doctor/home_doctor_bloc.dart';
 
 import '../../../../../core/constants/app_const.dart';
 import '../../../../../core/db/cache/cache_helper.dart';
@@ -26,39 +29,66 @@ class DoctorHomeScreen extends StatelessWidget {
       body: Background(
         child: Column(
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                appText(
-                  txt: "Upcoming Schedule",
-                  size: AppConstants.largeText,
-                  fw: FontWeight.w600,
-                ),
-                8.wd(),
-                CircleAvatar(
-                  backgroundColor: AppColors.scColor,
-                  radius: 14.r,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: appText(
-                      txt: '10',
-                      size: AppConstants.mediumText,
-                      color: AppColors.whiteColor,
-                      fw: FontWeight.bold,
+            BlocBuilder<HomeDoctorBloc, HomeDoctorState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        appText(
+                          txt: "Upcoming Schedule",
+                          size: AppConstants.largeText,
+                          fw: FontWeight.w600,
+                        ),
+                        8.wd(),
+                        CircleAvatar(
+                          backgroundColor: AppColors.scColor,
+                          radius: 14.r,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: appText(
+                              txt: state == const HomeDoctorState.dataLoaded()
+                                  ? BlocProvider.of<HomeDoctorBloc>(context)
+                                      .todayAppointments!
+                                      .length
+                                      .toString()
+                                  : '0',
+                              size: AppConstants.mediumText,
+                              color: AppColors.whiteColor,
+                              fw: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-              ],
-            ),
-            HSizedBox(
-              he: 8.h,
-            ),
-            InkWell(
-                onTap: () => navigate(
-                      context: context,
-                      route: Routes.apointmentsDoctor,
+                    HSizedBox(
+                      he: 8.h,
                     ),
-                child: const CarouselSliderHome(count: 10)),
+                    state.when(
+                        dataLoading: () => const Center(
+                              child: SpinKitHourGlass(
+                                color: AppColors.scColor,
+                              ),
+                            ),
+                        dataError: () => const SizedBox(),
+                        initial: () => const SizedBox(),
+                        dataLoaded: () => InkWell(
+                            onTap: () => navigate(
+                                  context: context,
+                                  route: Routes.apointmentsDoctor,
+                                ),
+                            child: CarouselSliderHome(
+                              count: BlocProvider.of<HomeDoctorBloc>(context)
+                                  .todayAppointments!
+                                  .length,
+                              data: BlocProvider.of<HomeDoctorBloc>(context)
+                                  .todayAppointments!,
+                            ))),
+                  ],
+                );
+              },
+            ),
             10.he(),
             Align(
               alignment: AlignmentDirectional.centerStart,
@@ -148,15 +178,19 @@ class DoctorHomeScreen extends StatelessWidget {
             width: 50,
             height: 50,
             child: InkWell(
-                onTap: () {
-                  navigate(
-                    context: context,
-                    route: Routes.doctorPrifilePage,
-                    args: false,
-                  );
-                },
-                child:
-                    const CustomAvatarImage(image: AppConstants.doctorPImage)),
+              onTap: () {
+                navigate(
+                  context: context,
+                  route: Routes.doctorPrifilePage,
+                  args: false,
+                );
+              },
+              child: CustomAvatarImage(
+                image: sl<CacheHelper>().containsKey(key: 'photo')
+                    ? sl<CacheHelper>().getData(key: 'photo')
+                    : null,
+              ),
+            ),
           ),
         ),
       ],

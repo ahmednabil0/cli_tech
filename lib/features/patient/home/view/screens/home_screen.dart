@@ -195,7 +195,11 @@ class HomePage extends StatelessWidget {
                     args: false,
                   );
                 },
-                child: const CustomAvatarImage()),
+                child: CustomAvatarImage(
+                  image: sl<CacheHelper>().containsKey(key: 'photo')
+                      ? sl<CacheHelper>().getData(key: 'photo')
+                      : null,
+                )),
           ),
         ),
       ],
