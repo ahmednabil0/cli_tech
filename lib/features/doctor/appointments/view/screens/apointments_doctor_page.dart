@@ -1,3 +1,6 @@
+import 'dart:math';
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
@@ -123,7 +126,9 @@ class _DoctorAppointmentPageState extends State<DoctorAppointmentPage> {
                 controller: controller,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  state == const AppointmentsDoctorState.dataLoaded()
+                  state == const AppointmentsDoctorState.dataLoaded() ||
+                          state ==
+                              const AppointmentsDoctorState.dataByDateLoaded()
                       ? UpcomingApoointments(
                           count:
                               BlocProvider.of<AppointmentsDoctorBloc>(context)
@@ -233,160 +238,202 @@ class UpcomingApoointments extends StatelessWidget {
         return 10.he();
       },
       itemBuilder: (BuildContext context, int index) {
-        return Card(
-          elevation: 0,
-          color: AppColors.whiteColor,
-          child: Padding(
-            padding: EdgeInsets.all(5.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+        return Stack(
+          children: [
+            Card(
+              elevation: 0,
+              color: AppColors.whiteColor,
+              child: Padding(
+                padding: EdgeInsets.all(5.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                                todayAppointments[index]['photo']),
-                            fit: BoxFit.cover),
-                      ),
-                      width: 60.w,
-                      height: 60.h,
-                    ),
-                    15.wd(),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          appText(
-                            txt: todayAppointments[index]['name'],
-                            size: AppConstants.largeText,
-                            fw: FontWeight.bold,
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.r),
+                            image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                    todayAppointments[index]['photo']),
+                                fit: BoxFit.cover),
                           ),
-                          5.he(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+                          width: 60.w,
+                          height: 60.h,
+                        ),
+                        15.wd(),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                height: 30.h,
-                                padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    10.r,
-                                  ),
-                                  color: AppColors.scColor.withOpacity(0.2),
-                                ),
-                                child: Center(
-                                  child: appText(
-                                    txt: '21 Age',
-                                    size: AppConstants.mediumText,
-                                    color: AppColors.fontColor,
-                                    fw: FontWeight.w700,
-                                  ),
-                                ),
+                              appText(
+                                txt: todayAppointments[index]['name'],
+                                size: AppConstants.largeText,
+                                fw: FontWeight.bold,
                               ),
-                              10.wd(),
-                              Container(
-                                height: 30.h,
-                                padding: EdgeInsets.symmetric(horizontal: 7.w),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    10.r,
+                              5.he(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 30.h,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 7.w),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        10.r,
+                                      ),
+                                      color: AppColors.scColor.withOpacity(0.2),
+                                    ),
+                                    child: Center(
+                                      child: appText(
+                                        txt: '21 Age',
+                                        size: AppConstants.mediumText,
+                                        color: AppColors.fontColor,
+                                        fw: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
-                                  color: todayAppointments[index]['type'] ==
-                                          'Examination'
-                                      ? AppColors.redColor.withOpacity(0.2)
-                                      : AppColors.primaryColor.withOpacity(0.2),
-                                ),
-                                child: Center(
-                                  child: appText(
-                                    txt: todayAppointments[index]['type'],
-                                    size: AppConstants.mediumText,
-                                    color: todayAppointments[index]['type'] ==
-                                            'Examination'
-                                        ? AppColors.redColor
-                                        : AppColors.primaryColor,
-                                    fw: FontWeight.w700,
+                                  10.wd(),
+                                  Container(
+                                    height: 30.h,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 7.w),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        10.r,
+                                      ),
+                                      color: todayAppointments[index]['type'] ==
+                                              'Examination'
+                                          ? AppColors.redColor.withOpacity(0.2)
+                                          : AppColors.primaryColor
+                                              .withOpacity(0.2),
+                                    ),
+                                    child: Center(
+                                      child: appText(
+                                        txt: todayAppointments[index]['type'],
+                                        size: AppConstants.mediumText,
+                                        color: todayAppointments[index]
+                                                    ['type'] ==
+                                                'Examination'
+                                            ? AppColors.redColor
+                                            : AppColors.primaryColor,
+                                        fw: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                ],
                               ),
                             ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                5.he(),
-                appText(
-                  ml: 5,
-                  align: TextAlign.start,
-                  txt: 'Note: ${todayAppointments[index]['note']}',
-                  size: AppConstants.smallText,
-                  color: AppColors.hintColor,
-                  fw: FontWeight.w500,
-                ),
-                5.he(),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 30.h,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          border: Border.all(
-                            color: AppColors.scColor,
-                            width: 1.5,
+                    5.he(),
+                    appText(
+                      ml: 5,
+                      align: TextAlign.start,
+                      txt: 'Note: ${todayAppointments[index]['note']}',
+                      size: AppConstants.smallText,
+                      color: AppColors.hintColor,
+                      fw: FontWeight.w500,
+                    ),
+                    5.he(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 30.h,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              border: Border.all(
+                                color: AppColors.scColor,
+                                width: 1.5,
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.access_time,
+                                  color: AppColors.scColor,
+                                ),
+                                appText(
+                                  txt: todayAppointments[index]['hour'],
+                                  ph: 5.h,
+                                  pw: 2.w,
+                                  size: AppConstants.mediumText,
+                                  color: AppColors.fontColor,
+                                  fw: FontWeight.w800,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(
-                              Icons.access_time,
-                              color: AppColors.scColor,
-                            ),
-                            appText(
-                              txt: todayAppointments[index]['hour'],
-                              ph: 5.h,
-                              pw: 2.w,
-                              size: AppConstants.mediumText,
-                              color: AppColors.fontColor,
-                              fw: FontWeight.w800,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    15.wd(),
-                    Expanded(
-                      child: AppButton(
-                        h: 30.h,
-                        color: AppColors.scColor.withOpacity(0.9),
-                        txt: 'Start',
-                        onTap: () {
-                          navigateReplace(
-                            context: context,
-                            route: Routes.prescriptionPage,
-                            args: {
-                              'id': todayAppointments[index]['uid'],
-                              'name': todayAppointments[index]['name'],
-                              'date': todayAppointments[index]['date'],
-                              'hour': todayAppointments[index]['hour'],
-                              'type': todayAppointments[index]['type'],
-                              'age': '21',
+                        15.wd(),
+                        Expanded(
+                          child: AppButton(
+                            h: 30.h,
+                            color: todayAppointments[index]['date'] !=
+                                    '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'
+                                ? AppColors.scColor.withOpacity(0.3)
+                                : AppColors.scColor.withOpacity(0.9),
+                            txt: 'Start',
+                            onTap: () {
+                              if (todayAppointments[index]['date'] ==
+                                  '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}') {
+                                navigateReplace(
+                                  context: context,
+                                  route: Routes.prescriptionPage,
+                                  args: {
+                                    'id': todayAppointments[index]['id'],
+                                    'uid': todayAppointments[index]['uid'],
+                                    'name': todayAppointments[index]['name'],
+                                    'date': todayAppointments[index]['date'],
+                                    'hour': todayAppointments[index]['hour'],
+                                    'type': todayAppointments[index]['type'],
+                                    'age': '21',
+                                  },
+                                );
+                              }
                             },
-                          );
-                        },
-                      ),
-                    ),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
+                ),
+              ),
             ),
-          ),
+            todayAppointments[index]['complete'] == true
+                ? Positioned(
+                    child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 0.2,
+                          sigmaY: 0.2,
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          alignment: Alignment.center,
+                          height: 150.h,
+                          decoration: BoxDecoration(
+                            color: AppColors.whiteColor.withOpacity(0.6),
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Transform.rotate(
+                            angle: -20 * pi / 180,
+                            child: appText(
+                              txt: 'C o m p l e t e d ✅',
+                              size: AppConstants.ultraText + 5,
+                              fw: FontWeight.w800,
+                              color: AppColors.primaryColor,
+                            ),
+                          ),
+                        )),
+                  )
+                : const SizedBox.shrink()
+          ],
         );
       },
     );
