@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,8 +10,13 @@ import '../../../../../core/widgets/space.dart';
 import '../../../../../core/widgets/text.dart';
 
 class CarouselSliderHome extends StatelessWidget {
-  const CarouselSliderHome({required this.count, super.key});
+  const CarouselSliderHome({
+    required this.count,
+    super.key,
+    required this.data,
+  });
   final int count;
+  final List<Map<String, dynamic>> data;
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +59,9 @@ class CarouselSliderHome extends StatelessWidget {
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20.r),
-                                    image: const DecorationImage(
-                                        image: AssetImage(AppConstants.person),
+                                    image: DecorationImage(
+                                        image: CachedNetworkImageProvider(
+                                            data[index]['photo']),
                                         fit: BoxFit.cover),
                                   ),
                                   width: 60.w,
@@ -62,7 +69,7 @@ class CarouselSliderHome extends StatelessWidget {
                                 ),
                                 5.he(),
                                 appText(
-                                    txt: 'Ali Ramadan',
+                                    txt: data[index]['name'],
                                     size: AppConstants.largeText,
                                     fw: FontWeight.bold),
                               ],
@@ -83,7 +90,7 @@ class CarouselSliderHome extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: appText(
-                                      txt: '2024/4/5',
+                                      txt: data[index]['date'],
                                       size: AppConstants.mediumText,
                                       color: AppColors.fontColor,
                                       fw: FontWeight.w700,
@@ -104,7 +111,7 @@ class CarouselSliderHome extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: appText(
-                                      txt: 'Examination',
+                                      txt: data[index]['type'],
                                       size: AppConstants.mediumText,
                                       color: AppColors.fontColor,
                                       fw: FontWeight.w700,
@@ -137,7 +144,7 @@ class CarouselSliderHome extends StatelessWidget {
                         ),
                         const WSizedBox(),
                         appText(
-                            txt: '5.30 PM',
+                            txt: data[index]['hour'],
                             size: AppConstants.largeText,
                             color: AppColors.whiteColor,
                             fw: FontWeight.bold)

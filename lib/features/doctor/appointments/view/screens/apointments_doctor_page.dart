@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
@@ -10,6 +13,7 @@ import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
+import 'package:gradution_project/features/doctor/appointments/view_model/appointments_doctor/appointments_doctor_bloc.dart';
 import 'package:jiffy/jiffy.dart';
 
 // ignore: must_be_immutable
@@ -112,28 +116,101 @@ class _DoctorAppointmentPageState extends State<DoctorAppointmentPage> {
             ),
           ),
           25.he(),
-          Expanded(
-              child: PageView(
-            controller: controller,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              const UpcomingApoointments(),
-              Column(
+          BlocBuilder<AppointmentsDoctorBloc, AppointmentsDoctorState>(
+            builder: (context, state) {
+              return Expanded(
+                  child: PageView(
+                controller: controller,
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
-                  EasyDateTimeLine(
-                    initialDate: Jiffy.now().dateTime,
-                    dayProps: EasyDayProps(
-                      borderColor: AppColors.scColor.withOpacity(0.3),
-                    ),
-                    activeColor: AppColors.scColor,
-                    locale: "ar",
-                  ),
-                  30.he(),
-                  const Expanded(child: UpcomingApoointments()),
+                  state == const AppointmentsDoctorState.dataLoaded()
+                      ? UpcomingApoointments(
+                          count:
+                              BlocProvider.of<AppointmentsDoctorBloc>(context)
+                                  .todayAppointments!
+                                  .length,
+                          todayAppointments:
+                              BlocProvider.of<AppointmentsDoctorBloc>(context)
+                                  .todayAppointments!,
+                        )
+                      : state ==
+                              const AppointmentsDoctorState.dataByDateLoading()
+                          ? const Center(
+                              child:
+                                  SpinKitFadingCube(color: AppColors.scColor),
+                            )
+                          : const SizedBox.shrink(),
+                  Column(
+                    children: [
+                      EasyDateTimeLine(
+                        initialDate: Jiffy.now().dateTime,
+                        dayProps: EasyDayProps(
+                          borderColor: AppColors.scColor.withOpacity(0.3),
+                        ),
+                        activeColor: AppColors.scColor,
+                        locale: "ar",
+                        onDateChange: (selectedDate) async {
+                          await BlocProvider.of<AppointmentsDoctorBloc>(context)
+                              .getDataByDate(
+                                  '${selectedDate.year}-${selectedDate.month}-${selectedDate.day}');
+                        },
+                      ),
+                      30.he(),
+                      state ==
+                                  const AppointmentsDoctorState
+                                      .dataByDateLoaded() ||
+                              BlocProvider.of<AppointmentsDoctorBloc>(context)
+                                      .todayAppointments !=
+                                  null
+                          ? Expanded(
+                              child: UpcomingApoointments(
+                              todayAppointments: state ==
+                                      const AppointmentsDoctorState
+                                          .dataByDateLoaded()
+                                  ? BlocProvider.of<AppointmentsDoctorBloc>(
+                                          context)
+                                      .todayAppointmentsByDate!
+                                  : BlocProvider.of<AppointmentsDoctorBloc>(
+                                                  context)
+                                              .todayAppointments !=
+                                          null
+                                      ? BlocProvider.of<AppointmentsDoctorBloc>(
+                                              context)
+                                          .todayAppointments!
+                                      : [],
+                              count: state ==
+                                      const AppointmentsDoctorState
+                                          .dataByDateLoaded()
+                                  ? BlocProvider.of<AppointmentsDoctorBloc>(
+                                          context)
+                                      .todayAppointmentsByDate!
+                                      .length
+                                  : BlocProvider.of<AppointmentsDoctorBloc>(
+                                                  context)
+                                              .todayAppointments !=
+                                          null
+                                      ? BlocProvider.of<AppointmentsDoctorBloc>(
+                                              context)
+                                          .todayAppointments!
+                                          .length
+                                      : 0,
+                            ))
+                          : state ==
+                                  const AppointmentsDoctorState
+                                      .dataByDateLoading()
+                              ? const Center(
+                                  child: SpinKitFadingFour(
+                                    color: AppColors.scColor,
+                                  ),
+                                )
+                              : const SizedBox.shrink(),
+                    ],
+                  )
                 ],
-              )
-            ],
-          ))
+              ));
+            },
+          ),
+          20.he(),
         ],
       )),
     );
@@ -141,12 +218,17 @@ class _DoctorAppointmentPageState extends State<DoctorAppointmentPage> {
 }
 
 class UpcomingApoointments extends StatelessWidget {
-  const UpcomingApoointments({super.key});
-
+  UpcomingApoointments({
+    super.key,
+    required this.todayAppointments,
+    required this.count,
+  });
+  final List<Map<String, dynamic>> todayAppointments;
+  int count;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 4,
+      itemCount: count,
       separatorBuilder: (BuildContext context, int index) {
         return 10.he();
       },
@@ -164,8 +246,9 @@ class UpcomingApoointments extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.r),
-                        image: const DecorationImage(
-                            image: AssetImage(AppConstants.person),
+                        image: DecorationImage(
+                            image: CachedNetworkImageProvider(
+                                todayAppointments[index]['photo']),
                             fit: BoxFit.cover),
                       ),
                       width: 60.w,
@@ -177,7 +260,7 @@ class UpcomingApoointments extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           appText(
-                            txt: 'Ali Ramadan',
+                            txt: todayAppointments[index]['name'],
                             size: AppConstants.largeText,
                             fw: FontWeight.bold,
                           ),
@@ -211,15 +294,17 @@ class UpcomingApoointments extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(
                                     10.r,
                                   ),
-                                  color: index.isEven
+                                  color: todayAppointments[index]['type'] ==
+                                          'Examination'
                                       ? AppColors.redColor.withOpacity(0.2)
                                       : AppColors.primaryColor.withOpacity(0.2),
                                 ),
                                 child: Center(
                                   child: appText(
-                                    txt: index.isEven ? 'Retry' : 'Examination',
+                                    txt: todayAppointments[index]['type'],
                                     size: AppConstants.mediumText,
-                                    color: index.isEven
+                                    color: todayAppointments[index]['type'] ==
+                                            'Examination'
                                         ? AppColors.redColor
                                         : AppColors.primaryColor,
                                     fw: FontWeight.w700,
@@ -237,8 +322,7 @@ class UpcomingApoointments extends StatelessWidget {
                 appText(
                   ml: 5,
                   align: TextAlign.start,
-                  txt:
-                      'Note: I am experiencing persistent headaches, fatigue, and difficulty concentrating for the past two weeks.',
+                  txt: 'Note: ${todayAppointments[index]['note']}',
                   size: AppConstants.smallText,
                   color: AppColors.hintColor,
                   fw: FontWeight.w500,
@@ -265,7 +349,7 @@ class UpcomingApoointments extends StatelessWidget {
                               color: AppColors.scColor,
                             ),
                             appText(
-                              txt: '5.00 PM',
+                              txt: todayAppointments[index]['hour'],
                               ph: 5.h,
                               pw: 2.w,
                               size: AppConstants.mediumText,
@@ -287,8 +371,12 @@ class UpcomingApoointments extends StatelessWidget {
                             context: context,
                             route: Routes.prescriptionPage,
                             args: {
-                              'id': 100000000021,
-                              'name': "Ahmed Ali",
+                              'id': todayAppointments[index]['uid'],
+                              'name': todayAppointments[index]['name'],
+                              'date': todayAppointments[index]['date'],
+                              'hour': todayAppointments[index]['hour'],
+                              'type': todayAppointments[index]['type'],
+                              'age': '21',
                             },
                           );
                         },

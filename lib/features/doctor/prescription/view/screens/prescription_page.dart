@@ -12,6 +12,7 @@ import 'package:gradution_project/core/widgets/sized_box.dart';
 
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/core/widgets/tff.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../../core/widgets/buld_app_bar.dart';
 
@@ -57,41 +58,61 @@ class _PrescriptionPageState extends State<PrescriptionPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    appText(
-                      txt: 'Name:${widget.data['name']}',
-                      size: AppConstants.largeText,
-                      fw: FontWeight.w700,
-                    ),
-                    appText(
-                        txt: 'Date:2024/4/4',
-                        size: AppConstants.mediumText,
-                        fw: FontWeight.w500,
-                        color: AppColors.scColor),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    appText(
-                      txt: 'Age: 22 Years',
-                      size: AppConstants.mediumText,
-                      fw: FontWeight.w500,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        appText(
+                          txt: 'Name:${widget.data['name']}',
+                          size: AppConstants.largeText,
+                          fw: FontWeight.w700,
+                        ),
+                        appText(
+                            txt: 'Date:2024/4/4',
+                            size: AppConstants.mediumText,
+                            fw: FontWeight.w500,
+                            color: AppColors.scColor),
+                        appText(
+                          txt: 'Age: 22 Years',
+                          size: AppConstants.mediumText,
+                          fw: FontWeight.w500,
+                        ),
+                        Container(
+                          height: 30.h,
+                          padding: EdgeInsets.symmetric(horizontal: 7.w),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              10.r,
+                            ),
+                            color: AppColors.primaryColor.withOpacity(0.2),
+                          ),
+                          child: Center(
+                            child: appText(
+                              txt: 'Examination',
+                              size: AppConstants.mediumText,
+                              color: AppColors.fontColor,
+                              fw: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
-                      height: 30.h,
-                      padding: EdgeInsets.symmetric(horizontal: 7.w),
+                      padding: EdgeInsets.all(1.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          10.r,
+                          color: AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(15.r)),
+                      child: QrImageView(
+                        data: '${widget.data['id']}+${widget.data['date']}',
+                        size: 110.w,
+                        version: QrVersions.auto,
+                        dataModuleStyle: const QrDataModuleStyle(
+                          color: AppColors.scColor,
+                          dataModuleShape: QrDataModuleShape.circle,
                         ),
-                        color: AppColors.primaryColor.withOpacity(0.2),
-                      ),
-                      child: Center(
-                        child: appText(
-                          txt: 'Examination',
-                          size: AppConstants.mediumText,
-                          color: AppColors.fontColor,
-                          fw: FontWeight.w700,
+                        eyeStyle: const QrEyeStyle(
+                          color: AppColors.primaryColor,
+                          eyeShape: QrEyeShape.square,
                         ),
                       ),
                     ),

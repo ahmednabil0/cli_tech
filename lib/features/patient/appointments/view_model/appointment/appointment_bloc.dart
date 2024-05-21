@@ -158,6 +158,9 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           'hour': selectedHours,
           'note': notesController.text,
           'type': selectedRole,
+          'photo': sl<CacheHelper>().containsKey(key: 'photo')
+              ? sl<CacheHelper>().getData(key: 'photo')
+              : '',
           'uid': sl<CacheHelper>().getData(key: 'uid'),
           'name': sl<CacheHelper>().getData(key: 'name'),
         });

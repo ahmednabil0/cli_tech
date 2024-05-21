@@ -81,6 +81,7 @@ class LoginCubit extends Cubit<LoginCubitState> {
           saveData(key: 'specialty', value: value.data()!['specialty']);
           saveData(key: 'role', value: value.data()!['role']);
           saveData(key: 'duid', value: value.data()!['duid']);
+          saveData(key: 'photo', value: value.data()!['photo']);
           saveData(key: 'pending', value: value.data()!['pending']);
           credData = value.data();
         });

@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
+import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/images/profile_image.dart';
@@ -43,24 +45,34 @@ class PersonalInfoDoctorPage extends StatelessWidget {
                                 padding: EdgeInsets.all(15.w),
                                 height: 150.h,
                                 width: 150.w,
-                                child: const CustomAvatarImage(),
+                                child: CustomAvatarImage(
+                                  image: sl<CacheHelper>()
+                                          .containsKey(key: 'photo')
+                                      ? sl<CacheHelper>().getData(key: 'photo')
+                                      : null,
+                                ),
                               ),
                             ),
                             Positioned(
                                 bottom: 0,
                                 right: 0,
-                                child: Card(
-                                    shape: const CircleBorder(),
-                                    elevation: 0,
-                                    color: AppColors.scColor,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.w),
-                                      child: Icon(
-                                        Icons.edit_rounded,
-                                        color: AppColors.whiteColor,
-                                        size: 25.w,
-                                      ),
-                                    )))
+                                child: InkWell(
+                                  onTap: () async {
+                                    await instance.uploadProfilePhoto(context);
+                                  },
+                                  child: Card(
+                                      shape: const CircleBorder(),
+                                      elevation: 0,
+                                      color: AppColors.scColor,
+                                      child: Padding(
+                                        padding: EdgeInsets.all(8.w),
+                                        child: Icon(
+                                          Icons.edit_rounded,
+                                          color: AppColors.whiteColor,
+                                          size: 25.w,
+                                        ),
+                                      )),
+                                ))
                           ],
                         ),
                         10.he(),
