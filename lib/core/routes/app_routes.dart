@@ -13,6 +13,7 @@ import 'package:gradution_project/features/doctor/doctor_patients/view/screens/p
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
+import 'package:gradution_project/features/doctor/prescription/view_model/prescrption/prescrption_bloc.dart';
 import 'package:gradution_project/features/doctor/request/view/screens/request_page.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
@@ -239,8 +240,11 @@ class AppRoutes {
         final parms = routeSettings.arguments as Map;
 
         return MaterialPageRoute(
-          builder: (_) => PrescriptionPage(
-            data: parms,
+          builder: (_) => BlocProvider(
+            create: (context) => sl<PrescrptionBloc>(),
+            child: PrescriptionPage(
+              data: parms,
+            ),
           ),
         );
       case Routes.requestPage:

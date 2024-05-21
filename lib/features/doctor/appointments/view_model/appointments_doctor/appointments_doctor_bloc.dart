@@ -16,7 +16,7 @@ class AppointmentsDoctorBloc extends Cubit<AppointmentsDoctorState> {
   Future<void> getData() async {
     try {
       emit(const AppointmentsDoctorState.dataLoading());
-      todayAppointments = [];
+      // todayAppointments = [];
       await _firestore
           .collection('appointments')
           .where('duid', isEqualTo: sl<CacheHelper>().getData(key: 'uid'))
@@ -25,9 +25,12 @@ class AppointmentsDoctorBloc extends Cubit<AppointmentsDoctorState> {
                   '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}')
           .get()
           .then((value) {
-        todayAppointments = value.docs.map((e) => e.data()).toList();
+        todayAppointments = value.docs.map((e) {
+          Map<String, dynamic> data = e.data();
+          return {...data, 'id': e.id};
+        }).toList();
 
-        print(todayAppointments!.length);
+        print(todayAppointments!);
         print('************************');
       });
       emit(const AppointmentsDoctorState.dataLoaded());
