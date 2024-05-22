@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/drugs/data_json.dart';
 
@@ -92,9 +91,12 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
     emit(const PrescrptionState.prescrptionEmit());
   }
 
-  Future<void> addPrescription(Map<dynamic, dynamic> data) async {
+  Future<void> addPrescription(
+      Map<dynamic, dynamic> data, BuildContext context) async {
     try {
       emit(const PrescrptionState.prescrptionLoading());
+      print('prescription added : ${data['id']}');
+
       await firestore.collection('medical_records').add({
         'drugs': treatmantPlan,
         'required_tests': requiredTests,
@@ -110,13 +112,16 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
         'age': '21',
         'type': data['type'],
       }).then((value) async {
+        print('prescription added : ${data['id']}');
         await firestore
             .collection('appointments')
             .doc(data['id'])
             .update({'complete': true});
         emit(const PrescrptionState.prescrptionLoaded());
+        navigatePop(context: context);
       });
     } catch (e) {
+      print('prescription error : ${e.toString()}');
       emit(const PrescrptionState.prescrptionError());
     }
   }

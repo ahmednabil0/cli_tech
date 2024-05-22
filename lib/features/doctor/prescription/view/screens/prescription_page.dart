@@ -475,7 +475,7 @@ class PrescriptionPage extends StatelessWidget {
                 txt: 'Finish Examination',
                 loading: state == const PrescrptionState.prescrptionLoading(),
                 onTap: () async {
-                  await bloc.addPrescription(data);
+                  await bloc.addPrescription(data, context);
                 },
                 w: double.infinity,
               ),

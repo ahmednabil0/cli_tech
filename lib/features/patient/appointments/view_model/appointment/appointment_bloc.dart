@@ -37,13 +37,6 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     emit(const AppointmentState.updateRadioButtonState());
   }
 
-  void updateDateTime(DateTime date) async {
-    emit(const AppointmentState.initial());
-    selectedDateTime = date;
-    await getBookedHours();
-    emit(const AppointmentState.updateDateTimeState());
-  }
-
 // functions
 
   int convertStringDayToDateTimeDay(String day) {
@@ -148,7 +141,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
 
   Future<void> bookAppointment(BuildContext context) async {
     try {
-      if (selectedHours != null && selectedDateTime != null) {
+      if (selectedHours != null) {
         emit(const AppointmentState.loadingState());
 
         await firestore.collection('appointments').add({
@@ -180,9 +173,13 @@ class AppointmentCubit extends Cubit<AppointmentState> {
     }
   }
 
-  Future<void> getBookedHours() async {
+  Future<void> getBookedHours(DateTime date) async {
+    emit(const AppointmentState.initial());
+    selectedDateTime = date;
+    emit(const AppointmentState.updateDateTimeState());
     try {
       emit(const AppointmentState.loadingState());
+
       await firestore
           .collection('appointments')
           .where('duid', isEqualTo: sl<CacheHelper>().getData(key: 'duid'))
@@ -203,7 +200,8 @@ class AppointmentCubit extends Cubit<AppointmentState> {
         }
         availableHours = availableHoursAll;
       });
-      print(availableHours);
+      print(selectedDateTime);
+      print('********************************');
       emit(const AppointmentState.successState());
     } catch (e) {
       emit(AppointmentState.errorState(e.toString()));

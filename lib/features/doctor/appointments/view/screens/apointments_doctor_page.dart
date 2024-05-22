@@ -222,6 +222,7 @@ class _DoctorAppointmentPageState extends State<DoctorAppointmentPage> {
   }
 }
 
+// ignore: must_be_immutable
 class UpcomingApoointments extends StatelessWidget {
   UpcomingApoointments({
     super.key,
@@ -375,14 +376,18 @@ class UpcomingApoointments extends StatelessWidget {
                         Expanded(
                           child: AppButton(
                             h: 30.h,
-                            color: todayAppointments[index]['date'] !=
-                                    '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'
+                            color: todayAppointments[index]['complete'] ==
+                                        true ||
+                                    todayAppointments[index]['date'] !=
+                                        '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}'
                                 ? AppColors.scColor.withOpacity(0.3)
                                 : AppColors.scColor.withOpacity(0.9),
                             txt: 'Start',
                             onTap: () {
                               if (todayAppointments[index]['date'] ==
                                   '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}') {
+                                print(todayAppointments[index]['id']);
+                                print('***********************');
                                 navigateReplace(
                                   context: context,
                                   route: Routes.prescriptionPage,
@@ -416,7 +421,7 @@ class UpcomingApoointments extends StatelessWidget {
                         child: Container(
                           width: double.infinity,
                           alignment: Alignment.center,
-                          height: 150.h,
+                          height: 180.h,
                           decoration: BoxDecoration(
                             color: AppColors.whiteColor.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(10.r),
