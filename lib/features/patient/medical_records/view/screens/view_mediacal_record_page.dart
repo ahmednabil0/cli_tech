@@ -2,10 +2,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
+import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:pdf/pdf.dart';
@@ -15,7 +17,8 @@ import 'package:screenshot/screenshot.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 class ViewPatientMedicalRrcordPage extends StatefulWidget {
-  const ViewPatientMedicalRrcordPage({super.key});
+  const ViewPatientMedicalRrcordPage({super.key, required this.data});
+  final Map<String, dynamic> data;
 
   @override
   State<ViewPatientMedicalRrcordPage> createState() =>
@@ -69,10 +72,21 @@ class _ViewPatientMedicalRrcordPageState
     // Perform any further actions with the generated PDF file as desired.
   }
 
+  List<Map<dynamic, dynamic>> drugs = [];
+  @override
+  void initState() {
+    if (widget.data['drugs'] != null) {
+      drugs = (widget.data['drugs'] as List)
+          .map((element) => element as Map<dynamic, dynamic>)
+          .toList();
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: '2024/03/3', context: context),
+      appBar: buildAppBar(title: widget.data['date'], context: context),
       body: file != null
           ? PdfPreview(
               build: (format) => file!.save(),
@@ -80,9 +94,15 @@ class _ViewPatientMedicalRrcordPageState
               allowSharing: true,
               canChangeOrientation: false,
               canChangePageFormat: false,
-              previewPageMargin:
-                  EdgeInsets.symmetric(vertical: 35.h, horizontal: 10.w),
+              shareActionExtraSubject: 'Hello ${widget.data['name']}.',
+              shareActionExtraBody:
+                  'Your Medical Record ${widget.data['date']}',
               pdfPreviewPageDecoration: BoxDecoration(
+                  image: const DecorationImage(
+                      image: AssetImage(
+                        AppConstants.bkImage,
+                      ),
+                      fit: BoxFit.cover),
                   color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(25.r)),
               actionBarTheme: PdfActionBarTheme(
@@ -119,7 +139,7 @@ class _ViewPatientMedicalRrcordPageState
                                       10.he(),
                                       appText(
                                         pw: 5.h,
-                                        txt: 'Date: March 5, 2024',
+                                        txt: 'Date: ${widget.data['date']}',
                                         size: AppConstants.mediumText,
                                         fw: FontWeight.w600,
                                         color: AppColors.fontColor,
@@ -127,18 +147,21 @@ class _ViewPatientMedicalRrcordPageState
                                       5.he(),
                                       appText(
                                         pw: 5.h,
-                                        txt: 'Patient Name: John Smith',
+                                        txt:
+                                            'Patient Name: ${widget.data['name']}',
                                         size: AppConstants.smallText,
-                                        fw: FontWeight.w500,
+                                        fw: FontWeight.w700,
                                         color: AppColors.hintColor,
                                       ),
                                       5.he(),
                                       appText(
                                         pw: 5.h,
-                                        txt: 'Date: March 5, 2024',
+                                        txt: 'Type: ${widget.data['type']}',
                                         size: AppConstants.smallText,
-                                        fw: FontWeight.w500,
-                                        color: AppColors.hintColor,
+                                        fw: FontWeight.w900,
+                                        color: widget.data['type'] == 'Retry'
+                                            ? AppColors.redColor
+                                            : AppColors.primaryColor,
                                       ),
                                     ],
                                   ),
@@ -147,7 +170,8 @@ class _ViewPatientMedicalRrcordPageState
                                   elevation: 0,
                                   color: AppColors.hintColor.withOpacity(0.05),
                                   child: QrImageView(
-                                    data: '10000000211',
+                                    data:
+                                        '${widget.data['uid'] + widget.data['date']}',
                                     size: 100.w,
                                     dataModuleStyle: const QrDataModuleStyle(
                                         color: AppColors.scColor),
@@ -162,7 +186,7 @@ class _ViewPatientMedicalRrcordPageState
                             ),
                             10.he(),
                             appText(
-                              txt: 'Main Symptoms:',
+                              txt: 'Main Report:',
                               size: AppConstants.mediumText,
                               fw: FontWeight.w600,
                             ),
@@ -181,8 +205,7 @@ class _ViewPatientMedicalRrcordPageState
                                     align: TextAlign.start,
                                     ph: 4.h,
                                     pw: 4.h,
-                                    txt:
-                                        'The patient complains of severe pain in the lower right abdomen, accompanied by high fever and nausea.',
+                                    txt: '${widget.data['symptoms']}',
                                     size: AppConstants.smallText + 1,
                                     fw: FontWeight.w400,
                                     ml: 5,
@@ -212,55 +235,8 @@ class _ViewPatientMedicalRrcordPageState
                                     align: TextAlign.start,
                                     ph: 4.h,
                                     pw: 4.h,
-                                    txt: 'Temperature: 39.2 degrees Celsius.',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
-                                ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt: 'Pulse: 100 beats per minute.',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
-                                ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt: 'Blood Pressure: 120/80 mmHg.',
+                                    txt:
+                                        'Temperature: ${widget.data['temp'] + 'Celsius.'}',
                                     size: AppConstants.smallText + 1,
                                     fw: FontWeight.w400,
                                     ml: 5,
@@ -285,7 +261,32 @@ class _ViewPatientMedicalRrcordPageState
                                     ph: 4.h,
                                     pw: 4.h,
                                     txt:
-                                        'Abdomen: The patient feels pain when pressure is applied to the lower right side of the abdomen.',
+                                        'Blood Pressure: ${widget.data['blood']} mmHg.',
+                                    size: AppConstants.smallText + 1,
+                                    fw: FontWeight.w400,
+                                    ml: 5,
+                                    color: AppColors.scColor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                appText(
+                                  align: TextAlign.start,
+                                  txt: '●',
+                                  color: AppColors.scColor,
+                                  size: AppConstants.smallText + 1,
+                                  fw: FontWeight.w400,
+                                ),
+                                Expanded(
+                                  child: appText(
+                                    align: TextAlign.start,
+                                    ph: 4.h,
+                                    pw: 4.h,
+                                    txt:
+                                        'Symptoms: ${widget.data['symptoms']}.',
                                     size: AppConstants.smallText + 1,
                                     fw: FontWeight.w400,
                                     ml: 5,
@@ -300,117 +301,36 @@ class _ViewPatientMedicalRrcordPageState
                               size: AppConstants.mediumText,
                               fw: FontWeight.w600,
                             ),
-                            Table(
-                              border: TableBorder.all(
-                                color: AppColors.scColor,
-                                borderRadius: BorderRadius.circular(5.r),
+                            Container(
+                              // height: 150.h,
+                              width: double.infinity,
+                              padding: EdgeInsets.all(10.w),
+                              decoration: BoxDecoration(
+                                color: AppColors.scColor.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(15.r),
                               ),
-                              children: [
-                                TableRow(children: [
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'Name',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w600,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'Frequency',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w600,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'Type',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w600,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'Quantity',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w600,
-                                  ),
-                                ]),
-                                TableRow(children: [
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'a1 cream 100 gm',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 / 1',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'cream',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 Taplets',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                ]),
-                                TableRow(children: [
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'a1 cream 100 gm',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 / 1',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'cream',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 Taplets',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                ]),
-                                TableRow(children: [
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'a1 cream 100 gm',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 / 1',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: 'cream',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                  appText(
-                                    align: TextAlign.center,
-                                    txt: '2 Taplets',
-                                    size: AppConstants.verySmallText,
-                                    fw: FontWeight.w500,
-                                  ),
-                                ]),
-                              ],
+                              child: Wrap(
+                                  alignment: WrapAlignment.start,
+                                  spacing: 20.w,
+                                  children: drugs.map((hour) {
+                                    return FilterChip(
+                                      backgroundColor: AppColors.scColor,
+                                      shape: const StadiumBorder(),
+                                      // checkmarkColor: AppColors.whiteColor,
+                                      labelStyle: TextStyle(
+                                        color: AppColors.whiteColor,
+                                        fontFamily: AppConstants.fontFamily,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                      label: appText(
+                                          txt:
+                                              '${hour['drug']} - Take ${hour['times']} times/${hour['duration']}',
+                                          size: AppConstants.verySmallText,
+                                          fw: FontWeight.w800,
+                                          color: AppColors.whiteColor),
+                                      onSelected: (selected) {},
+                                    );
+                                  }).toList()),
                             ),
                             10.he(),
                             appText(
@@ -423,39 +343,43 @@ class _ViewPatientMedicalRrcordPageState
                               crossAxisAlignment: WrapCrossAlignment.start,
                               spacing: 10.w,
                               children: List.generate(
-                                  4,
+                                  widget.data['required_tests'].length,
                                   (index) => SizedBox(
-                                        child: InkWell(
-                                          onTap: () async {
-                                            await convertToPdf();
-                                          },
-                                          child: Chip(
-                                            labelPadding:
-                                                const EdgeInsets.all(0),
-                                            avatar: Icon(
-                                              index.isEven
-                                                  ? Icons.check_box_rounded
-                                                  : Icons
-                                                      .drive_folder_upload_rounded,
-                                              color: AppColors.whiteColor,
-                                            ),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 5.w),
-                                            backgroundColor: index.isEven
-                                                ? AppColors.scColor
-                                                : AppColors.redColor,
-                                            label: appText(
-                                              txt: index.isEven
-                                                  ? "CRC"
-                                                  : "Blood GRT",
-                                              size: AppConstants.smallText,
-                                              fw: FontWeight.w500,
-                                              color: AppColors.whiteColor,
-                                            ),
+                                        child: Chip(
+                                          labelPadding: const EdgeInsets.all(0),
+                                          avatar: Icon(
+                                            index.isEven
+                                                ? Icons.check_box_rounded
+                                                : Icons
+                                                    .drive_folder_upload_rounded,
+                                            color: AppColors.whiteColor,
+                                          ),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 5.w),
+                                          backgroundColor: index.isEven
+                                              ? AppColors.scColor
+                                              : AppColors.redColor,
+                                          label: appText(
+                                            txt: widget.data['required_tests']
+                                                [index],
+                                            size: AppConstants.smallText,
+                                            fw: FontWeight.w500,
+                                            color: AppColors.whiteColor,
                                           ),
                                         ),
                                       )),
                             ),
+                            20.he(),
+                            Center(
+                              child: AppButton(
+                                  txt: 'Print Or Share',
+                                  w: 200.w,
+                                  h: 40.h,
+                                  color: AppColors.primaryColor,
+                                  onTap: () async {
+                                    await convertToPdf();
+                                  }),
+                            )
                           ],
                         ),
                       ),

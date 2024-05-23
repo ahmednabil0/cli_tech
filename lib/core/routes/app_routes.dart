@@ -10,6 +10,7 @@ import 'package:gradution_project/features/doctor/complete_data/view/screens/com
 import 'package:gradution_project/features/doctor/complete_data/view_model/add_clinic_data/add_clinic_data_bloc.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/doctor_patients_page.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view/screens/pateint_records_page.dart';
+import 'package:gradution_project/features/doctor/doctor_patients/view_model.dart/doctor_patients/doctor_patients_bloc.dart';
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
@@ -182,8 +183,9 @@ class AppRoutes {
           builder: (_) => const PatientMediacalRecordsPage(),
         );
       case Routes.viewPatientMedicalRrcord:
+        final parms = routeSettings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => const ViewPatientMedicalRrcordPage(),
+          builder: (_) => ViewPatientMedicalRrcordPage(data: parms),
         );
       case Routes.chatBotPatient:
         return MaterialPageRoute(
@@ -261,12 +263,22 @@ class AppRoutes {
         );
       case Routes.doctorPatientsPage:
         return MaterialPageRoute(
-          builder: (_) => const DoctorPatientsPage(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                sl<DoctorPatientsBloc>()..getDoctorPatients(null),
+            child: const DoctorPatientsPage(),
+          ),
         );
 
       case Routes.patientRecordsPage:
+        final parms = routeSettings.arguments as Map<String, dynamic>;
+        print(parms['uid']);
+        print('/*/*/**/*/*/*/*');
         return MaterialPageRoute(
-          builder: (_) => const PatientRecordsPage(),
+          builder: (_) => BlocProvider.value(
+            value: sl<DoctorPatientsBloc>()..getMedicalRecords(parms['uid']),
+            child: PatientRecordsPage(data: parms),
+          ),
         );
 
       case Routes.addClinicData:
