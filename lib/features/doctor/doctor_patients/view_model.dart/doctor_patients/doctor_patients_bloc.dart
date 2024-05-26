@@ -21,6 +21,7 @@ class DoctorPatientsBloc extends Cubit<DoctorPatientsState> {
         await firestore
             .collection('doctors')
             .where('duid', isEqualTo: sl<CacheHelper>().getData(key: 'uid'))
+            .where('pending', isEqualTo: false)
             .get()
             .then((value) {
           patients = value.docs.map((e) => e.data()).toList();

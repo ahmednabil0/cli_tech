@@ -78,13 +78,40 @@ class DoctorHomeScreen extends StatelessWidget {
                                   context: context,
                                   route: Routes.apointmentsDoctor,
                                 ),
-                            child: CarouselSliderHome(
-                              count: BlocProvider.of<HomeDoctorBloc>(context)
-                                  .todayAppointments!
-                                  .length,
-                              data: BlocProvider.of<HomeDoctorBloc>(context)
-                                  .todayAppointments!,
-                            ))),
+                            child: BlocProvider.of<HomeDoctorBloc>(context)
+                                    .todayAppointments!
+                                    .isEmpty
+                                ? Container(
+                                    width: double.infinity,
+                                    alignment: Alignment.center,
+                                    height: 130.h,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15.r),
+                                      border: Border.all(
+                                        color: AppColors.scColor,
+                                        width: 2,
+                                      ),
+                                    ),
+                                    child: appText(
+                                      ph: 20.h,
+                                      pw: 20,
+                                      ml: 3,
+                                      txt:
+                                          'You Haven\'t Any Appointments Today.',
+                                      size: AppConstants.mediumText,
+                                      color: AppColors.redColor,
+                                      fw: FontWeight.w800,
+                                    ),
+                                  )
+                                : CarouselSliderHome(
+                                    count:
+                                        BlocProvider.of<HomeDoctorBloc>(context)
+                                            .todayAppointments!
+                                            .length,
+                                    data:
+                                        BlocProvider.of<HomeDoctorBloc>(context)
+                                            .todayAppointments!,
+                                  ))),
                   ],
                 );
               },
