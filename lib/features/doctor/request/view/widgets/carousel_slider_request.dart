@@ -1,8 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
-import 'package:jiffy/jiffy.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
+import 'package:gradution_project/core/widgets/build_custom_dialog.dart';
+import 'package:gradution_project/core/widgets/button.dart';
+import 'package:gradution_project/features/doctor/request/view_model/doctor_pendings/doctor_pendings_bloc.dart';
 
 import '../../../../../core/constants/app_colors.dart';
 import '../../../../../core/constants/app_const.dart';
@@ -10,15 +16,17 @@ import '../../../../../core/widgets/space.dart';
 import '../../../../../core/widgets/text.dart';
 
 class CarouselSliderRequest extends StatelessWidget {
-  const CarouselSliderRequest({required this.count, super.key});
+  const CarouselSliderRequest(
+      {required this.data, required this.doctorPendingsBloc, super.key});
 
-  final int? count;
+  final List<Map<String, dynamic>> data;
+  final DoctorPendingsBloc doctorPendingsBloc;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       separatorBuilder: (context, index) => 15.he(),
-      itemCount: count ?? 5,
+      itemCount: data.length,
       padding: EdgeInsets.symmetric(
         vertical: 10.h,
       ),
@@ -46,14 +54,14 @@ class CarouselSliderRequest extends StatelessWidget {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.r),
                             image: const DecorationImage(
-                                image: AssetImage(AppConstants.person),
+                                image: AssetImage(AppConstants.personDH),
                                 fit: BoxFit.cover),
                           ),
                           width: 80.w,
                           height: 100.h,
                         ),
                       ),
-                      7.wd(),
+                      20.wd(),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +74,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                 title: Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: appText(
-                                    txt: 'ALi Ramadan',
+                                    txt: data[index]['name'],
                                     align: TextAlign.start,
                                     size: AppConstants.largeText,
                                     fw: FontWeight.w800,
@@ -82,7 +90,6 @@ class CarouselSliderRequest extends StatelessWidget {
                                 height: 15.h,
                                 child: ListTile(
                                   contentPadding: EdgeInsets.zero,
-                                  horizontalTitleGap: 0,
                                   dense: true,
                                   leading: Icon(
                                     Icons.person_rounded,
@@ -90,9 +97,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                         AppColors.blackColor.withOpacity(0.5),
                                   ),
                                   title: appText(
-                                      txt: index.isEven
-                                          ? 'patient'
-                                          : 'receptionist',
+                                      txt: data[index]['role'],
                                       size: AppConstants.smallText,
                                       fw: FontWeight.bold,
                                       of: TextOverflow.ellipsis,
@@ -112,7 +117,7 @@ class CarouselSliderRequest extends StatelessWidget {
                                         AppColors.blackColor.withOpacity(0.5),
                                   ),
                                   title: appText(
-                                      txt: '01025232565',
+                                      txt: data[index]['phone'],
                                       size: AppConstants.smallText,
                                       fw: FontWeight.bold,
                                       of: TextOverflow.ellipsis,
@@ -120,32 +125,6 @@ class CarouselSliderRequest extends StatelessWidget {
                                           .withOpacity(0.5)),
                                 )),
                             25.he(),
-                            Row(
-                              children: [
-                                appText(
-                                    txt: 'Time Limit :',
-                                    size: AppConstants.smallText,
-                                    fw: FontWeight.bold,
-                                    of: TextOverflow.ellipsis,
-                                    color:
-                                        AppColors.blackColor.withOpacity(0.5)),
-                                const WSizedBox(),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.green,
-                                      borderRadius: BorderRadius.circular(8.r)),
-                                  height: 25.h,
-                                  width: 100,
-                                  child: Center(
-                                      child: appText(
-                                    txt: Jiffy.now()
-                                        .format(pattern: 'yyyy/MM/d'),
-                                    size: AppConstants.mediumText,
-                                    color: Colors.white,
-                                  )),
-                                ),
-                              ],
-                            )
                           ],
                         ),
                       ),
@@ -173,7 +152,39 @@ class CarouselSliderRequest extends StatelessWidget {
                             )),
                             overlayColor: MaterialStateColor.resolveWith(
                                 (states) => Colors.red.withOpacity(0.5))),
-                        onPressed: () {},
+                        onPressed: () {
+                          showAlertDialog(
+                            context: context,
+                            widget: appText(
+                              txt:
+                                  'Are You Sure To Reject This User/Receptioist Request.',
+                              ml: 5,
+                              fw: FontWeight.w400,
+                              size: AppConstants.mediumText,
+                              color: AppColors.scColor.withOpacity(0.7),
+                            ),
+                            txt: 'Warrning',
+                            color: Colors.red,
+                            actions: [
+                              AppButton(
+                                  txt: 'Cancel',
+                                  color: AppColors.redColor,
+                                  border: true,
+                                  onTap: () {
+                                    navigatePop(context: context);
+                                  }),
+                              AppButton(
+                                txt: 'Reject',
+                                color: AppColors.redColor,
+                                onTap: () async {
+                                  await doctorPendingsBloc.declineRequest(
+                                      uid: data[index]['uid']);
+                                  navigatePop(context: context);
+                                },
+                              ),
+                            ],
+                          );
+                        },
                         icon: const Icon(
                           Icons.close_rounded,
                           size: 25,
@@ -201,7 +212,39 @@ class CarouselSliderRequest extends StatelessWidget {
                             )),
                             overlayColor: MaterialStateColor.resolveWith(
                                 (states) => Colors.green.withOpacity(0.5))),
-                        onPressed: () {},
+                        onPressed: () {
+                          showAlertDialog(
+                            context: context,
+                            widget: appText(
+                              txt:
+                                  'Are You Sure To Accept This User/Receptioist To Your Clinic.',
+                              ml: 5,
+                              fw: FontWeight.w400,
+                              size: AppConstants.mediumText,
+                              color: AppColors.scColor.withOpacity(0.7),
+                            ),
+                            txt: 'Warrning',
+                            color: Colors.orangeAccent,
+                            actions: [
+                              AppButton(
+                                  txt: 'Cancel',
+                                  color: AppColors.primaryColor,
+                                  border: true,
+                                  onTap: () {
+                                    navigatePop(context: context);
+                                  }),
+                              AppButton(
+                                txt: 'Accept',
+                                color: AppColors.primaryColor,
+                                onTap: () async {
+                                  await doctorPendingsBloc.acceptRequest(
+                                      uid: data[index]['uid']);
+                                  navigatePop(context: context);
+                                },
+                              ),
+                            ],
+                          );
+                        },
                         icon: const Icon(
                           Icons.check,
                           size: 25,

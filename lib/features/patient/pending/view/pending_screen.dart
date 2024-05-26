@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/extensions/gaps.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/space.dart';
@@ -70,6 +73,29 @@ class PendingPage extends StatelessWidget {
                   },
                 );
               },
+            ),
+            10.he(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                textButton(
+                  txt: 'Sign Up',
+                  size: AppConstants.smallText,
+                  fw: FontWeight.w700,
+                  color: AppColors.redColor,
+                  onTap: () {
+                    navigateReplaceAll(
+                      context: context,
+                      route: Routes.getStartedPage,
+                    );
+                  },
+                ),
+                5.wd(),
+                const Icon(
+                  Icons.arrow_circle_right_outlined,
+                  color: AppColors.redColor,
+                ),
+              ],
             )
           ],
         ),

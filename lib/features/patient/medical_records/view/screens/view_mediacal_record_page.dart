@@ -92,6 +92,7 @@ class _ViewPatientMedicalRrcordPageState
               build: (format) => file!.save(),
               allowPrinting: true,
               allowSharing: true,
+              
               canChangeOrientation: false,
               canChangePageFormat: false,
               shareActionExtraSubject: 'Hello ${widget.data['name']}.',

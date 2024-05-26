@@ -16,6 +16,7 @@ import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cub
 import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
 import 'package:gradution_project/features/doctor/prescription/view_model/prescrption/prescrption_bloc.dart';
 import 'package:gradution_project/features/doctor/request/view/screens/request_page.dart';
+import 'package:gradution_project/features/doctor/request/view_model/doctor_pendings/doctor_pendings_bloc.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
 import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
@@ -251,7 +252,10 @@ class AppRoutes {
         );
       case Routes.requestPage:
         return MaterialPageRoute(
-          builder: (_) => const RequestPage(),
+          builder: (_) => BlocProvider(
+            create: (context) => sl<DoctorPendingsBloc>()..getPending(),
+            child: const RequestPage(),
+          ),
         );
 
       case Routes.apointmentsDoctor:

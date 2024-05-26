@@ -76,18 +76,34 @@ class DoctorPatientsPage extends StatelessWidget {
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(20.r),
-                                        image: DecorationImage(
-                                            image: CachedNetworkImageProvider(
-                                                bloc.patients![index]['photo']),
-                                            fit: BoxFit.cover),
-                                      ),
-                                      width: 60.w,
-                                      height: 60.h,
-                                    ),
+                                    bloc.patients![index]['photo'] == null
+                                        ? Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.r),
+                                              image: const DecorationImage(
+                                                  image: AssetImage(
+                                                    AppConstants.imagePicker,
+                                                  ),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            width: 60.w,
+                                            height: 60.h,
+                                          )
+                                        : Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.r),
+                                              image: DecorationImage(
+                                                  image:
+                                                      CachedNetworkImageProvider(
+                                                          bloc.patients![index]
+                                                              ['photo']),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                            width: 60.w,
+                                            height: 60.h,
+                                          ),
                                     10.wd(),
                                     Expanded(
                                       child: Column(
@@ -139,7 +155,7 @@ class DoctorPatientsPage extends StatelessWidget {
                                 appText(
                                   align: TextAlign.start,
                                   txt:
-                                      'Report:${bloc.patients![index]['report']}',
+                                      'Report:${bloc.patients![index]['report'] ?? 'No Report'}',
                                   size: AppConstants.smallText,
                                   ml: 5,
                                   of: TextOverflow.ellipsis,

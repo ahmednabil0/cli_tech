@@ -62,6 +62,9 @@ class CarouselSliderHome extends StatelessWidget {
                                     image: DecorationImage(
                                         image: CachedNetworkImageProvider(
                                             data[index]['photo']),
+                                        onError: (exception, stackTrace) =>
+                                            Image.asset(
+                                                AppConstants.doctorProfile),
                                         fit: BoxFit.cover),
                                   ),
                                   width: 60.w,
