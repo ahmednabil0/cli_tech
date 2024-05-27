@@ -25,47 +25,49 @@ class _RolePageState extends State<RolePage> {
     return Scaffold(
       body: Background(
           pad: 0,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 500),
-                top: -100.h,
-                left: -100.w,
-                child: CircleAvatar(
-                  backgroundColor: AppColors.scColor.withOpacity(0.8),
-                  radius: 180.r,
+          child: SingleChildScrollView(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 500),
+                  top: -100.h,
+                  left: -100.w,
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.scColor.withOpacity(0.8),
+                    radius: 180.r,
+                  ),
                 ),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  HSizedBox(
-                    he: 30.h,
-                  ),
-                  Image.asset(
-                    'assets/images/role.png',
-                  ),
-                  HSizedBox(
-                    he: 25.h,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      appText(
-                          txt: ' Please Select Your Role Below:',
-                          size: AppConstants.extraText,
-                          fw: FontWeight.w500,
-                          pw: 20.w),
-                      Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 10.h),
-                          child: const MyRadioButtonWidget()),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    HSizedBox(
+                      he: 30.h,
+                    ),
+                    Image.asset(
+                      'assets/images/role.png',
+                    ),
+                    HSizedBox(
+                      he: 25.h,
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        appText(
+                            txt: ' Please Select Your Role Below:',
+                            size: AppConstants.extraText,
+                            fw: FontWeight.w500,
+                            pw: 20.w),
+                        Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 10.h),
+                            child: const MyRadioButtonWidget()),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           )),
     );
   }

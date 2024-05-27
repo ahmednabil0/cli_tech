@@ -14,12 +14,14 @@ import 'package:gradution_project/features/doctor/doctor_patients/view_model.dar
 import 'package:gradution_project/features/doctor/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
+import 'package:gradution_project/features/doctor/patients_messages/view/screens/doctor_pateints_messages_screen.dart';
 import 'package:gradution_project/features/doctor/prescription/view_model/prescrption/prescrption_bloc.dart';
 import 'package:gradution_project/features/doctor/request/view/screens/request_page.dart';
 import 'package:gradution_project/features/doctor/request/view_model/doctor_pendings/doctor_pendings_bloc.dart';
 import 'package:gradution_project/features/intro/selct_role_page.dart';
 import 'package:gradution_project/features/intro/splash_page.dart';
 import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
+import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/patient_recods_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/cancel_appointment.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
@@ -83,6 +85,7 @@ class Routes {
   static const String patientRecordsPage = '/patientRecordsPage';
   static const String addClinicData = '/addClinicData';
   static const String personalInfoDoctor = '/personalInfoDoctor';
+  static const String doctorPatientsMessage = '/doctorPatientsMessage';
 }
 
 class AppRoutes {
@@ -190,7 +193,10 @@ class AppRoutes {
         );
       case Routes.chatBotPatient:
         return MaterialPageRoute(
-          builder: (_) => const ChatBotPage(),
+          builder: (_) => BlocProvider(
+            create: (context) => sl<PatientsMessagesBloc>()..getMyMessages(),
+            child: const ChatBotPage(),
+          ),
         );
       case Routes.notificationPatient:
         return MaterialPageRoute(
@@ -276,8 +282,7 @@ class AppRoutes {
 
       case Routes.patientRecordsPage:
         final parms = routeSettings.arguments as Map<String, dynamic>;
-        print(parms['uid']);
-        print('/*/*/**/*/*/*/*');
+
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: sl<DoctorPatientsBloc>()..getMedicalRecords(parms['uid']),
@@ -297,6 +302,12 @@ class AppRoutes {
             builder: (_) => BlocProvider(
                   create: (context) => sl<PersonalInformationBloc>()..getData(),
                   child: const PersonalInfoDoctorPage(),
+                ));
+      case Routes.doctorPatientsMessage:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => sl<PatientsMessagesBloc>(),
+                  child: const DoctorPatientsMessage(),
                 ));
 
       default:

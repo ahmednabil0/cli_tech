@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
+import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/pending/view_model/pending/pending_bloc.dart';
 
@@ -30,6 +31,10 @@ class CliTech extends StatelessWidget {
         ),
         BlocProvider<HomeCubit>(
           create: (BuildContext context) => sl<HomeCubit>(),
+        ),
+        BlocProvider<PatientsMessagesBloc>(
+          create: (BuildContext context) =>
+              sl<PatientsMessagesBloc>()..getMyMessages(),
         ),
       ],
       child: ScreenUtilInit(
