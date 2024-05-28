@@ -34,13 +34,13 @@ void initServiceLoactor() {
   sl.registerFactory(() => LoginCubit(authRepo: sl()));
 
   sl.registerFactory(() => SignupBloc());
-  sl.registerFactory(() => HomeCubit());
+  sl.registerLazySingleton(() => HomeCubit());
   sl.registerFactory(() => AppointmentCubit());
   sl.registerFactory(() => UploadMediaBloc());
   sl.registerFactory(() => PersonalInformationBloc());
   sl.registerFactory(() => SettingPatientBloc());
 
-  sl.registerFactory(() => HomeDoctorCubit());
+  sl.registerLazySingleton(() => HomeDoctorCubit());
   sl.registerFactory(() => AddClinicDataBloc());
   sl.registerFactory(() => PendingBloc());
   sl.registerFactory(() => HomeDoctorBloc());

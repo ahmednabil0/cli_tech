@@ -306,7 +306,8 @@ class AppRoutes {
       case Routes.doctorPatientsMessage:
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
-                  create: (context) => sl<PatientsMessagesBloc>(),
+                  create: (context) =>
+                      sl<PatientsMessagesBloc>()..getAllDoctorMEssages(),
                   child: const DoctorPatientsMessage(),
                 ));
 
