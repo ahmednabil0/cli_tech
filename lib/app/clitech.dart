@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/app_bloc/app/app_bloc.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/features/doctor/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
@@ -33,8 +34,13 @@ class CliTech extends StatelessWidget {
           create: (BuildContext context) => sl<HomeCubit>(),
         ),
         BlocProvider<PatientsMessagesBloc>(
-          create: (BuildContext context) =>
-              sl<PatientsMessagesBloc>()..getMyMessages(),
+          create: (BuildContext context) {
+            if (sl<CacheHelper>().getData(key: 'role') == 'doctor') {
+              return sl<PatientsMessagesBloc>()..getAllDoctorMEssages();
+            } else {
+              return sl<PatientsMessagesBloc>()..getMyMessages();
+            }
+          },
         ),
       ],
       child: ScreenUtilInit(

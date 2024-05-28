@@ -11,6 +11,7 @@ import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/toast.dart';
 import 'package:gradution_project/features/auth/model/repository/auth_repo.dart';
+import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
 
 part 'logincubit_state.dart';
 part 'logincubit_bloc.freezed.dart';
@@ -89,6 +90,8 @@ class LoginCubit extends Cubit<LoginCubitState> {
         print(credData!['role']);
         if (credData!['role'] == 'patient') {
           if (credData!['role'] == 'patient' && credData!['pending'] == false) {
+            await BlocProvider.of<PatientsMessagesBloc>(context)
+                .getMyMessages();
             navigateReplace(context: context, route: Routes.homePage);
           } else if (credData!['role'] == 'patient' &&
               credData!['pending'] == true) {
@@ -97,6 +100,8 @@ class LoginCubit extends Cubit<LoginCubitState> {
           }
         }
         if (credData!['role'] == 'doctor') {
+          await BlocProvider.of<PatientsMessagesBloc>(context)
+              .getAllDoctorMEssages();
           navigateReplace(context: context, route: Routes.doctorHomePage);
         }
         showToastSucess(
