@@ -1,4 +1,6 @@
 import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +10,7 @@ import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/static_data/drugs/data_json.dart';
 import 'package:gradution_project/core/static_data/lap_tests_names.dart';
+import 'package:gradution_project/core/static_data/symptoms/symtoms.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 
@@ -130,6 +133,7 @@ class PrescriptionPage extends StatelessWidget {
                     MyCustomTextField(
                       width: double.infinity,
                       controller: bloc.tempController,
+                      customTextInputType: TextInputType.number,
                       hint: 'Example: 39.2 degrees Celsius.',
                     ),
                     10.he(),
@@ -140,24 +144,155 @@ class PrescriptionPage extends StatelessWidget {
                     ),
                     MyCustomTextField(
                       width: double.infinity,
+                      customTextInputType: TextInputType.datetime,
                       controller: bloc.bloodController,
+                      onChanged: (value) {
+                        EasyDebounce.debounce('two', Durations.medium1, () {
+                          bloc.addSlash();
+                        });
+                      },
                       hint: 'Example: 120/80 mmHg.',
                     ),
                     10.he(),
-                    appText(
-                      txt: 'Symptoms:',
-                      size: AppConstants.largeText,
-                      fw: FontWeight.w700,
+                    Container(
+                      padding: EdgeInsets.all(
+                        10.w,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.scColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(15.r),
+                      ),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: appText(
+                              txt: 'Symptoms:',
+                              size: AppConstants.largeText,
+                              fw: FontWeight.w700,
+                            ),
+                          ),
+                          Form(
+                            key: bloc.formSymKey,
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: CustomDropdown<String>.search(
+                                validator: FormBuilderValidators.required(),
+                                hintText: 'Select Patient Symptoms',
+                                canCloseOutsideBounds: true,
+                                noResultFoundBuilder: (context, text) => Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.0.h),
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.error_outline_rounded,
+                                          color: Colors.red,
+                                          size: 15.h,
+                                        ),
+                                        appText(
+                                          align: TextAlign.start,
+                                          ph: 0,
+                                          txt: '*$text*',
+                                          color: Colors.red,
+                                          size: AppConstants.smallText,
+                                          fw: FontWeight.w500,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                hintBuilder: (context, hint) {
+                                  return appText(
+                                      align: TextAlign.start,
+                                      txt: hint,
+                                      color: AppColors.hintColor,
+                                      size: AppConstants.smallText,
+                                      fw: FontWeight.w500);
+                                },
+                                items: symptoms
+                                    .map(
+                                      (e) => e['Symptom'].toString(),
+                                    )
+                                    .toList(),
+                                excludeSelected: false,
+                                maxlines: 3,
+                                onChanged: (value) {
+                                  bloc.addSymptomToList(value);
+                                },
+                              ),
+                            ),
+                          ),
+                          10.he(),
+                          DottedBorder(
+                            borderType: BorderType.RRect,
+                            radius: Radius.circular(16.r),
+                            strokeCap: StrokeCap.butt,
+                            strokeWidth: 2,
+                            borderPadding:
+                                EdgeInsets.symmetric(horizontal: 2.w),
+                            color: AppColors.scColor,
+                            dashPattern: const [10, 1],
+                            child: Container(
+                              // height: 150.h,
+                              width: double.infinity,
+                              padding: EdgeInsets.all(10.w),
+                              decoration: BoxDecoration(
+                                color: AppColors.scColor.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(15.r),
+                              ),
+                              child: Wrap(
+                                  alignment: WrapAlignment.start,
+                                  spacing: 20.w,
+                                  children: bloc.symptoms.map((hour) {
+                                    return InkWell(
+                                      onLongPress: () {
+                                        bloc.removeSymptom(value: hour);
+                                      },
+                                      child: FilterChip(
+                                        backgroundColor: AppColors.scColor,
+                                        shape: const StadiumBorder(),
+                                        // checkmarkColor: AppColors.whiteColor,
+                                        labelStyle: TextStyle(
+                                          color: AppColors.whiteColor,
+                                          fontFamily: AppConstants.fontFamily,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        label: appText(
+                                            txt: hour,
+                                            size: AppConstants.smallText,
+                                            color: AppColors.whiteColor),
+                                        onSelected: (selected) {},
+                                      ),
+                                    );
+                                  }).toList()),
+                            ),
+                          ),
+                          5.he(),
+                          AppButton(
+                              r: 10.r,
+                              color: AppColors.primaryColor.withOpacity(0.8),
+                              w: double.infinity,
+                              ts: AppConstants.smallText,
+                              txt: 'Show Expected Disease Info',
+                              onTap: () {}),
+//                           appText(
+//                             align: TextAlign.start,
+//                             ml: 20,
+//                             txt: """TECHNICAL SKILLS
+// • Flutter , dart(oop)
+// • Firebase (firestore , firestorage,FCM , real
+//   time database )
+// • Upload apps in Google play
+// • Other skills (Python , java , c#)""",
+//                             color: AppColors.hintColor,
+//                             size: AppConstants.smallText,
+//                             fw: FontWeight.w500,
+//                           )
+                        ],
+                      ),
                     ),
-                    MyCustomTextField(
-                      height: 70.h,
-                      width: double.infinity,
-                      max: 3,
-                      controller: bloc.symptomsController,
-                      hint:
-                          'Examble:The patient feels pain when pressure is applied to the lower right side of the abdomen.',
-                    ),
-                    10.he(),
+                    15.he(),
                     Form(
                       key: bloc.formKey,
                       child: Container(
@@ -234,6 +369,7 @@ class PrescriptionPage extends StatelessWidget {
                                     ),
                                     MyCustomTextField(
                                       width: 120.w,
+                                      customTextInputType: TextInputType.number,
                                       controller: bloc.drugQtController,
                                       validator:
                                           FormBuilderValidators.required(),
@@ -449,7 +585,7 @@ class PrescriptionPage extends StatelessWidget {
                                 bloc.removeRequiredTest(value: hour);
                               },
                               child: FilterChip(
-                                backgroundColor: AppColors.primaryColor,
+                                backgroundColor: AppColors.scColor,
                                 shape: const StadiumBorder(),
                                 // checkmarkColor: AppColors.whiteColor,
                                 labelStyle: TextStyle(

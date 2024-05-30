@@ -31,6 +31,7 @@ import 'package:gradution_project/features/patient/doctor_info/view/screens/doct
 import 'package:gradution_project/features/patient/home/view/screens/bottom_nav.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/view_mediacal_record_page.dart';
+import 'package:gradution_project/features/patient/medical_records/view_model/patient_records/patient_records_bloc.dart';
 import 'package:gradution_project/features/patient/notification/view/screens/notification_page.dart';
 import 'package:gradution_project/features/patient/pending/view/pending_screen.dart';
 import 'package:gradution_project/features/patient/patient_info/view/screens/patient_info.dart';
@@ -184,7 +185,11 @@ class AppRoutes {
         );
       case Routes.patientMediacalRecords:
         return MaterialPageRoute(
-          builder: (_) => const PatientMediacalRecordsPage(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                sl<PatientRecordsBloc>()..getPatientMedicalRecords(),
+            child: const PatientMediacalRecordsPage(),
+          ),
         );
       case Routes.viewPatientMedicalRrcord:
         final parms = routeSettings.arguments as Map<String, dynamic>;

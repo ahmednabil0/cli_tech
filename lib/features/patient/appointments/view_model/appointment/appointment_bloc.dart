@@ -26,6 +26,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
   String selectedRole = 'Retry';
   String? fromTime;
   String? toTime;
+  int? waiting;
   String retryValue = 'Retry';
   String examinationvalue = 'Examination';
   final TextEditingController notesController = TextEditingController();
@@ -151,6 +152,8 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           'hour': selectedHours,
           'note': notesController.text,
           'type': selectedRole,
+          'createdAt': DateTime.now(),
+          'waiting': waiting,
           'photo': sl<CacheHelper>().containsKey(key: 'photo')
               ? sl<CacheHelper>().getData(key: 'photo')
               : '',
@@ -199,6 +202,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           availableHoursAll!.remove(hour);
         }
         availableHours = availableHoursAll;
+        waiting = value.docs.length;
       });
       print(selectedDateTime);
       print('********************************');
