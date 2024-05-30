@@ -92,8 +92,8 @@ class _ViewPatientMedicalRrcordPageState
               build: (format) => file!.save(),
               allowPrinting: true,
               allowSharing: true,
-              
               canChangeOrientation: false,
+              shareActionExtraEmails: [widget.data['date']],
               canChangePageFormat: false,
               shareActionExtraSubject: 'Hello ${widget.data['name']}.',
               shareActionExtraBody:
@@ -115,276 +115,314 @@ class _ViewPatientMedicalRrcordPageState
                   )),
             )
           : Background(
-              padv: 10.h,
-              child: Screenshot(
-                controller: screenshotController,
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(
-                      15.r,
-                    ),
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                      color: AppColors.whiteColor,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
+              padv: 2.h,
+              child: Column(
+                children: [
+                  Screenshot(
+                    controller: screenshotController,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          15.r,
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 5.h, horizontal: 10.w),
+                          color: AppColors.whiteColor,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Expanded(
-                                  child: Column(
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          10.he(),
+                                          appText(
+                                            pw: 5.w,
+                                            txt: 'Date: ${widget.data['date']}',
+                                            size: AppConstants.mediumText,
+                                            fw: FontWeight.w600,
+                                            color: AppColors.fontColor,
+                                          ),
+                                          5.he(),
+                                          appText(
+                                            pw: 5.w,
+                                            txt:
+                                                'Patient: ${widget.data['name']}',
+                                            size: AppConstants.smallText,
+                                            fw: FontWeight.w700,
+                                            color: AppColors.hintColor,
+                                          ),
+                                          5.he(),
+                                          appText(
+                                            pw: 5.h,
+                                            txt: 'Type: ${widget.data['type']}',
+                                            size: AppConstants.smallText,
+                                            fw: FontWeight.w900,
+                                            color:
+                                                widget.data['type'] == 'Retry'
+                                                    ? AppColors.redColor
+                                                    : AppColors.primaryColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Card(
+                                      elevation: 0,
+                                      color:
+                                          AppColors.hintColor.withOpacity(0.05),
+                                      child: QrImageView(
+                                        data:
+                                            '${widget.data['uid'] + widget.data['date']}',
+                                        size: 100.w,
+                                        dataModuleStyle:
+                                            const QrDataModuleStyle(
+                                                color: AppColors.scColor),
+                                        eyeStyle: const QrEyeStyle(
+                                            color: AppColors.primaryColor),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Divider(
+                                  color: AppColors.hintColor,
+                                ),
+                                10.he(),
+                                appText(
+                                  txt: 'Main Report:',
+                                  size: AppConstants.mediumText,
+                                  fw: FontWeight.w600,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    appText(
+                                      align: TextAlign.start,
+                                      txt: '●',
+                                      color: AppColors.scColor,
+                                      size: AppConstants.smallText + 1,
+                                      fw: FontWeight.w400,
+                                    ),
+                                    Expanded(
+                                      child: appText(
+                                        align: TextAlign.start,
+                                        ph: 4.h,
+                                        pw: 4.h,
+                                        txt: '${widget.data['report']}',
+                                        size: AppConstants.smallText + 1,
+                                        fw: FontWeight.w400,
+                                        ml: 5,
+                                        color: AppColors.scColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                10.he(),
+                                appText(
+                                  txt: 'Physical Examination:',
+                                  size: AppConstants.mediumText,
+                                  fw: FontWeight.w600,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    appText(
+                                      align: TextAlign.start,
+                                      txt: '●',
+                                      color: AppColors.scColor,
+                                      size: AppConstants.smallText + 1,
+                                      fw: FontWeight.w400,
+                                    ),
+                                    Expanded(
+                                      child: appText(
+                                        align: TextAlign.start,
+                                        ph: 4.h,
+                                        pw: 4.h,
+                                        txt:
+                                            'Temperature: ${widget.data['temp'] + 'Celsius.'}',
+                                        size: AppConstants.smallText + 1,
+                                        fw: FontWeight.w400,
+                                        ml: 5,
+                                        color: AppColors.scColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    appText(
+                                      align: TextAlign.start,
+                                      txt: '●',
+                                      color: AppColors.scColor,
+                                      size: AppConstants.smallText + 1,
+                                      fw: FontWeight.w400,
+                                    ),
+                                    Expanded(
+                                      child: appText(
+                                        align: TextAlign.start,
+                                        ph: 4.h,
+                                        pw: 4.h,
+                                        txt:
+                                            'Blood Pressure: ${widget.data['blood']} mmHg.',
+                                        size: AppConstants.smallText + 1,
+                                        fw: FontWeight.w400,
+                                        ml: 5,
+                                        color: AppColors.scColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    appText(
+                                      align: TextAlign.start,
+                                      txt: '●',
+                                      color: AppColors.scColor,
+                                      size: AppConstants.smallText + 1,
+                                      fw: FontWeight.w400,
+                                    ),
+                                    Expanded(
+                                      child: appText(
+                                        align: TextAlign.start,
+                                        ph: 4.h,
+                                        pw: 4.h,
+                                        txt: 'Symptoms: ',
+                                        size: AppConstants.smallText + 1,
+                                        fw: FontWeight.w700,
+                                        ml: 5,
+                                        color: AppColors.scColor,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                ...List.generate(widget.data['symptoms'].length,
+                                    (index) {
+                                  return Row(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      10.he(),
                                       appText(
-                                        pw: 5.h,
-                                        txt: 'Date: ${widget.data['date']}',
-                                        size: AppConstants.mediumText,
-                                        fw: FontWeight.w600,
-                                        color: AppColors.fontColor,
+                                        align: TextAlign.start,
+                                        txt: '    ${index + 1}- ',
+                                        color: AppColors.scColor,
+                                        size: AppConstants.smallText + 1,
+                                        fw: FontWeight.w400,
                                       ),
-                                      5.he(),
-                                      appText(
-                                        pw: 5.h,
-                                        txt:
-                                            'Patient Name: ${widget.data['name']}',
-                                        size: AppConstants.smallText,
-                                        fw: FontWeight.w700,
-                                        color: AppColors.hintColor,
-                                      ),
-                                      5.he(),
-                                      appText(
-                                        pw: 5.h,
-                                        txt: 'Type: ${widget.data['type']}',
-                                        size: AppConstants.smallText,
-                                        fw: FontWeight.w900,
-                                        color: widget.data['type'] == 'Retry'
-                                            ? AppColors.redColor
-                                            : AppColors.primaryColor,
+                                      Expanded(
+                                        child: appText(
+                                          align: TextAlign.start,
+                                          // ph: 4.h,
+                                          // pw: 4.h,
+                                          txt:
+                                              '${widget.data['symptoms'][index]}.',
+                                          size: AppConstants.smallText + 1,
+                                          fw: FontWeight.w400,
+                                          ml: 5,
+                                          color: AppColors.scColor,
+                                        ),
                                       ),
                                     ],
-                                  ),
-                                ),
-                                Card(
-                                  elevation: 0,
-                                  color: AppColors.hintColor.withOpacity(0.05),
-                                  child: QrImageView(
-                                    data:
-                                        '${widget.data['uid'] + widget.data['date']}',
-                                    size: 100.w,
-                                    dataModuleStyle: const QrDataModuleStyle(
-                                        color: AppColors.scColor),
-                                    eyeStyle: const QrEyeStyle(
-                                        color: AppColors.primaryColor),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Divider(
-                              color: AppColors.hintColor,
-                            ),
-                            10.he(),
-                            appText(
-                              txt: 'Main Report:',
-                              size: AppConstants.mediumText,
-                              fw: FontWeight.w600,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
+                                  );
+                                }),
+                                10.he(),
                                 appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
+                                  txt: 'Treatment Plan:',
+                                  size: AppConstants.mediumText,
+                                  fw: FontWeight.w600,
                                 ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt: '${widget.data['symptoms']}',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
+                                Container(
+                                  // height: 150.h,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.all(10.w),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.scColor.withOpacity(0.1),
+                                    borderRadius: BorderRadius.circular(15.r),
                                   ),
-                                ),
-                              ],
-                            ),
-                            10.he(),
-                            appText(
-                              txt: 'Physical Examination:',
-                              size: AppConstants.mediumText,
-                              fw: FontWeight.w600,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
-                                ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt:
-                                        'Temperature: ${widget.data['temp'] + 'Celsius.'}',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
-                                ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt:
-                                        'Blood Pressure: ${widget.data['blood']} mmHg.',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                appText(
-                                  align: TextAlign.start,
-                                  txt: '●',
-                                  color: AppColors.scColor,
-                                  size: AppConstants.smallText + 1,
-                                  fw: FontWeight.w400,
-                                ),
-                                Expanded(
-                                  child: appText(
-                                    align: TextAlign.start,
-                                    ph: 4.h,
-                                    pw: 4.h,
-                                    txt:
-                                        'Symptoms: ${widget.data['symptoms']}.',
-                                    size: AppConstants.smallText + 1,
-                                    fw: FontWeight.w400,
-                                    ml: 5,
-                                    color: AppColors.scColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            10.he(),
-                            appText(
-                              txt: 'Treatment Plan:',
-                              size: AppConstants.mediumText,
-                              fw: FontWeight.w600,
-                            ),
-                            Container(
-                              // height: 150.h,
-                              width: double.infinity,
-                              padding: EdgeInsets.all(10.w),
-                              decoration: BoxDecoration(
-                                color: AppColors.scColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(15.r),
-                              ),
-                              child: Wrap(
-                                  alignment: WrapAlignment.start,
-                                  spacing: 20.w,
-                                  children: drugs.map((hour) {
-                                    return FilterChip(
-                                      backgroundColor: AppColors.scColor,
-                                      shape: const StadiumBorder(),
-                                      // checkmarkColor: AppColors.whiteColor,
-                                      labelStyle: TextStyle(
-                                        color: AppColors.whiteColor,
-                                        fontFamily: AppConstants.fontFamily,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      label: appText(
-                                          txt:
-                                              '${hour['drug']} - Take ${hour['times']} times/${hour['duration']}',
-                                          size: AppConstants.verySmallText,
-                                          fw: FontWeight.w800,
-                                          color: AppColors.whiteColor),
-                                      onSelected: (selected) {},
-                                    );
-                                  }).toList()),
-                            ),
-                            10.he(),
-                            appText(
-                              txt: 'Required Medical Tests :',
-                              size: AppConstants.mediumText,
-                              fw: FontWeight.w600,
-                            ),
-                            Wrap(
-                              // alignment: WrapAlignment.start,
-                              crossAxisAlignment: WrapCrossAlignment.start,
-                              spacing: 10.w,
-                              children: List.generate(
-                                  widget.data['required_tests'].length,
-                                  (index) => SizedBox(
-                                        child: Chip(
-                                          labelPadding: const EdgeInsets.all(0),
-                                          avatar: Icon(
-                                            index.isEven
-                                                ? Icons.check_box_rounded
-                                                : Icons
-                                                    .drive_folder_upload_rounded,
+                                  child: Wrap(
+                                      alignment: WrapAlignment.start,
+                                      spacing: 20.w,
+                                      children: drugs.map((hour) {
+                                        return FilterChip(
+                                          backgroundColor: AppColors.scColor,
+                                          shape: const StadiumBorder(),
+                                          // checkmarkColor: AppColors.whiteColor,
+                                          labelStyle: TextStyle(
                                             color: AppColors.whiteColor,
+                                            fontFamily: AppConstants.fontFamily,
+                                            fontWeight: FontWeight.w700,
                                           ),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 5.w),
-                                          backgroundColor: index.isEven
-                                              ? AppColors.scColor
-                                              : AppColors.redColor,
                                           label: appText(
-                                            txt: widget.data['required_tests']
-                                                [index],
-                                            size: AppConstants.smallText,
-                                            fw: FontWeight.w500,
-                                            color: AppColors.whiteColor,
-                                          ),
-                                        ),
-                                      )),
+                                              txt:
+                                                  '${hour['drug']} - Take ${hour['times']} times/${hour['duration']}',
+                                              size: AppConstants.verySmallText,
+                                              fw: FontWeight.w800,
+                                              color: AppColors.whiteColor),
+                                          onSelected: (selected) {},
+                                        );
+                                      }).toList()),
+                                ),
+                                10.he(),
+                                appText(
+                                  txt: 'Required Medical Tests :',
+                                  size: AppConstants.mediumText,
+                                  fw: FontWeight.w600,
+                                ),
+                                Wrap(
+                                  // alignment: WrapAlignment.start,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  spacing: 10.w,
+                                  children: List.generate(
+                                      widget.data['required_tests'].length,
+                                      (index) => SizedBox(
+                                            child: Chip(
+                                              labelPadding:
+                                                  const EdgeInsets.all(0),
+                                              avatar: Icon(
+                                                index.isEven
+                                                    ? Icons.check_box_rounded
+                                                    : Icons
+                                                        .drive_folder_upload_rounded,
+                                                color: AppColors.whiteColor,
+                                              ),
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 5.w),
+                                              backgroundColor: index.isEven
+                                                  ? AppColors.scColor
+                                                  : AppColors.redColor,
+                                              label: appText(
+                                                txt: widget
+                                                        .data['required_tests']
+                                                    [index],
+                                                size: AppConstants.smallText,
+                                                fw: FontWeight.w500,
+                                                color: AppColors.whiteColor,
+                                              ),
+                                            ),
+                                          )),
+                                ),
+                                20.he(),
+                              ],
                             ),
-                            20.he(),
-                            Center(
-                              child: AppButton(
-                                  txt: 'Print Or Share',
-                                  w: 200.w,
-                                  h: 40.h,
-                                  color: AppColors.primaryColor,
-                                  onTap: () async {
-                                    await convertToPdf();
-                                  }),
-                            )
-                          ],
-                        ),
-                      ),
-                    )),
+                          ),
+                        )),
+                  ),
+                  5.he(),
+                  Center(
+                    child: AppButton(
+                        txt: 'Print Or Share',
+                        w: 200.w,
+                        h: 35.h,
+                        color: AppColors.primaryColor,
+                        onTap: () async {
+                          await convertToPdf();
+                        }),
+                  )
+                ],
               ),
             ),
     );

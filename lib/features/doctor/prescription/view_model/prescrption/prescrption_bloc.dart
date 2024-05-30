@@ -14,15 +14,16 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
   PrescrptionBloc() : super(const PrescrptionState.initial());
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<FormState> formLapKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formSymKey = GlobalKey<FormState>();
   final TextEditingController drugQtController = TextEditingController();
   final TextEditingController reportController = TextEditingController();
   final TextEditingController tempController = TextEditingController();
   final TextEditingController bloodController = TextEditingController();
-  final TextEditingController symptomsController = TextEditingController();
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   String? drugName;
   String? testName;
+  String? symptomName;
 
   String? drugQt;
 
@@ -30,6 +31,7 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
 
   List<Map> treatmantPlan = [];
   List<String> requiredTests = [];
+  List<String> symptoms = [];
 
   void addDrug({required DrugModel value}) {
     emit(const PrescrptionState.initial());
@@ -85,9 +87,35 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
     emit(const PrescrptionState.prescrptionEmit());
   }
 
+  void addSlash() {
+    if (bloodController.text.length == 3 &&
+        !bloodController.text.contains('/')) {
+      emit(const PrescrptionState.initial());
+      bloodController.text = '${bloodController.text}/';
+      emit(const PrescrptionState.prescrptionEmit());
+    }
+  }
+
   void removeRequiredTest({required String value}) {
     emit(const PrescrptionState.initial());
     requiredTests.remove(value);
+    emit(const PrescrptionState.prescrptionEmit());
+  }
+
+  void addSymptomToList(String symptomName) {
+    emit(const PrescrptionState.initial());
+
+    if (symptoms.contains(symptomName) == false) {
+      symptoms.add(symptomName);
+      print(symptoms.join(','));
+    }
+
+    emit(const PrescrptionState.prescrptionEmit());
+  }
+
+  void removeSymptom({required String value}) {
+    emit(const PrescrptionState.initial());
+    symptoms.remove(value);
     emit(const PrescrptionState.prescrptionEmit());
   }
 
@@ -103,7 +131,7 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
         'report': reportController.text,
         'temp': tempController.text,
         'blood': bloodController.text,
-        'symptoms': symptomsController.text,
+        'symptoms': symptoms,
         'duid': sl<CacheHelper>().getData(key: 'uid'),
         'uid': data['uid'],
         'name': data['name'],
@@ -117,6 +145,10 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
             .collection('appointments')
             .doc(data['id'])
             .update({'complete': true});
+        print('prescription added : ${data['uid']}');
+        await firestore.collection('doctors').doc(data['uid']).update({
+          'report': reportController.text,
+        });
         emit(const PrescrptionState.prescrptionLoaded());
         navigatePop(context: context);
       });

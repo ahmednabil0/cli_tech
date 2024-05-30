@@ -10,6 +10,7 @@ class MyCustomTextField extends StatelessWidget {
   final String? lapel;
   final double? width;
   final double? height;
+  final TextInputType? customTextInputType;
   final int? max;
   final Color? color;
   final Widget? icon;
@@ -27,6 +28,7 @@ class MyCustomTextField extends StatelessWidget {
     this.hint,
     this.ro,
     this.lapel,
+    this.customTextInputType,
     this.max,
     this.isTextObscured,
     this.color,
@@ -50,6 +52,7 @@ class MyCustomTextField extends StatelessWidget {
       height: height ?? 45.h,
       child: TextFormField(
         controller: controller,
+        keyboardType: customTextInputType ?? TextInputType.text,
         maxLines: max ?? 1,
         style: TextStyle(
           color: color ?? Colors.black,
