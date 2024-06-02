@@ -1,11 +1,23 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gradution_project/core/constants/app_colors.dart';
+import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/drugs/data_json.dart';
+import 'package:gradution_project/core/widgets/build_custom_dialog.dart';
+import 'package:gradution_project/core/widgets/button.dart';
+import 'package:gradution_project/core/widgets/text.dart';
+import 'package:gradution_project/features/doctor/prescription/view/widgets/typer_text.dart';
 
 part 'prescrption_state.dart';
 part 'prescrption_bloc.freezed.dart';
@@ -155,6 +167,59 @@ class PrescrptionBloc extends Cubit<PrescrptionState> {
     } catch (e) {
       print('prescription error : ${e.toString()}');
       emit(const PrescrptionState.prescrptionError());
+    }
+  }
+
+  Future<void> generateRecommendaions(
+      List sympData, BuildContext context) async {
+    try {
+      emit(const PrescrptionState.prescrptionGenratedLoading());
+      var headers = {'Content-Type': 'application/json'};
+      var data = {"symptoms": sympData};
+      var dio = Dio();
+      var response = await dio.request(
+        'http://159.223.237.9:8090/predict',
+        options: Options(
+          method: 'POST',
+          headers: headers,
+        ),
+        data: jsonEncode(data),
+      );
+
+      if (response.statusCode == 201) {
+        Map<String, dynamic> result = response.data;
+        print(result);
+
+        showAlertDialog(
+          context: context,
+          widget: SingleChildScrollView(
+            reverse: true,
+            child: TypewriterText(
+              text: formatApiResponse(result),
+              typingDuration: const Duration(milliseconds: 50),
+              pauseDuration: const Duration(milliseconds: 200),
+            ),
+          ),
+          txt: 'Recommendaions generated successfully',
+          color: AppColors.scColor,
+          actions: [
+            AppButton(
+              txt: 'Back',
+              onTap: () {
+                navigatePop(context: context);
+              },
+            )
+          ],
+        );
+      } else {
+        print(response.statusMessage);
+        print(response.statusCode);
+      }
+
+      emit(const PrescrptionState.prescrptionLoaded());
+    } catch (e) {
+      emit(const PrescrptionState.prescrptionError());
+      print('prescription error : ${e.toString()}');
     }
   }
 }

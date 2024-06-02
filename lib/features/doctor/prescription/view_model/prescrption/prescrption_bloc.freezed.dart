@@ -20,6 +20,7 @@ mixin _$PrescrptionState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -29,6 +30,7 @@ mixin _$PrescrptionState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -38,6 +40,7 @@ mixin _$PrescrptionState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -48,6 +51,8 @@ mixin _$PrescrptionState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -57,6 +62,8 @@ mixin _$PrescrptionState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -66,6 +73,8 @@ mixin _$PrescrptionState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -132,6 +141,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -144,6 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -156,6 +167,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -172,6 +184,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -184,6 +198,8 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -196,6 +212,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -252,6 +270,7 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -264,6 +283,7 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -276,6 +296,7 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -292,6 +313,8 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -304,6 +327,8 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -316,6 +341,8 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -330,6 +357,140 @@ class _$PrescrptionLoadingImpl implements _PrescrptionLoading {
 
 abstract class _PrescrptionLoading implements PrescrptionState {
   const factory _PrescrptionLoading() = _$PrescrptionLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$PrescrptionGenratedLoadingImplCopyWith<$Res> {
+  factory _$$PrescrptionGenratedLoadingImplCopyWith(
+          _$PrescrptionGenratedLoadingImpl value,
+          $Res Function(_$PrescrptionGenratedLoadingImpl) then) =
+      __$$PrescrptionGenratedLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$PrescrptionGenratedLoadingImplCopyWithImpl<$Res>
+    extends _$PrescrptionStateCopyWithImpl<$Res,
+        _$PrescrptionGenratedLoadingImpl>
+    implements _$$PrescrptionGenratedLoadingImplCopyWith<$Res> {
+  __$$PrescrptionGenratedLoadingImplCopyWithImpl(
+      _$PrescrptionGenratedLoadingImpl _value,
+      $Res Function(_$PrescrptionGenratedLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$PrescrptionGenratedLoadingImpl implements _PrescrptionGenratedLoading {
+  const _$PrescrptionGenratedLoadingImpl();
+
+  @override
+  String toString() {
+    return 'PrescrptionState.prescrptionGenratedLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PrescrptionGenratedLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
+    required TResult Function() prescrptionLoaded,
+    required TResult Function() prescrptionError,
+    required TResult Function() prescrptionEmit,
+  }) {
+    return prescrptionGenratedLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
+    TResult? Function()? prescrptionLoaded,
+    TResult? Function()? prescrptionError,
+    TResult? Function()? prescrptionEmit,
+  }) {
+    return prescrptionGenratedLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
+    TResult Function()? prescrptionLoaded,
+    TResult Function()? prescrptionError,
+    TResult Function()? prescrptionEmit,
+    required TResult orElse(),
+  }) {
+    if (prescrptionGenratedLoading != null) {
+      return prescrptionGenratedLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
+    required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
+    required TResult Function(_PrescrptionError value) prescrptionError,
+    required TResult Function(_PrescrptionEmit value) prescrptionEmit,
+  }) {
+    return prescrptionGenratedLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
+    TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
+    TResult? Function(_PrescrptionError value)? prescrptionError,
+    TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
+  }) {
+    return prescrptionGenratedLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
+    TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
+    TResult Function(_PrescrptionError value)? prescrptionError,
+    TResult Function(_PrescrptionEmit value)? prescrptionEmit,
+    required TResult orElse(),
+  }) {
+    if (prescrptionGenratedLoading != null) {
+      return prescrptionGenratedLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PrescrptionGenratedLoading implements PrescrptionState {
+  const factory _PrescrptionGenratedLoading() =
+      _$PrescrptionGenratedLoadingImpl;
 }
 
 /// @nodoc
@@ -372,6 +533,7 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -384,6 +546,7 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -396,6 +559,7 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -412,6 +576,8 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -424,6 +590,8 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -436,6 +604,8 @@ class _$PrescrptionLoadedImpl implements _PrescrptionLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -492,6 +662,7 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -504,6 +675,7 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -516,6 +688,7 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -532,6 +705,8 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -544,6 +719,8 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -556,6 +733,8 @@ class _$PrescrptionErrorImpl implements _PrescrptionError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -612,6 +791,7 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() prescrptionLoading,
+    required TResult Function() prescrptionGenratedLoading,
     required TResult Function() prescrptionLoaded,
     required TResult Function() prescrptionError,
     required TResult Function() prescrptionEmit,
@@ -624,6 +804,7 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? prescrptionLoading,
+    TResult? Function()? prescrptionGenratedLoading,
     TResult? Function()? prescrptionLoaded,
     TResult? Function()? prescrptionError,
     TResult? Function()? prescrptionEmit,
@@ -636,6 +817,7 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? prescrptionLoading,
+    TResult Function()? prescrptionGenratedLoading,
     TResult Function()? prescrptionLoaded,
     TResult Function()? prescrptionError,
     TResult Function()? prescrptionEmit,
@@ -652,6 +834,8 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_PrescrptionLoading value) prescrptionLoading,
+    required TResult Function(_PrescrptionGenratedLoading value)
+        prescrptionGenratedLoading,
     required TResult Function(_PrescrptionLoaded value) prescrptionLoaded,
     required TResult Function(_PrescrptionError value) prescrptionError,
     required TResult Function(_PrescrptionEmit value) prescrptionEmit,
@@ -664,6 +848,8 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult? Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult? Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult? Function(_PrescrptionError value)? prescrptionError,
     TResult? Function(_PrescrptionEmit value)? prescrptionEmit,
@@ -676,6 +862,8 @@ class _$PrescrptionEmitImpl implements _PrescrptionEmit {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_PrescrptionLoading value)? prescrptionLoading,
+    TResult Function(_PrescrptionGenratedLoading value)?
+        prescrptionGenratedLoading,
     TResult Function(_PrescrptionLoaded value)? prescrptionLoaded,
     TResult Function(_PrescrptionError value)? prescrptionError,
     TResult Function(_PrescrptionEmit value)? prescrptionEmit,

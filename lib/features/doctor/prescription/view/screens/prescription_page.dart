@@ -271,11 +271,23 @@ class PrescriptionPage extends StatelessWidget {
                           5.he(),
                           AppButton(
                               r: 10.r,
+                              loading: state ==
+                                      const PrescrptionState
+                                          .prescrptionGenratedLoading()
+                                  ? true
+                                  : false,
                               color: AppColors.primaryColor.withOpacity(0.8),
                               w: double.infinity,
                               ts: AppConstants.smallText,
                               txt: 'Show Expected Disease Info',
-                              onTap: () {}),
+                              onTap: () async {
+                                if (bloc.symptoms.isNotEmpty) {
+                                  await bloc.generateRecommendaions(
+                                    bloc.symptoms,
+                                    context,
+                                  );
+                                }
+                              }),
 //                           appText(
 //                             align: TextAlign.start,
 //                             ml: 20,
