@@ -6,10 +6,7 @@ import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
-import 'package:gradution_project/core/widgets/button.dart';
-import 'package:gradution_project/core/widgets/images/custom_image.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
-import 'package:gradution_project/core/widgets/text.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../../core/db/cache/cache_helper.dart';
