@@ -6,17 +6,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
-import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/routes/navigate.dart';
 import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/static_data/drugs/data_json.dart';
 import 'package:gradution_project/core/widgets/build_custom_dialog.dart';
 import 'package:gradution_project/core/widgets/button.dart';
-import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/features/doctor/prescription/view/widgets/typer_text.dart';
 
 part 'prescrption_state.dart';

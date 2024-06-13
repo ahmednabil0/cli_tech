@@ -1,14 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
-import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/features/patient/upload_media/view_model/upload_media/upload_media_bloc.dart';

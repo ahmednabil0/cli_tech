@@ -13,7 +13,6 @@ import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/images/custom_image.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:gradution_project/core/widgets/text.dart';
-import 'package:gradution_project/features/doctor/appointments/view/screens/apointments_doctor_page.dart';
 import 'package:gradution_project/features/doctor/doctor_patients/view_model.dart/doctor_patients/doctor_patients_bloc.dart';
 
 class PatientRecordsPage extends StatelessWidget {

@@ -5,11 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
-import 'package:gradution_project/core/extensions/gaps.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
-import 'package:gradution_project/core/widgets/text.dart';
 import 'package:gradution_project/core/widgets/tff.dart';
 import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
 
