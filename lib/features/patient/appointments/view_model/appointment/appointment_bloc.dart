@@ -152,6 +152,7 @@ class AppointmentCubit extends Cubit<AppointmentState> {
           'hour': selectedHours,
           'note': notesController.text,
           'type': selectedRole,
+          'complete': false,
           'createdAt': DateTime.now(),
           'waiting': waiting,
           'photo': sl<CacheHelper>().containsKey(key: 'photo')
