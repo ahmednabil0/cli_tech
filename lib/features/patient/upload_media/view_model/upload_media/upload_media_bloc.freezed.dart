@@ -22,6 +22,9 @@ mixin _$UploadMediaState {
     required TResult Function(int index) uploadingMedia,
     required TResult Function(int index) uploadedMedia,
     required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$UploadMediaState {
     TResult? Function(int index)? uploadingMedia,
     TResult? Function(int index)? uploadedMedia,
     TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$UploadMediaState {
     TResult Function(int index)? uploadingMedia,
     TResult Function(int index)? uploadedMedia,
     TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +56,9 @@ mixin _$UploadMediaState {
     required TResult Function(_UploadingMedia value) uploadingMedia,
     required TResult Function(_UploadedMedia value) uploadedMedia,
     required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +67,9 @@ mixin _$UploadMediaState {
     TResult? Function(_UploadingMedia value)? uploadingMedia,
     TResult? Function(_UploadedMedia value)? uploadedMedia,
     TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +78,9 @@ mixin _$UploadMediaState {
     TResult Function(_UploadingMedia value)? uploadingMedia,
     TResult Function(_UploadedMedia value)? uploadedMedia,
     TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +146,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(int index) uploadingMedia,
     required TResult Function(int index) uploadedMedia,
     required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -139,6 +160,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(int index)? uploadingMedia,
     TResult? Function(int index)? uploadedMedia,
     TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -150,6 +174,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(int index)? uploadingMedia,
     TResult Function(int index)? uploadedMedia,
     TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +192,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_UploadingMedia value) uploadingMedia,
     required TResult Function(_UploadedMedia value) uploadedMedia,
     required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return initial(this);
   }
@@ -176,6 +206,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_UploadingMedia value)? uploadingMedia,
     TResult? Function(_UploadedMedia value)? uploadedMedia,
     TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +220,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_UploadingMedia value)? uploadingMedia,
     TResult Function(_UploadedMedia value)? uploadedMedia,
     TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -269,6 +305,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     required TResult Function(int index) uploadingMedia,
     required TResult Function(int index) uploadedMedia,
     required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
   }) {
     return uploadingMedia(index);
   }
@@ -280,6 +319,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     TResult? Function(int index)? uploadingMedia,
     TResult? Function(int index)? uploadedMedia,
     TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return uploadingMedia?.call(index);
   }
@@ -291,6 +333,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     TResult Function(int index)? uploadingMedia,
     TResult Function(int index)? uploadedMedia,
     TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (uploadingMedia != null) {
@@ -306,6 +351,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     required TResult Function(_UploadingMedia value) uploadingMedia,
     required TResult Function(_UploadedMedia value) uploadedMedia,
     required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return uploadingMedia(this);
   }
@@ -317,6 +365,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     TResult? Function(_UploadingMedia value)? uploadingMedia,
     TResult? Function(_UploadedMedia value)? uploadedMedia,
     TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return uploadingMedia?.call(this);
   }
@@ -328,6 +379,9 @@ class _$UploadingMediaImpl implements _UploadingMedia {
     TResult Function(_UploadingMedia value)? uploadingMedia,
     TResult Function(_UploadedMedia value)? uploadedMedia,
     TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (uploadingMedia != null) {
@@ -414,6 +468,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     required TResult Function(int index) uploadingMedia,
     required TResult Function(int index) uploadedMedia,
     required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
   }) {
     return uploadedMedia(index);
   }
@@ -425,6 +482,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     TResult? Function(int index)? uploadingMedia,
     TResult? Function(int index)? uploadedMedia,
     TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return uploadedMedia?.call(index);
   }
@@ -436,6 +496,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     TResult Function(int index)? uploadingMedia,
     TResult Function(int index)? uploadedMedia,
     TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (uploadedMedia != null) {
@@ -451,6 +514,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     required TResult Function(_UploadingMedia value) uploadingMedia,
     required TResult Function(_UploadedMedia value) uploadedMedia,
     required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return uploadedMedia(this);
   }
@@ -462,6 +528,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     TResult? Function(_UploadingMedia value)? uploadingMedia,
     TResult? Function(_UploadedMedia value)? uploadedMedia,
     TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return uploadedMedia?.call(this);
   }
@@ -473,6 +542,9 @@ class _$UploadedMediaImpl implements _UploadedMedia {
     TResult Function(_UploadingMedia value)? uploadingMedia,
     TResult Function(_UploadedMedia value)? uploadedMedia,
     TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (uploadedMedia != null) {
@@ -560,6 +632,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     required TResult Function(int index) uploadingMedia,
     required TResult Function(int index) uploadedMedia,
     required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
   }) {
     return uploadfailureIngMedia(index);
   }
@@ -571,6 +646,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     TResult? Function(int index)? uploadingMedia,
     TResult? Function(int index)? uploadedMedia,
     TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
   }) {
     return uploadfailureIngMedia?.call(index);
   }
@@ -582,6 +660,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     TResult Function(int index)? uploadingMedia,
     TResult Function(int index)? uploadedMedia,
     TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (uploadfailureIngMedia != null) {
@@ -597,6 +678,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     required TResult Function(_UploadingMedia value) uploadingMedia,
     required TResult Function(_UploadedMedia value) uploadedMedia,
     required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
   }) {
     return uploadfailureIngMedia(this);
   }
@@ -608,6 +692,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     TResult? Function(_UploadingMedia value)? uploadingMedia,
     TResult? Function(_UploadedMedia value)? uploadedMedia,
     TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
   }) {
     return uploadfailureIngMedia?.call(this);
   }
@@ -619,6 +706,9 @@ class _$FailureUploadingImpl implements _FailureUploading {
     TResult Function(_UploadingMedia value)? uploadingMedia,
     TResult Function(_UploadedMedia value)? uploadedMedia,
     TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
     if (uploadfailureIngMedia != null) {
@@ -635,4 +725,400 @@ abstract class _FailureUploading implements UploadMediaState {
   @JsonKey(ignore: true)
   _$$FailureUploadingImplCopyWith<_$FailureUploadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$UploadMediaStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
+  @override
+  String toString() {
+    return 'UploadMediaState.loading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) uploadingMedia,
+    required TResult Function(int index) uploadedMedia,
+    required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? uploadingMedia,
+    TResult? Function(int index)? uploadedMedia,
+    TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? uploadingMedia,
+    TResult Function(int index)? uploadedMedia,
+    TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UploadingMedia value) uploadingMedia,
+    required TResult Function(_UploadedMedia value) uploadedMedia,
+    required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UploadingMedia value)? uploadingMedia,
+    TResult? Function(_UploadedMedia value)? uploadedMedia,
+    TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UploadingMedia value)? uploadingMedia,
+    TResult Function(_UploadedMedia value)? uploadedMedia,
+    TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements UploadMediaState {
+  const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$UploadMediaStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
+
+  @override
+  String toString() {
+    return 'UploadMediaState.loaded()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) uploadingMedia,
+    required TResult Function(int index) uploadedMedia,
+    required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
+  }) {
+    return loaded();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? uploadingMedia,
+    TResult? Function(int index)? uploadedMedia,
+    TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
+  }) {
+    return loaded?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? uploadingMedia,
+    TResult Function(int index)? uploadedMedia,
+    TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UploadingMedia value) uploadingMedia,
+    required TResult Function(_UploadedMedia value) uploadedMedia,
+    required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UploadingMedia value)? uploadingMedia,
+    TResult? Function(_UploadedMedia value)? uploadedMedia,
+    TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UploadingMedia value)? uploadingMedia,
+    TResult Function(_UploadedMedia value)? uploadedMedia,
+    TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loaded implements UploadMediaState {
+  const factory _Loaded() = _$LoadedImpl;
+}
+
+/// @nodoc
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$UploadMediaStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
+
+  @override
+  String toString() {
+    return 'UploadMediaState.error()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index) uploadingMedia,
+    required TResult Function(int index) uploadedMedia,
+    required TResult Function(int index) uploadfailureIngMedia,
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(int index)? uploadingMedia,
+    TResult? Function(int index)? uploadedMedia,
+    TResult? Function(int index)? uploadfailureIngMedia,
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index)? uploadingMedia,
+    TResult Function(int index)? uploadedMedia,
+    TResult Function(int index)? uploadfailureIngMedia,
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UploadingMedia value) uploadingMedia,
+    required TResult Function(_UploadedMedia value) uploadedMedia,
+    required TResult Function(_FailureUploading value) uploadfailureIngMedia,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UploadingMedia value)? uploadingMedia,
+    TResult? Function(_UploadedMedia value)? uploadedMedia,
+    TResult? Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UploadingMedia value)? uploadingMedia,
+    TResult Function(_UploadedMedia value)? uploadedMedia,
+    TResult Function(_FailureUploading value)? uploadfailureIngMedia,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Error implements UploadMediaState {
+  const factory _Error() = _$ErrorImpl;
 }

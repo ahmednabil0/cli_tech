@@ -372,40 +372,89 @@ class _ViewPatientMedicalRrcordPageState
                                   size: AppConstants.mediumText,
                                   fw: FontWeight.w600,
                                 ),
-                                Wrap(
-                                  // alignment: WrapAlignment.start,
-                                  crossAxisAlignment: WrapCrossAlignment.start,
-                                  spacing: 10.w,
-                                  children: List.generate(
-                                      widget.data['required_tests'].length,
-                                      (index) => SizedBox(
-                                            child: Chip(
-                                              labelPadding:
-                                                  const EdgeInsets.all(0),
-                                              avatar: Icon(
-                                                index.isEven
-                                                    ? Icons.check_box_rounded
-                                                    : Icons
-                                                        .drive_folder_upload_rounded,
-                                                color: AppColors.whiteColor,
-                                              ),
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 5.w),
-                                              backgroundColor: index.isEven
-                                                  ? AppColors.scColor
-                                                  : AppColors.redColor,
-                                              label: appText(
-                                                txt: widget
-                                                        .data['required_tests']
-                                                    [index],
-                                                size: AppConstants.smallText,
-                                                fw: FontWeight.w500,
-                                                color: AppColors.whiteColor,
-                                              ),
-                                            ),
-                                          )),
+                                widget.data['required_tests'] == []
+                                    ? const SizedBox.shrink()
+                                    : Wrap(
+                                        // alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        spacing: 10.w,
+                                        children: List.generate(
+                                            widget
+                                                .data['required_tests'].length,
+                                            (index) => SizedBox(
+                                                  child: Chip(
+                                                    labelPadding:
+                                                        const EdgeInsets.all(0),
+                                                    avatar: Icon(
+                                                      Icons
+                                                          .drive_folder_upload_rounded,
+                                                      color:
+                                                          AppColors.whiteColor,
+                                                    ),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 5.w),
+                                                    backgroundColor:
+                                                        AppColors.redColor,
+                                                    label: appText(
+                                                      txt: widget.data[
+                                                              'required_tests']
+                                                          [index],
+                                                      size: AppConstants
+                                                          .smallText,
+                                                      fw: FontWeight.w500,
+                                                      color:
+                                                          AppColors.whiteColor,
+                                                    ),
+                                                  ),
+                                                )),
+                                      ),
+                                10.he(),
+                                appText(
+                                  txt: 'Uploaded Medical Tests :',
+                                  size: AppConstants.mediumText,
+                                  fw: FontWeight.w600,
                                 ),
-                                20.he(),
+                                widget.data['tests'] == null
+                                    ? const SizedBox.shrink()
+                                    : Wrap(
+                                        // alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        spacing: 10.w,
+                                        children: List.generate(
+                                            widget.data['tests'].length,
+                                            (index) => SizedBox(
+                                                  child: Chip(
+                                                    labelPadding:
+                                                        const EdgeInsets.all(0),
+                                                    avatar: Icon(
+                                                      index.isEven
+                                                          ? Icons
+                                                              .check_box_rounded
+                                                          : Icons
+                                                              .drive_folder_upload_rounded,
+                                                      color:
+                                                          AppColors.whiteColor,
+                                                    ),
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            horizontal: 5.w),
+                                                    backgroundColor:
+                                                        AppColors.scColor,
+                                                    label: appText(
+                                                      txt: widget.data['tests']
+                                                          [index],
+                                                      size: AppConstants
+                                                          .smallText,
+                                                      fw: FontWeight.w500,
+                                                      color:
+                                                          AppColors.whiteColor,
+                                                    ),
+                                                  ),
+                                                )),
+                                      ),
                               ],
                             ),
                           ),

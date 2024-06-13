@@ -158,16 +158,19 @@ class AppRoutes {
       case Routes.uploadPatientMedia:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<UploadMediaBloc>(),
+            create: (context) =>
+                sl<UploadMediaBloc>()..getPatientMedicalRecords(),
             child: const UploadPatientMediaPage(),
           ),
         );
       case Routes.viewPatientMedia:
-        final context = routeSettings.arguments as BuildContext;
+        final context = routeSettings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: BlocProvider.of<UploadMediaBloc>(context),
-            child: const ViewPatientMediaPage(),
+            value: BlocProvider.of<UploadMediaBloc>(context['context']),
+            child: ViewPatientMediaPage(
+              data: context['data'],
+            ),
           ),
         );
       case Routes.doctorInfoPage:

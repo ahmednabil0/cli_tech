@@ -7,4 +7,7 @@ class UploadMediaState with _$UploadMediaState {
   const factory UploadMediaState.uploadedMedia(int index) = _UploadedMedia;
   const factory UploadMediaState.uploadfailureIngMedia(int index) =
       _FailureUploading;
+  const factory UploadMediaState.loading() = _Loading;
+  const factory UploadMediaState.loaded() = _Loaded;
+  const factory UploadMediaState.error() = _Error;
 }
