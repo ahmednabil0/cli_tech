@@ -37,6 +37,7 @@ class PatientMediacalRecordsPage extends StatelessWidget {
                 child: MyCustomTextField(
                   controller: TextEditingController(),
                   hint: 'Search Here By Date',
+                  ro: true,
                   icon: IconButton(
                     onPressed: () async {
                       await bloc.showDateTimePicker(context);
