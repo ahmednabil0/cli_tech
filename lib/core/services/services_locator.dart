@@ -15,6 +15,7 @@ import 'package:gradution_project/features/doctor/home/view_model/home_doctor/ho
 import 'package:gradution_project/features/doctor/prescription/view_model/prescrption/prescrption_bloc.dart';
 import 'package:gradution_project/features/doctor/request/view_model/doctor_pendings/doctor_pendings_bloc.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/appointment/appointment_bloc.dart';
+import 'package:gradution_project/features/patient/appointments/view_model/cancel_appointment/cancel_appointment_bloc.dart';
 import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
 import 'package:gradution_project/features/patient/home/view_model/cubit/home_cubit.dart';
 import 'package:gradution_project/features/patient/medical_records/view_model/patient_records/patient_records_bloc.dart';
@@ -51,6 +52,7 @@ void initServiceLoactor() {
   sl.registerFactory(() => DoctorPendingsBloc());
   sl.registerFactory(() => PatientsMessagesBloc());
   sl.registerFactory(() => PatientRecordsBloc());
+  sl.registerFactory(() => CancelAppointmentBloc());
 
   //! project
   sl.registerLazySingleton<ApiConsumer>(() => DioConsumer(sl()));
