@@ -23,6 +23,7 @@ import 'package:gradution_project/features/intro/splash_page.dart';
 import 'package:gradution_project/features/patient/appointments/view_model/cancel_appointment/cancel_appointment_bloc.dart';
 import 'package:gradution_project/features/patient/chat_bot/view/screens/chat_page.dart';
 import 'package:gradution_project/features/patient/chat_bot/view_model/patients_messages/patients_messages_bloc.dart';
+import 'package:gradution_project/features/patient/doctor_info/view_model/doctor_info/doctor_info_bloc.dart';
 import 'package:gradution_project/features/patient/medical_records/view/screens/patient_recods_page.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/cancel_appointment.dart';
 import 'package:gradution_project/features/patient/appointments/view/screens/make_appointment_page.dart';
@@ -176,7 +177,10 @@ class AppRoutes {
         );
       case Routes.doctorInfoPage:
         return MaterialPageRoute(
-          builder: (_) => const DoctorInfoPage(),
+          builder: (_) => BlocProvider(
+            create: (context) => sl<DoctorInfoBloc>()..getDoctorInfo(),
+            child: const DoctorInfoPage(),
+          ),
         );
 
       case Routes.patientInfo:

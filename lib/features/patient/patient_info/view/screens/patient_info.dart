@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradution_project/core/constants/app_colors.dart';
 import 'package:gradution_project/core/constants/app_const.dart';
+import 'package:gradution_project/core/db/cache/cache_helper.dart';
 import 'package:gradution_project/core/extensions/gaps.dart';
+import 'package:gradution_project/core/routes/app_routes.dart';
+import 'package:gradution_project/core/routes/navigate.dart';
+import 'package:gradution_project/core/services/services_locator.dart';
 import 'package:gradution_project/core/widgets/buld_app_bar.dart';
 import 'package:gradution_project/core/widgets/button.dart';
 import 'package:gradution_project/core/widgets/sized_box.dart';
@@ -28,7 +32,7 @@ class PatientInfoPage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 230.h,
+                height: 300.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
@@ -67,9 +71,9 @@ class PatientInfoPage extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(4.0.w),
                         child: QrImageView(
-                          data: '1000000000002100',
+                          data: sl<CacheHelper>().getData(key: 'uid'),
                           version: 2,
-                          size: 140.0.w,
+                          size: 200.0.w,
                           // backgroundColor: AppColors.whiteColor,
                           dataModuleStyle: const QrDataModuleStyle(
                             color: AppColors.scColor,
@@ -95,9 +99,11 @@ class PatientInfoPage extends StatelessWidget {
                   fw: FontWeight.w800,
                 ),
               ),
+              10.he(),
               MyCustomTextField(
                 width: 290.w,
-                controller: TextEditingController(text: 'Ahmednabil'),
+                controller: TextEditingController(
+                    text: sl<CacheHelper>().getData(key: 'name')),
                 ro: true,
                 lapel: 'Name',
                 color: AppColors.hintColor,
@@ -105,7 +111,8 @@ class PatientInfoPage extends StatelessWidget {
               15.he(),
               MyCustomTextField(
                 width: 290.w,
-                controller: TextEditingController(text: '01065028467'),
+                controller: TextEditingController(
+                    text: sl<CacheHelper>().getData(key: 'phone')),
                 ro: true,
                 lapel: 'Phone Number',
                 color: AppColors.hintColor,
@@ -119,53 +126,59 @@ class PatientInfoPage extends StatelessWidget {
                 color: AppColors.hintColor,
               ),
               20.he(),
-              Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: appText(
-                  pw: 10.w,
-                  txt: 'Gender: ',
-                  size: AppConstants.largeText,
-                  fw: FontWeight.w800,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.person,
-                        size: 45.w,
-                        color: AppColors.hintColor.withOpacity(0.5),
-                      ),
-                      appText(
-                        txt: 'Male',
-                        size: AppConstants.mediumText,
-                        fw: FontWeight.w700,
-                        color: AppColors.hintColor.withOpacity(0.5),
-                      )
-                    ],
-                  ),
-                  20.wd(),
-                  Column(
-                    children: [
-                      Icon(
-                        Icons.person_2_rounded,
-                        size: 45.w,
-                        color: AppColors.scColor,
-                      ),
-                      appText(
-                        txt: 'Female',
-                        size: AppConstants.mediumText,
-                        fw: FontWeight.w700,
-                        color: AppColors.scColor,
-                      ),
-                    ],
-                  )
-                ],
-              ),
+              // Align(
+              //   alignment: AlignmentDirectional.centerStart,
+              //   child: appText(
+              //     pw: 10.w,
+              //     txt: 'Gender: ',
+              //     size: AppConstants.largeText,
+              //     fw: FontWeight.w800,
+              //   ),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Column(
+              //       children: [
+              //         Icon(
+              //           Icons.person,
+              //           size: 45.w,
+              //           color: AppColors.hintColor.withOpacity(0.5),
+              //         ),
+              //         appText(
+              //           txt: 'Male',
+              //           size: AppConstants.mediumText,
+              //           fw: FontWeight.w700,
+              //           color: AppColors.hintColor.withOpacity(0.5),
+              //         )
+              //       ],
+              //     ),
+              //     20.wd(),
+              //     Column(
+              //       children: [
+              //         Icon(
+              //           Icons.person_2_rounded,
+              //           size: 45.w,
+              //           color: AppColors.scColor,
+              //         ),
+              //         appText(
+              //           txt: 'Female',
+              //           size: AppConstants.mediumText,
+              //           fw: FontWeight.w700,
+              //           color: AppColors.scColor,
+              //         ),
+              //       ],
+              //     )
+              //   ],
+              // ),
               const Spacer(),
-              AppButton(w: 280.w, txt: 'Edit Information', onTap: () {}),
+              AppButton(
+                  w: 280.w,
+                  txt: 'Edit Information',
+                  onTap: () {
+                    navigate(
+                        context: context, route: Routes.personalInfoPatient);
+                  }),
               10.he()
             ],
           )),
